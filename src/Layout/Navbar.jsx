@@ -94,7 +94,7 @@ export default function Navbar() {
 
 
     return (
-        <nav className="bg-primary bg-opacity-35 transition-colors shadow-sm backdrop-blur-md lg:top-5 lg:left-10 lg:right-10 top-3 left-5 right-5 z-50 fixed lg:w-[calc(100vw-80px)] w-[calc(100vw-40px)] rounded-lg">
+        <nav className="bg-primary bg-opacity-35 transition-colors shadow-sm backdrop-blur-md lg:top-5 lg:left-16 lg:right-16 top-3 left-5 right-5 z-50 fixed lg:w-[calc(100vw-128px)] w-[calc(100vw-40px)] rounded-lg">
             <div className="container !py-0 mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16 items-center">
 
@@ -104,7 +104,7 @@ export default function Navbar() {
                             <NavLink
                                 key={index}
                                 to={item.path}
-                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50 w-20`}
+                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50`}
                             >
                                 {item.name}
                             </NavLink>
@@ -121,12 +121,12 @@ export default function Navbar() {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:ml-10 md:flex md:space-x-8  transition-colors text-gray-50">
+                    <div className="hidden md:ml-10 md:flex md:space-x-8  transition-colors text-white">
                         {navItems.slice(3, 6).map((item, index) => (
                             <NavLink
                                 key={index}
                                 to={item.path}
-                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50 w-20`}
+                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50`}
                             >
                                 {item.name}
                             </NavLink>
