@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .active {
-    @apply -translate-y-2 relative before:content-[''] before:w-full before:h-[1px] before:bg-white before:absolute before:-bottom-2 before:left-0 transition-all
+    @apply lg:-translate-y-0 lg:-translate-x-0 translate-x-2 relative before:content-[''] lg:before:w-full lg:before:h-[0px] before:w-[3px] before:h-1/2 before:bg-white before:absolute lg:before:-bottom-2 lg:before:left-0 before:left-0.5 transition-all opacity-100 font-bold
 }
 
 ::-webkit-scrollbar {

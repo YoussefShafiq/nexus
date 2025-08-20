@@ -104,7 +104,7 @@ export default function Navbar() {
                             <NavLink
                                 key={index}
                                 to={item.path}
-                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-medium transition duration-300 ext-gray-700 border-transparent hover:text-customBlue `}
+                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50 w-20`}
                             >
                                 {item.name}
                             </NavLink>
@@ -126,7 +126,7 @@ export default function Navbar() {
                             <NavLink
                                 key={index}
                                 to={item.path}
-                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-medium transition duration-300 ext-gray-700 border-transparent hover:text-customBlue `}
+                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50 w-20`}
                             >
                                 {item.name}
                             </NavLink>
