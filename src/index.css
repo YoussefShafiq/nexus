@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+    @apply -translate-y-2 relative before:content-[''] before:w-full before:h-[1px] before:bg-white before:absolute before:-bottom-2 before:left-0 transition-all
+}
+
+::-webkit-scrollbar {
+    @apply w-1
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-white transition-colors
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full
+}
