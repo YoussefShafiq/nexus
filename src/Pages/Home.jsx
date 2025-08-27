@@ -1,6 +1,8 @@
 import React from 'react'
 import heroImg from '../assets/images/HeroImage.png'
 import PrimaryButton from '../buttons/PrimaryButton'
+import Slider from 'react-slick';
+import serviceimg from '../assets/images/services/marine.png'
 
 export function HeroSection() {
     return <>
@@ -21,8 +23,85 @@ export function HeroSection() {
     </>
 }
 
+export function OurServices() {
+
+    var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        // arrows: false
+        autoplay: true,
+        speed: 2000,
+        autoplaySpeed: 2000,
+        cssEase: "linear"
+    };
+
+    const services = [
+        {
+            img: serviceimg,
+            title: 'Marine & Offshore',
+            subtitle: 'Reliable solutions for harsh marine environments',
+            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
+        },
+        {
+            img: serviceimg,
+            title: 'Marine & Offshore',
+            subtitle: 'Reliable solutions for harsh marine environments',
+            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
+        },
+        {
+            img: serviceimg,
+            title: 'Marine & Offshore',
+            subtitle: 'Reliable solutions for harsh marine environments',
+            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
+        },
+        {
+            img: serviceimg,
+            title: 'Marine & Offshore',
+            subtitle: 'Reliable solutions for harsh marine environments',
+            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
+        },
+        {
+            img: serviceimg,
+            title: 'Marine & Offshore',
+            subtitle: 'Reliable solutions for harsh marine environments',
+            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
+        },
+    ]
+
+    return <>
+        <div className="container py-14">
+
+            <div className="text-center pb-10">
+                <h1 className='font-bold text-4xl'>Our Services</h1>
+                <p className='font-semibold text-xl opacity-60'>Precision engineering solutions for complex industrial challenges</p>
+
+            </div>
+            <Slider {...settings}>
+                {services.map((s, index) => (
+                    <div key={index} className='px-3'>
+                        <div className="bg-primary rounded-2xl  flex flex-col text-white cursor-pointer">
+                            <div className="overflow-hidden rounded-lg">
+                                <img src={s.img} alt={s.title} className='hover:scale-105 transition-all' />
+                            </div>
+                            <div className="p-5">
+                                <h2 className='font-bold text-2xl'>{s.title}</h2>
+                                <p className='text-sm opacity-90'>{s.subtitle}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </Slider>
+        </div>
+    </>
+}
+
 export default function Home() {
     return <>
         <HeroSection />
+        <OurServices />
+
     </>
 }
