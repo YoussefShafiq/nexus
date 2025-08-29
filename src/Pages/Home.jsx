@@ -18,7 +18,6 @@ export function HeroSection() {
                     <img src={heroImg} alt="" />
                 </div>
             </div>
-            <div className=""></div>
         </div>
     </>
 }
@@ -31,11 +30,30 @@ export function OurServices() {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
-        // arrows: false
+        arrows: false,
         autoplay: true,
-        speed: 2000,
-        autoplaySpeed: 2000,
-        cssEase: "linear"
+        autoplaySpeed: 3000,
+        cssEase: "linear",
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
     };
 
     const services = [
@@ -74,15 +92,16 @@ export function OurServices() {
     return <>
         <div className="container py-14">
 
-            <div className="text-center pb-10">
-                <h1 className='font-bold text-4xl'>Our Services</h1>
-                <p className='font-semibold text-xl opacity-60'>Precision engineering solutions for complex industrial challenges</p>
-
+            <div className="text-center pb-10 space-y-5">
+                <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Our Services</h1>
+                <div className="">
+                    <p className='font-semibold text-xl opacity-60'>Precision engineering solutions for complex industrial challenges</p>
+                </div>
             </div>
-            <Slider {...settings}>
+            <Slider {...settings} className='mb-14'>
                 {services.map((s, index) => (
-                    <div key={index} className='px-3'>
-                        <div className="bg-primary rounded-2xl  flex flex-col text-white cursor-pointer">
+                    <div key={index} className='px-3 pb-8'>
+                        <div className="bg-primary rounded-2xl p-2 flex flex-col text-white cursor-pointer">
                             <div className="overflow-hidden rounded-lg">
                                 <img src={s.img} alt={s.title} className='hover:scale-105 transition-all' />
                             </div>
@@ -94,6 +113,31 @@ export function OurServices() {
                     </div>
                 ))}
             </Slider>
+            <PrimaryButton text={'See More'} key={'Services See more button'} path={'/services'} className={'!m-auto block'} />
+        </div>
+    </>
+}
+
+export function Aboutus() {
+
+    
+
+    return <>
+        <div className="container py-14">
+
+            <div className="text-center pb-10 space-y-5">
+                <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >About Us</h1>
+                <div className="space-y-2">
+                    <p className='font-semibold text-xl opacity-60'>Engineering Excellence Since 1991</p>
+                    <p className='font-base lg:w-2/3 m-auto text-center'>With 32+ years of experience, NEXUS delivers precision engineering solutions for oil & gas, industrial, and architectural projects—combining cutting-edge BIM technology with strict compliance to global standards.</p>
+                </div>
+            </div>
+            <div className="flex flex-col lg:flex-row gap-3">
+
+            </div>
+
+
+            <PrimaryButton text={'Meet Our Team'} key={'Meet Our Team button'} path={'/about-us'} className={'!m-auto block'} />
         </div>
     </>
 }
@@ -102,6 +146,7 @@ export default function Home() {
     return <>
         <HeroSection />
         <OurServices />
+        <Aboutus />
 
     </>
 }

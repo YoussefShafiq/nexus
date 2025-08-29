@@ -99,7 +99,7 @@ export default function Navbar() {
                 <div className="flex justify-between h-16 items-center">
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:ml-10 md:flex md:space-x-8  transition-colors text-white">
+                    <div className="hidden md:ml-10 md:flex md:space-x-5  transition-colors text-white">
                         {navItems.slice(0, 3).map((item, index) => (
                             <NavLink
                                 key={index}
@@ -121,7 +121,7 @@ export default function Navbar() {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:ml-10 md:flex md:space-x-8  transition-colors text-white">
+                    <div className="hidden md:ml-10 md:flex md:space-x-5  transition-colors text-white">
                         {navItems.slice(3, 6).map((item, index) => (
                             <NavLink
                                 key={index}
