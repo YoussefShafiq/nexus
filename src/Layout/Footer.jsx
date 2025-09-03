@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '/logo.png'
+import logo from '../assets/images/logo.png'
 import { FaFacebook, FaLinkedin } from 'react-icons/fa'
 
 export default function Footer() {
@@ -14,7 +14,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="w-full h-[2px] bg-black/10 my-5"></div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center py-5">
                 <div className="bg-primary w-[100px] p-3 rounded-lg">
                     <img src={logo} alt="" />
                 </div>
