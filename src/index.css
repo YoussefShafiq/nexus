@@ -17,3 +17,61 @@
 ::-webkit-scrollbar-thumb {
     @apply bg-primary rounded-full
 }
+
+/* Slick carousel mobile responsiveness fixes */
+@media (max-width: 768px) {
+    .slick-slider .slick-slide {
+        padding: 0 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .slick-slider .slick-track {
+        display: flex !important;
+    }
+
+    .slick-slider .slick-slide>div {
+        width: 100% !important;
+    }
+
+    .slick-dots {
+        bottom: -40px;
+    }
+
+    .slick-dots li {
+        margin: 0 2px;
+    }
+}
+
+@media (max-width: 640px) {
+    .slick-slider .slick-slide {
+        padding: 0 4px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .slick-slider .slick-track {
+        display: flex !important;
+        width: auto !important;
+    }
+
+    .slick-slider .slick-slide>div {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .slick-slider .slick-slide {
+        padding: 0 4px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+
+    .slick-slider .slick-track {
+        display: flex !important;
+        width: auto !important;
+    }
+}
