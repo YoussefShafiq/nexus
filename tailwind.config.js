@@ -22,6 +22,7 @@ export default {
       backgroundImage: {
         'homeHero': "url('/heroBackground.png')",
         'ServicesHeroImage': "url('/ourservicesBackground.png')",
+        'bestProjecttsBackground': "url('/bestProjecttsBackground.png')",
       }
     },
   },

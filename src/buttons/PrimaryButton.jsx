@@ -6,6 +6,6 @@ export default function PrimaryButton({ text, path, className }) {
     const navigate = useNavigate()
 
     return <>
-        <button className={`bg-primary px-3 py-2 text-white font-bold ${className} w-full lg:w-fit rounded-lg`} onClick={() => navigate(path)} >{text}</button>
+        <button className={`bg-primary px-5 py-3 text-xl text-white font-bold ${className} w-full lg:w-fit rounded-lg`} onClick={() => navigate(path)} >{text}</button>
     </>
 }

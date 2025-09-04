@@ -279,38 +279,39 @@ export function BestProjects() {
     ]
 
     return <>
-        <div className="container py-14">
-
-            <div className="text-center pb-10 space-y-5">
-                <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Best projects</h1>
-                <div className="space-y-2">
-                    <p className='font-semibold text-xl opacity-60'>Delivering excellence in engineering across industries</p>
+        <div className="bg-bestProjecttsBackground bg-no-repeat bg-cover bg-fixed">
+            <div className="container py-14">
+                <div className="text-center pb-10 space-y-5">
+                    <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Best projects</h1>
+                    <div className="space-y-2">
+                        <p className='font-semibold text-xl opacity-60'>Delivering excellence in engineering across industries</p>
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col md:flex-row flex-wrap mb-5">
-                {projects.map((p) => (
-                    <div
-                        key={p.id}
-                        className="w-full md:w-1/3 p-3"
-                    >
-                        <div className="relative h-44 rounded-lg overflow-hidden group cursor-pointer" onClick={() => { navigate(`/project/${p.slug}`) }} >
-                            <img
-                                src={p.img}
-                                alt={p.name}
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <h2 className="text-white font-bold text-lg text-center px-2">
-                                    {p.name}
-                                </h2>
+                <div className="flex flex-col md:flex-row flex-wrap mb-5">
+                    {projects.map((p, i) => (
+                        <div
+                            key={p.id}
+                            className="w-full md:w-1/3 p-3"
+                            data-aos="fade-up"
+                            data-aos-delay={(i % 3) * 150}
+                        >
+                            <div className="relative h-56 rounded-lg overflow-hidden group cursor-pointer" onClick={() => { navigate(`/project/${p.slug}`) }} >
+                                <img
+                                    src={p.img}
+                                    alt={p.name}
+                                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <h2 className="text-white font-bold text-lg text-center px-2">
+                                        {p.name}
+                                    </h2>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+                <PrimaryButton text={'See More'} key={'Our Projects'} path={'/our-projects'} className={'!m-auto block'} />
             </div>
-
-
-            <PrimaryButton text={'See More'} key={'Our Projects'} path={'/our-projects'} className={'!m-auto block'} />
         </div>
     </>
 }
