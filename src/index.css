@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    @apply bg-gradient-to-b from-[#dadfe2] to-[#6f8594] bg-fixed
+html,
+body {
+    @apply h-full bg-gradient-to-b from-[#dadfe2] to-[#6f8594] bg-fixed;
 }
 
 .active {
