@@ -6,6 +6,7 @@ import Notfound from './Errors/Notfound'
 import Layout from './Layout/Layout';
 import Home from './Pages/Home';
 import Contact from './Pages/Contact';
+import Services from './Pages/Services';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       path: '', element: <Layout />, children: [
         { index: true, element: <Home /> },
         { path: 'contact', element: <Contact /> },
+        { path: 'services', element: <Services /> },
         { path: '*', element: <Notfound /> },
       ]
     }
