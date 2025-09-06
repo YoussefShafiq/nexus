@@ -16,16 +16,50 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        montserrant: [
+          'Montserrat',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'Noto Sans',
+          'sans-serif',
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol',
+          'Noto Color Emoji',
+        ],
+        opensans: [
+          'Open Sans',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'Noto Sans',
+          'sans-serif',
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol',
+          'Noto Color Emoji',
+        ],
+      },
       colors: {
         "primary": '#1d4058'
       },
       backgroundImage: {
         'homeHero': "url('/heroBackground.png')",
         'ServicesHeroImage': "url('/ourservicesBackground.png')",
-        'bestProjecttsBackground': "url('/bestProjecttsBackground.png')",
+        'bridgeBg': "url('/bridgeBg.png')",
+        'bg2': "url('/bg2.png')",
       }
     },
   },
   plugins: [],
 }
-

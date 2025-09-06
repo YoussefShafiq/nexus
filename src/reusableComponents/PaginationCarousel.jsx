@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
-export default function PaginationCarousel({ items, itemsPerPage = 6, renderItem }) {
+export default function PaginationCarousel({ items, itemsPerPage = 6, ItemsPerLine = 3, renderItem }) {
     const [currentSlide, setCurrentSlide] = useState(0);
     const carouselRef = useRef(null);
-
+    const navigate = useNavigate();
     const totalSlides = Math.ceil((items?.length || 0) / itemsPerPage);
 
     const nextSlide = () => {
@@ -53,7 +54,7 @@ export default function PaginationCarousel({ items, itemsPerPage = 6, renderItem
                     <div key={pageIndex} className="w-full flex-shrink-0">
                         <div className="flex flex-wrap gap-y-5">
                             {page.map((item, index) => (
-                                <div key={index} className="w-full lg:w-1/3 px-2">
+                                <div key={index} className={`w-full lg:w-1/4 px-2`}>
                                     {renderItem(item, index)}
                                 </div>
                             ))}

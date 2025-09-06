@@ -96,30 +96,33 @@ export function OurServices() {
     ]
 
     return <>
-        <div className="container py-14">
+        <div className="bg-bg2 bg-no-repeat bg-cover bg-fixed">
 
-            <div className="text-center pb-10 space-y-5">
-                <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Our Services</h1>
-                <div className="">
-                    <p className='font-semibold text-xl opacity-60'>Precision engineering solutions for complex industrial challenges</p>
+            <div className="container py-14">
+
+                <div className="text-center pb-10 space-y-5">
+                    <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Our Services</h1>
+                    <div className="">
+                        <p className='font-semibold text-xl opacity-60'>Precision engineering solutions for complex industrial challenges</p>
+                    </div>
                 </div>
-            </div>
-            <Slider {...settings} className='mb-14'>
-                {services.map((s, index) => (
-                    <div key={index} className='px-2 sm:px-3 py-8'>
-                        <div className="bg-primary rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
-                            <div className="overflow-hidden rounded-md">
-                                <img src={s.img} alt={s.title} className='hover:scale-105 transition-all duration-300 w-full' />
-                            </div>
-                            <div className="p-3 sm:p-5">
-                                <h2 className='font-bold text-xl sm:text-2xl'>{s.title}</h2>
-                                <p className='text-xs sm:text-sm opacity-90'>{s.subtitle}</p>
+                <Slider {...settings} className='mb-14'>
+                    {services.map((s, index) => (
+                        <div key={index} className='px-2 sm:px-3 py-8'>
+                            <div className="bg-primary backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
+                                <div className="overflow-hidden rounded-md">
+                                    <img src={s.img} alt={s.title} className='hover:scale-105 transition-all duration-300 w-full' />
+                                </div>
+                                <div className="p-3 sm:p-5">
+                                    <h2 className='font-bold text-xl sm:text-2xl'>{s.title}</h2>
+                                    <p className='text-xs sm:text-sm opacity-90'>{s.subtitle}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-            </Slider>
-            <PrimaryButton text={'See More'} key={'Services See more button'} path={'/services'} className={'!m-auto block'} />
+                    ))}
+                </Slider>
+                <PrimaryButton text={'See More'} key={'Services See more button'} path={'/services'} className={'!m-auto block'} />
+            </div>
         </div>
     </>
 }
@@ -145,28 +148,30 @@ export function Aboutus() {
     ]
 
     return <>
-        <div className="container py-14">
+        <div className="bg-bridgeBg bg-no-repeat bg-cover bg-fixed">
+            <div className="container py-14">
 
-            <div className="text-center pb-10 space-y-5">
-                <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >About Us</h1>
-                <div className="space-y-2">
-                    <p className='font-semibold text-xl opacity-60'>Engineering Excellence Since 1991</p>
-                    <p className='font-base lg:w-2/3 m-auto text-center'>With 32+ years of experience, NEXUS delivers precision engineering solutions for oil & gas, industrial, and architectural projects—combining cutting-edge BIM technology with strict compliance to global standards.</p>
-                </div>
-            </div>
-            <div className="flex flex-col md:flex-row gap-5 mb-5">
-                {AboutUsPoints.map((p, i) => (
-                    <div key={i} className="bg-primary text-white p-8 rounded-md w-full md:w-1/3 flex flex-col gap-2">
-                        <div className="text-5xl flex justify-center">
-                            {p.icon}
-                        </div>
-                        <p className='text-center font-bold text-xl'>{p.title}</p>
+                <div className="text-center pb-10 space-y-5">
+                    <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >About Us</h1>
+                    <div className="space-y-2">
+                        <p className='font-semibold text-xl opacity-60'>Engineering Excellence Since 1991</p>
+                        <p className='font-base lg:w-2/3 m-auto text-center'>With 32+ years of experience, NEXUS delivers precision engineering solutions for oil & gas, industrial, and architectural projects—combining cutting-edge BIM technology with strict compliance to global standards.</p>
                     </div>
-                ))}
+                </div>
+                <div className="flex flex-col md:flex-row gap-5 mb-5">
+                    {AboutUsPoints.map((p, i) => (
+                        <div key={i} className="bg-white/40 backdrop-blur-sm shadow-lg text-primary p-8 rounded-md w-full md:w-1/3 flex flex-col gap-2">
+                            <div className="text-5xl flex justify-center">
+                                {p.icon}
+                            </div>
+                            <p className='text-center font-bold text-xl'>{p.title}</p>
+                        </div>
+                    ))}
+                </div>
+
+
+                <PrimaryButton text={'Meet Our Team'} key={'Meet Our Team button'} path={'/about-us'} className={'!m-auto block'} />
             </div>
-
-
-            <PrimaryButton text={'Meet Our Team'} key={'Meet Our Team button'} path={'/about-us'} className={'!m-auto block'} />
         </div>
     </>
 }
@@ -206,30 +211,32 @@ export function Testimonials() {
     ]
 
     return <>
-        <div className="container py-14">
+        <div className="bg-bg2 bg-no-repeat bg-cover bg-fixed">
+            <div className="container py-14">
 
-            <div className="text-center pb-10 space-y-5">
-                <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Testimonials</h1>
-            </div>
-            <Slider {...settings} className=' lg:w-2/3 m-auto rounded-lg overflow-hidden '>
-                {testimonials.map((s, index) => (
-                    <div key={index} className='px-2 sm:px-3 pb-8 '>
-                        <div className="bg-primary min-h-[350px] rounded-lg p-8 flex flex-col items-center justify-between text-center text-white cursor-pointer mx-1 sm:mx-0 gap-3">
-                            <div className="flex flex-col items-center gap-5">
-                                <div className="overflow-hidden rounded-full w-24 aspect-square ">
-                                    <img src={s.img} alt={s.title} className='hover:scale-105 transition-all w-full' />
+                <div className="text-center pb-10 space-y-5">
+                    <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Testimonials</h1>
+                </div>
+                <Slider {...settings} className=' lg:w-2/3 m-auto rounded-lg overflow-hidden '>
+                    {testimonials.map((s, index) => (
+                        <div key={index} className='px-2 sm:px-3 pb-8 '>
+                            <div className="bg-primary min-h-[350px] rounded-lg p-8 flex flex-col items-center justify-between text-center text-white cursor-pointer mx-1 sm:mx-0 gap-3">
+                                <div className="flex flex-col items-center gap-5">
+                                    <div className="overflow-hidden rounded-full w-24 aspect-square ">
+                                        <img src={s.img} alt={s.title} className='hover:scale-105 transition-all w-full' />
+                                    </div>
+                                    <h2 className='font-base md:text-lg font-semibold italic'>{s.desc}</h2>
                                 </div>
-                                <h2 className='font-base md:text-lg font-semibold italic'>{s.desc}</h2>
-                            </div>
-                            <div className="">
-                                <h2 className='font-bold text-xl sm:text-2xl'>{s.name}</h2>
-                                <p className='text-xs sm:text-sm opacity-90'>{s.title}</p>
+                                <div className="">
+                                    <h2 className='font-bold text-xl sm:text-2xl'>{s.name}</h2>
+                                    <p className='text-xs sm:text-sm opacity-90'>{s.title}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
-            </Slider>
-            <PrimaryButton text={'See More'} key={'Services See more button'} path={'/services'} className={'!m-auto block'} />
+                    ))}
+                </Slider>
+                <PrimaryButton text={'See More'} key={'Services See more button'} path={'/services'} className={'!m-auto block'} />
+            </div>
         </div>
     </>
 }
@@ -279,7 +286,7 @@ export function BestProjects() {
     ]
 
     return <>
-        <div className="bg-bestProjecttsBackground bg-no-repeat bg-cover bg-fixed">
+        <div className="bg-bridgeBg bg-no-repeat bg-cover bg-fixed">
             <div className="container py-14">
                 <div className="text-center pb-10 space-y-5">
                     <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Best projects</h1>

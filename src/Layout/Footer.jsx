@@ -4,6 +4,7 @@ import { FaFacebook, FaLinkedin } from 'react-icons/fa'
 
 export default function Footer() {
     return <>
+        <div className="h-[1px] bg-black/5"></div>
         <div className="container">
             <div className="flex flex-col items-center gap-4 py-10">
                 <h2 className='text-4xl font-bold text-primary'>NEXUS Company. We’re here</h2>
@@ -18,7 +19,7 @@ export default function Footer() {
                 <div className="bg-primary w-[100px] p-3 rounded-lg">
                     <img src={logo} alt="" />
                 </div>
-                <p className='text-black/50 text-xs'>&copy; 2024 NEXUS. All rights reserved.</p>
+                <p className='text-black/40 text-xs'>&copy; 2024 NEXUS. All rights reserved.</p>
                 <div className="flex items-center gap-2 text-primary text-xl w-[100px]">
                     <FaFacebook />
                     <FaLinkedin />

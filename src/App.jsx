@@ -9,6 +9,7 @@ import Home from './Pages/Home';
 import Contact from './Pages/Contact';
 import Services from './Pages/Services';
 import { useEffect } from 'react';
+import Service from './Pages/Service';
 
 function App() {
 
@@ -17,7 +18,12 @@ function App() {
       path: '', element: <Layout />, children: [
         { index: true, element: <Home /> },
         { path: 'contact', element: <Contact /> },
-        { path: 'services', element: <Services /> },
+        {
+          path: 'services', children: [
+            { index: true, element: <Services /> },
+            { path: ':ServiceSlug', element: <Service /> }
+          ]
+        },
         { path: '*', element: <Notfound /> },
       ]
     }
