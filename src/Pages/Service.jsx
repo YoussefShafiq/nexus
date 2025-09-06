@@ -2,7 +2,7 @@ import React from 'react'
 
 export function HeroSection({ service }) {
     return <>
-        <div className={`bg-[url('${service.image}')]  bg-cover bg-center `}>
+        <div className={"bg-cover bg-center"} style={{ backgroundImage: `url(${service.image})` }}>
             <div className="h-full w-full flex flex-col justify-center items-center text-white text-center gap-3 py-[200px] bg-black/75">
                 <h1 className='text-3xl lg:text-5xl font-extrabold '>{service.title}</h1>
                 {/* <p className='text-lg lg:text-xl'>{service.subtitle}</p> */}
