@@ -10,8 +10,11 @@ import Contact from './Pages/Contact';
 import Services from './Pages/Services';
 import { useEffect } from 'react';
 import Service from './Pages/Service';
+import { useAOSObserver } from './hooks/useAOSObserver';
 
 function App() {
+  // Global AOS observer to reliably animate elements across the app
+  useAOSObserver();
 
   const router = createBrowserRouter([
     {
@@ -40,7 +43,8 @@ function App() {
         delay: 100,
         duration: 700,
         easing: 'ease-in-out',
-        once: false,
+        // Let the global observer control repeat behavior per element
+        once: true,
         mirror: false,
         startEvent: 'load',
         disable: false
