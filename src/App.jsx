@@ -11,6 +11,11 @@ import Services from './Pages/Services';
 import { useEffect } from 'react';
 import Service from './Pages/Service';
 import { useAOSObserver } from './hooks/useAOSObserver';
+import Projects from './Pages/Projects';
+import Project from './Pages/Project';
+import AboutUs from './Pages/AboutUs';
+import Jobs from './Pages/Jobs';
+import JobApplication from './Pages/JobApplication';
 
 function App() {
   // Global AOS observer to reliably animate elements across the app
@@ -20,11 +25,25 @@ function App() {
     {
       path: '', element: <Layout />, children: [
         { index: true, element: <Home /> },
+        { path: '', element: <Home /> },
         { path: 'contact', element: <Contact /> },
+        { path: 'about-us', element: <AboutUs /> },
         {
           path: 'services', children: [
             { index: true, element: <Services /> },
             { path: ':ServiceSlug', element: <Service /> }
+          ]
+        },
+        {
+          path: 'projects', children: [
+            { index: true, element: <Projects /> },
+            { path: ':ServiceSlug', element: <Project /> }
+          ]
+        },
+        {
+          path: 'jobs', children: [
+            { index: true, element: <Jobs /> },
+            { path: ':jobSlug', element: <JobApplication /> }
           ]
         },
         { path: '*', element: <Notfound /> },
@@ -43,8 +62,7 @@ function App() {
         delay: 100,
         duration: 700,
         easing: 'ease-in-out',
-        // Let the global observer control repeat behavior per element
-        once: true,
+        once: false,
         mirror: false,
         startEvent: 'load',
         disable: false

@@ -7,6 +7,8 @@ import { PiCertificate } from 'react-icons/pi';
 import { RiBox3Line } from 'react-icons/ri';
 import { FaLeaf } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { ImageIcon } from 'lucide-react';
+import SectionHeading from '../reusableComponents/SectionHeading';
 
 export function HeroSection() {
     return <>
@@ -98,14 +100,9 @@ export function OurServices() {
     return <>
         <div className="bg-bg2 bg-no-repeat bg-cover bg-fixed">
 
-            <div className="container py-14">
+            <div className="container">
+                <SectionHeading title="Our Services" subtitle="Precision engineering solutions for complex industrial challenges" />
 
-                <div className="text-center pb-10 space-y-5">
-                    <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Our Services</h1>
-                    <div className="">
-                        <p className='font-semibold text-xl opacity-60'>Precision engineering solutions for complex industrial challenges</p>
-                    </div>
-                </div>
                 <Slider {...settings} className='mb-14'>
                     {services.map((s, index) => (
                         <div key={index} className='px-2 sm:px-3 py-8'>
@@ -149,16 +146,12 @@ export function Aboutus() {
 
     return <>
         <div className="bg-bridgeBg bg-no-repeat bg-cover bg-fixed">
-            <div className="container py-14">
+            <div className="container">
 
-                <div className="text-center pb-10 space-y-5">
-                    <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >About Us</h1>
-                    <div className="space-y-2">
-                        <p className='font-semibold text-xl opacity-60'>Engineering Excellence Since 1991</p>
-                        <p className='font-base lg:w-2/3 m-auto text-center'>With 32+ years of experience, NEXUS delivers precision engineering solutions for oil & gas, industrial, and architectural projects—combining cutting-edge BIM technology with strict compliance to global standards.</p>
-                    </div>
-                </div>
-                <div className="flex flex-col md:flex-row gap-5 mb-5">
+                <SectionHeading title="About Us" subtitle="Engineering Excellence Since 1991" pbFlag={false} />
+                <p className='text-lg lg:w-4/5 text-center m-auto'>With <strong>32+ years of experience</strong>, NEXUS delivers precision engineering solutions for oil & gas, industrial, and architectural projects—combining cutting-edge BIM technology with strict compliance to global standards.</p>
+
+                <div className="flex flex-col md:flex-row gap-5 mb-5 mt-8">
                     {AboutUsPoints.map((p, i) => (
                         <div key={i} className="bg-white/40 backdrop-blur-sm shadow-lg text-primary p-8 rounded-md w-full md:w-1/3 flex flex-col gap-2">
                             <div className="text-5xl flex justify-center">
@@ -212,11 +205,10 @@ export function Testimonials() {
 
     return <>
         <div className="bg-bg2 bg-no-repeat bg-cover bg-fixed">
-            <div className="container py-14">
+            <div className="container">
 
-                <div className="text-center pb-10 space-y-5">
-                    <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Testimonials</h1>
-                </div>
+                <SectionHeading title="Testimonials" />
+
                 <Slider {...settings} className=' lg:w-2/3 m-auto rounded-lg overflow-hidden '>
                     {testimonials.map((s, index) => (
                         <div key={index} className='px-2 sm:px-3 pb-8 '>
@@ -287,13 +279,9 @@ export function BestProjects() {
 
     return <>
         <div className="bg-bridgeBg bg-no-repeat bg-cover bg-fixed">
-            <div className="container py-14">
-                <div className="text-center pb-10 space-y-5">
-                    <h1 className='font-bold text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Best projects</h1>
-                    <div className="space-y-2">
-                        <p className='font-semibold text-xl opacity-60'>Delivering excellence in engineering across industries</p>
-                    </div>
-                </div>
+            <div className="container">
+                <SectionHeading title="Best Projects" subtitle="Delivering excellence in engineering across industries" />
+
                 <div className="flex flex-col md:flex-row flex-wrap mb-5">
                     {projects.map((p, i) => (
                         <div
@@ -302,7 +290,8 @@ export function BestProjects() {
                             data-aos="fade-up"
                             data-aos-delay={(i % 3) * 150}
                         >
-                            <div className="relative h-56 rounded-lg overflow-hidden group cursor-pointer" onClick={() => { navigate(`/project/${p.slug}`) }} >
+                            <div className="relative h-56 rounded-lg overflow-hidden group cursor-pointer bg-primary/40 backdrop-blur-sm" onClick={() => { navigate(`/project/${p.slug}`) }} >
+                                <ImageIcon className='absolute -z-10 top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 text-white/50' size={50} />
                                 <img
                                     src={p.img}
                                     alt={p.name}

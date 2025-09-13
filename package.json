@@ -14,7 +14,7 @@
     "aos": "^2.3.4",
     "axios": "^1.9.0",
     "formik": "^2.4.6",
-    "framer-motion": "^12.16.0",
+    "framer-motion": "^12.23.12",
     "intl-tel-input": "^25.3.1",
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",

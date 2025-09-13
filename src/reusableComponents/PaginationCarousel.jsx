@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,9 @@ export default function PaginationCarousel({ items, itemsPerPage = 6, ItemsPerLi
     const carouselRef = useRef(null);
     const navigate = useNavigate();
     const totalSlides = Math.ceil((items?.length || 0) / itemsPerPage);
+
+    const touchStartX = useRef(0);
+    const touchEndX = useRef(0);
 
     const nextSlide = () => {
         if (currentSlide < totalSlides - 1) {
@@ -19,6 +22,44 @@ export default function PaginationCarousel({ items, itemsPerPage = 6, ItemsPerLi
             setCurrentSlide((prev) => prev - 1);
         }
     };
+
+    // Touch events
+    useEffect(() => {
+        const handleTouchStart = (e) => {
+            touchStartX.current = e.touches[0].clientX;
+        };
+
+        const handleTouchMove = (e) => {
+            touchEndX.current = e.touches[0].clientX;
+        };
+
+        const handleTouchEnd = () => {
+            const delta = touchStartX.current - touchEndX.current;
+
+            if (delta > 50) {
+                // Swiped left → next slide
+                nextSlide();
+            } else if (delta < -50) {
+                // Swiped right → previous slide
+                prevSlide();
+            }
+        };
+
+        const carousel = carouselRef.current;
+        if (carousel) {
+            carousel.addEventListener("touchstart", handleTouchStart);
+            carousel.addEventListener("touchmove", handleTouchMove);
+            carousel.addEventListener("touchend", handleTouchEnd);
+        }
+
+        return () => {
+            if (carousel) {
+                carousel.removeEventListener("touchstart", handleTouchStart);
+                carousel.removeEventListener("touchmove", handleTouchMove);
+                carousel.removeEventListener("touchend", handleTouchEnd);
+            }
+        };
+    }, [currentSlide, totalSlides]);
 
     // Group items into pages
     const groupedItems = [];

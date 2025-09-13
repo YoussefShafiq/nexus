@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaFacebook, FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,6 +10,21 @@ import logo from '../assets/images/Logo.png'
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const leftNavRef = useRef(null);
+    const rightNavRef = useRef(null);
+
+    useEffect(() => {
+        const left = leftNavRef.current;
+        const right = rightNavRef.current;
+
+        if (left && right) {
+            if (right.offsetWidth > left.offsetWidth) {
+                left.style.width = `${right.offsetWidth}px`;
+            } else {
+                right.style.width = `${left.offsetWidth}px`;
+            }
+        }
+    }, []);
     const navItems = [
         {
             name: 'Home',
@@ -34,6 +49,10 @@ export default function Navbar() {
         {
             name: 'Contact',
             path: '/contact',
+        },
+        {
+            name: 'Jobs',
+            path: '/jobs',
         },
     ];
 
@@ -92,14 +111,13 @@ export default function Navbar() {
     };
 
 
-
     return (
         <nav className="bg-primary bg-opacity-35 transition-colors shadow-sm backdrop-blur-md lg:top-5 lg:left-16 lg:right-16 top-3 left-5 right-5 z-50 fixed lg:w-[calc(100vw-128px)] w-[calc(100vw-40px)] rounded-lg">
             <div className="container !py-0 mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16 items-center">
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:ml-10 md:flex md:space-x-5  transition-colors text-white">
+                    <div ref={leftNavRef} className="hidden md:ml-10 md:flex md:space-x-5  transition-colors text-white">
                         {navItems.slice(0, 3).map((item, index) => (
                             <NavLink
                                 key={index}
@@ -121,8 +139,8 @@ export default function Navbar() {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:ml-10 md:flex md:space-x-5  transition-colors text-white">
-                        {navItems.slice(3, 6).map((item, index) => (
+                    <div ref={rightNavRef} className="hidden md:ml-10 md:flex md:space-x-5  transition-colors text-white">
+                        {navItems.slice(3, 7).map((item, index) => (
                             <NavLink
                                 key={index}
                                 to={item.path}
