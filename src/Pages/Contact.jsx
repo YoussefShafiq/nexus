@@ -3,6 +3,7 @@ import logo from '../assets/images/Logo.png'
 import { motion } from 'framer-motion'
 import { Mail, Phone } from 'lucide-react'
 import { BsWhatsapp } from 'react-icons/bs'
+import { PageSEO } from '../seo/SEO'
 
 export function HeroSection() {
     return <>
@@ -126,6 +127,11 @@ export function ContactForm() {
 
 export default function Contact() {
     return <>
+        <PageSEO
+            title="Contact NEXUS — Get in Touch"
+            description="Contact NEXUS Engineering Consultancy. Email support@nexus-consults.com or call +20 1284222917. We're here to help with your engineering projects."
+            image="/Logo.png"
+        />
         <HeroSection />
         <ContactForm />
     </>

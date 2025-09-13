@@ -9,6 +9,7 @@ import { FaLeaf } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { ImageIcon } from 'lucide-react';
 import SectionHeading from '../reusableComponents/SectionHeading';
+import { PageSEO } from '../seo/SEO';
 
 export function HeroSection() {
     return <>
@@ -314,6 +315,11 @@ export function BestProjects() {
 
 export default function Home() {
     return <>
+        <PageSEO
+            title="Nexus — Engineering Consultancy | Oil & Gas, Industrial, Residential"
+            description="NEXUS delivers precision engineering solutions across oil & gas, industrial, and architectural projects. Explore our services, projects, and client testimonials."
+            image="/Logo.png"
+        />
         <HeroSection />
         <OurServices />
         <Aboutus />

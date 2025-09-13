@@ -1,4 +1,5 @@
 import React from 'react'
+import { PageSEO } from '../seo/SEO'
 
 export function HeroSection({ service }) {
     return <>
@@ -21,6 +22,11 @@ export default function Service() {
         desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations'
     }
     return <>
+        <PageSEO
+            title={`${service.title} — Services | NEXUS`}
+            description={service.desc}
+            image={service.image}
+        />
         <HeroSection service={service} />
     </>
 }

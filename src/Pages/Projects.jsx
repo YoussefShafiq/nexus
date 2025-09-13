@@ -3,6 +3,7 @@ import serviceimg from '../assets/images/services/marine.png'
 import PaginationCarousel from '../reusableComponents/PaginationCarousel';
 import { useNavigate } from 'react-router-dom';
 import ReusableHeroSection from '../reusableComponents/ReusableHeroSection';
+import { PageSEO } from '../seo/SEO';
 
 
 export function HeroSection() {
@@ -94,6 +95,11 @@ export function ProjectsPagination() {
 
 export default function Projects() {
     return <>
+        <PageSEO
+            title="Projects — NEXUS Engineering Consultancy"
+            description="Explore highlighted engineering projects by NEXUS across oil & gas, industrial, and architectural sectors. Precision, compliance, and innovation."
+            image="/Logo.png"
+        />
         <HeroSection />
         <ProjectsPagination />
     </>

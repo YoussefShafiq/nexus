@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { FaFacebook, FaLinkedin } from 'react-icons/fa';
+import { DefaultSEO } from '../seo/SEO';
 
 export default function Layout({ children }) {
 
@@ -12,6 +13,13 @@ export default function Layout({ children }) {
         window.scrollTo(0, 0);
     }, [pathname]);
     return <>
+        {/* Default site-wide SEO */}
+        <DefaultSEO
+            siteName="Nexus"
+            defaultTitle="Nexus — Engineering Consultancy"
+            description="NEXUS delivers precision engineering solutions for oil & gas, industrial, and architectural projects."
+            image="/Logo.png"
+        />
         <Navbar />
         <div className="text-black bg-gradient-to-br from-[#dadfe2] via-[#dadfe2] to-[#6087a1] bg-fixed font-montserrat">
             <Outlet>

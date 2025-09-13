@@ -9,6 +9,7 @@ import { TbMessageFilled, TbTargetArrow } from 'react-icons/tb';
 import { BsFillRocketTakeoffFill, BsShieldFillCheck } from 'react-icons/bs';
 import { FaUsers } from 'react-icons/fa6';
 import { HiBadgeCheck } from 'react-icons/hi';
+import { PageSEO } from '../seo/SEO';
 
 
 export function HeroSection() {
@@ -161,6 +162,11 @@ export function DownloadPortfolio() {
 
 export default function AboutUs() {
     return <>
+        <PageSEO
+            title="About NEXUS — Engineering Excellence Since 1991"
+            description="Learn about NEXUS Engineering Consultancy: 32+ years delivering precision, code-compliant engineering for oil & gas, industrial, and architectural projects."
+            image="/Logo.png"
+        />
         <HeroSection />
         <div className="bg-bg2 bg-cover bg-fixed bg-center">
             <WhoWeAre />

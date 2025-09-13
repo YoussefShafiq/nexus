@@ -1,4 +1,5 @@
 import React from 'react'
+import { PageSEO } from '../seo/SEO'
 
 export function HeroSection({ project }) {
     return <>
@@ -21,6 +22,11 @@ export default function Project() {
         desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations'
     }
     return <>
+        <PageSEO
+            title={`${project.title} — Project | NEXUS`}
+            description={project.desc}
+            image={project.image}
+        />
         <HeroSection project={project} />
     </>
 }

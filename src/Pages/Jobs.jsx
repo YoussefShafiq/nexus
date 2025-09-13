@@ -4,6 +4,7 @@ import logo from '../assets/images/icon.png'
 import { useNavigate } from 'react-router-dom'
 import { Dot } from 'lucide-react'
 import PrimaryButton from '../buttons/PrimaryButton'
+import { PageSEO } from '../seo/SEO'
 
 
 export function HeroSection() {
@@ -93,6 +94,11 @@ export function AvilableJobs() {
 
 export default function Jobs() {
     return <>
+        <PageSEO
+            title="Careers — Join NEXUS Engineering Consultancy"
+            description="Explore current job openings at NEXUS. We're hiring BIM managers, civil, mechanical, electrical, and structural engineers. Apply today."
+            image="/Logo.png"
+        />
         <HeroSection />
         <div className="bg-bg2 bg-cover bg-fixed bg-center">
             <AvilableJobs />
