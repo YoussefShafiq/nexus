@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/images/logo.png'
+import logo from '../assets/images/Logo.png'
 import { motion } from 'framer-motion'
 import { Mail, Phone } from 'lucide-react'
 import { BsWhatsapp } from 'react-icons/bs'
