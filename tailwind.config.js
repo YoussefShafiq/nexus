@@ -56,6 +56,7 @@ export default {
       backgroundImage: {
         'homeHero': "url('/heroBackground.png')",
         'ServicesHeroImage': "url('/ourservicesBackground.png')",
+        'BlogsHeroImage': "url('/BlogsHeroSection.png')",
         'bridgeBg': "url('/bridgeBg.png')",
         'bg2': "url('/bg2.png')",
       }

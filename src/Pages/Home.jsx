@@ -316,7 +316,7 @@ export function BestProjects() {
 export default function Home() {
     return <>
         <PageSEO
-            title="Nexus — Engineering Consultancy | Oil & Gas, Industrial, Residential"
+            title="Nexus — Engineering Consultancy"
             description="NEXUS delivers precision engineering solutions across oil & gas, industrial, and architectural projects. Explore our services, projects, and client testimonials."
             image="/Logo.png"
         />

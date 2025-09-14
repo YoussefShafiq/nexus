@@ -39,6 +39,11 @@
     }
 }
 
+#qualifications ul,
+#responsibilities ul {
+    @apply list-disc list-inside marker:text-primary/70 text-primary/90 ps-3
+}
+
 /* Slick carousel mobile responsiveness fixes */
 @media (max-width: 768px) {
     .slick-slider .slick-slide {
