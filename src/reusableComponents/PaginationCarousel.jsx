@@ -87,6 +87,15 @@ export default function PaginationCarousel({ items, itemsPerPage = 6, ItemsPerLi
 
     return (
         <div className="relative overflow-hidden">
+            {/* Responsive per-line styles: 1-per-line by default, switch at lg */}
+            <style>
+                {`
+                .pc-item { flex: 0 0 100%; max-width: 100%; }
+                @media (min-width: 1024px) {
+                  .pc-item { flex: 0 0 calc(100% / var(--per-line)); max-width: calc(100% / var(--per-line)); }
+                }
+                `}
+            </style>
             {/* Carousel */}
             <div
                 ref={carouselRef}
@@ -94,14 +103,10 @@ export default function PaginationCarousel({ items, itemsPerPage = 6, ItemsPerLi
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
                 {groupedItems.map((page, pageIndex) => (
-                    <div key={pageIndex} className="w-full flex-shrink-0">
+                    <div key={pageIndex} className="w-full flex-shrink-0" style={{ ['--per-line']: perLine }}>
                         <div className="flex flex-wrap gap-y-5">
                             {page.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className={`px-2`}
-                                    style={{ flex: `0 0 ${100 / perLine}%`, maxWidth: `${100 / perLine}%` }}
-                                >
+                                <div key={index} className={`px-2 pc-item`}>
                                     {renderItem(item, index)}
                                 </div>
                             ))}
