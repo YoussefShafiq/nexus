@@ -18,6 +18,7 @@ import Jobs from './Pages/Jobs';
 import JobApplication from './Pages/JobApplication';
 import Blogs from './Pages/Blogs';
 import Blog from './Pages/Blog';
+import AllBlogs from './Pages/AllBlogs';
 
 function App() {
   // Global AOS observer to reliably animate elements across the app
@@ -51,6 +52,7 @@ function App() {
         {
           path: 'blogs', children: [
             { index: true, element: <Blogs /> },
+            { path: 'all', element: <AllBlogs /> },
             { path: ':blogSlug', element: <Blog /> }
           ]
         },

@@ -1,0 +1,1409 @@
+{
+    "status": true,
+    "message": "News list retrieved successfully",
+    "data": {
+        "result": {
+            "section": {
+                "current_page": 1,
+                "data": [
+                    {
+                        "_id": "67c979818d66b6e5430a6f87",
+                        "hits": 1430,
+                        "sort": 95761,
+                        "title": "تحذيرات عاجلة.. أمطار غزيرة تضرب مناطق عديدة اليوم وقد تصل للسيول",
+                        "section": {
+                            "_id": "5e6d3446a243214c8f331294",
+                            "id": 1,
+                            "user_id": "609edeb8421aa97e874ef9e6",
+                            "sort": 16,
+                            "updated_at": "2021-05-15 02:17:24",
+                            "created_at": "2020-03-14 21:45:10",
+                            "cases": "published",
+                            "title": "آخر الأخبار",
+                            "slug": "اخر-الاخبار",
+                            "images": [],
+                            "section": 0,
+                            "hits": 87874,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "آخر الأخبار",
+                            "description": "آخر الأخبار",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926143000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-06 12:31:28",
+                        "images": [
+                            {
+                                "id": "4749",
+                                "url": "2024/01/1704873220-0.jpg",
+                                "type": "cover",
+                                "title": "امطار غزيره"
+                            }
+                        ],
+                        "id": 34849,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "4749",
+                            "url": "2024/01/1704873220-0.jpg",
+                            "type": "cover",
+                            "title": "امطار غزيره"
+                        },
+                        "url": "/news/34849",
+                        "date_time": "06 مارس  12:31 مساءً"
+                    },
+                    {
+                        "_id": "67c9789c752893719e0392e5",
+                        "hits": 1210,
+                        "sort": 95758,
+                        "title": "لغز سفاح المعمورة يتكشف.. الـDNA يكشف هوية الضحية الثانية!",
+                        "section": {
+                            "_id": "5e6ea4fea2432136306e8863",
+                            "user_id": "5b97a268421aa9623e66f5b3",
+                            "sort": 13,
+                            "updated_at": "2020-03-15 23:58:22",
+                            "created_at": "2020-03-15 23:58:22",
+                            "cases": "published",
+                            "title": "حوادث",
+                            "images": [],
+                            "slug": "حوادث",
+                            "section": 0,
+                            "hits": 50738,
+                            "id": 4,
+                            "seo_title": "حوادث",
+                            "description": "حوادث",
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926141000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-06 12:27:40",
+                        "images": [
+                            {
+                                "id": "12484",
+                                "url": "2025/03/1741256857-0.jpg",
+                                "type": "cover",
+                                "title": "سفاح المعمورة"
+                            }
+                        ],
+                        "id": 34848,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12484",
+                            "url": "2025/03/1741256857-0.jpg",
+                            "type": "cover",
+                            "title": "سفاح المعمورة"
+                        },
+                        "url": "/news/34848",
+                        "date_time": "06 مارس  12:27 مساءً"
+                    },
+                    {
+                        "_id": "67c96c3d4e0d367c060c3ba2",
+                        "hits": 1200,
+                        "sort": 95760,
+                        "title": "حكم سماع الأغاني في رمضان.. هل يؤثر على الصيام؟",
+                        "section": {
+                            "_id": "631df09cdb6c44349c15ad9f",
+                            "hits": 52149,
+                            "sort": 11,
+                            "slug": "منوعات",
+                            "title": "منوعات",
+                            "seo_title": "منوعات",
+                            "description": "منوعات",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-09-11 16:28:44.667762",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 7,
+                            "master": true,
+                            "updated_at": "2022-09-11 16:28:44",
+                            "created_at": "2022-09-11 16:28:44",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926145000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-06 11:34:53",
+                        "images": [
+                            {
+                                "id": "12482",
+                                "url": "2025/03/1741253685-0.jpg",
+                                "type": "cover",
+                                "title": "حكم سماع الاغاني في رمضان"
+                            }
+                        ],
+                        "id": 34847,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12482",
+                            "url": "2025/03/1741253685-0.jpg",
+                            "type": "cover",
+                            "title": "حكم سماع الاغاني في رمضان"
+                        },
+                        "url": "/news/34847",
+                        "date_time": "06 مارس  11:34 صباحاً"
+                    },
+                    {
+                        "_id": "67c969b3a9b7e9c15c053545",
+                        "id": 34819,
+                        "hits": 1276,
+                        "sort": 0,
+                        "title": "لا تتجاهلها.. 4 إشارات من جسمك تكشف نقص فيتامين د في الجسم",
+                        "section": {
+                            "_id": "631df09cdb6c44349c15ad9f",
+                            "hits": 52149,
+                            "sort": 11,
+                            "slug": "منوعات",
+                            "title": "منوعات",
+                            "seo_title": "منوعات",
+                            "description": "منوعات",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-09-11 16:28:44.667762",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 7,
+                            "master": true,
+                            "updated_at": "2022-09-11 16:28:44",
+                            "created_at": "2022-09-11 16:28:44",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926145000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-02-28 11:40:26",
+                        "images": [
+                            {
+                                "id": "12454",
+                                "url": "2025/02/1740735494-0.jpg",
+                                "type": "cover",
+                                "title": "إشارات من جسمك"
+                            }
+                        ],
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12454",
+                            "url": "2025/02/1740735494-0.jpg",
+                            "type": "cover",
+                            "title": "إشارات من جسمك"
+                        },
+                        "url": "/news/34819",
+                        "date_time": "28 فبراير  11:40 صباحاً"
+                    },
+                    {
+                        "_id": "67c852c214cd7f25dc0fac12",
+                        "id": 34846,
+                        "hits": 1359,
+                        "sort": 0,
+                        "title": "الامارات تؤيد حبس 53اخوانيًا وترفض الطعون على حكم المؤبد",
+                        "section": {
+                            "_id": "5e6ea4fea2432136306e8863",
+                            "user_id": "5b97a268421aa9623e66f5b3",
+                            "sort": 13,
+                            "updated_at": "2020-03-15 23:58:22",
+                            "created_at": "2020-03-15 23:58:22",
+                            "cases": "published",
+                            "title": "حوادث",
+                            "images": [],
+                            "slug": "حوادث",
+                            "section": 0,
+                            "hits": 50738,
+                            "id": 4,
+                            "seo_title": "حوادث",
+                            "description": "حوادث",
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926141000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 15:11:14",
+                        "images": [
+                            {
+                                "id": "12481",
+                                "url": "2025/03/1741180270-0.jpg",
+                                "type": "cover",
+                                "title": "الامارات العربية المتحدة"
+                            }
+                        ],
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12481",
+                            "url": "2025/03/1741180270-0.jpg",
+                            "type": "cover",
+                            "title": "الامارات العربية المتحدة"
+                        },
+                        "url": "/news/34846",
+                        "date_time": "05 مارس  03:11 مساءً"
+                    },
+                    {
+                        "_id": "67c84a19f45b0907ab0ac472",
+                        "hits": 1240,
+                        "sort": 95756,
+                        "title": "3 دول عربية تأمر بإعدام مرقة دجاج مصرية.. احذر تداولها",
+                        "section": {
+                            "_id": "631df09cdb6c44349c15ad9f",
+                            "hits": 52149,
+                            "sort": 11,
+                            "slug": "منوعات",
+                            "title": "منوعات",
+                            "seo_title": "منوعات",
+                            "description": "منوعات",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-09-11 16:28:44.667762",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 7,
+                            "master": true,
+                            "updated_at": "2022-09-11 16:28:44",
+                            "created_at": "2022-09-11 16:28:44",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926145000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 14:56:57",
+                        "images": [
+                            {
+                                "id": "12480",
+                                "url": "2025/03/1741179400-0.jpg",
+                                "type": "cover",
+                                "title": "مرقة الدجاج"
+                            }
+                        ],
+                        "id": 34845,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12480",
+                            "url": "2025/03/1741179400-0.jpg",
+                            "type": "cover",
+                            "title": "مرقة الدجاج"
+                        },
+                        "url": "/news/34845",
+                        "date_time": "05 مارس  02:56 مساءً"
+                    },
+                    {
+                        "_id": "67c846149023d0d68a031cbb",
+                        "hits": 1404,
+                        "sort": 95757,
+                        "title": "أول تعليق من المملكة العربية السعودية على نتائج قمة فلسطين",
+                        "section": {
+                            "_id": "5e6d3446a243214c8f331294",
+                            "id": 1,
+                            "user_id": "609edeb8421aa97e874ef9e6",
+                            "sort": 16,
+                            "updated_at": "2021-05-15 02:17:24",
+                            "created_at": "2020-03-14 21:45:10",
+                            "cases": "published",
+                            "title": "آخر الأخبار",
+                            "slug": "اخر-الاخبار",
+                            "images": [],
+                            "section": 0,
+                            "hits": 87874,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "آخر الأخبار",
+                            "description": "آخر الأخبار",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926143000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 14:39:48",
+                        "images": [
+                            {
+                                "id": "12479",
+                                "url": "2025/03/1741178356-0.jpg",
+                                "type": "cover",
+                                "title": "القمة العربية غير العادية"
+                            }
+                        ],
+                        "id": 34844,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12479",
+                            "url": "2025/03/1741178356-0.jpg",
+                            "type": "cover",
+                            "title": "القمة العربية غير العادية"
+                        },
+                        "url": "/news/34844",
+                        "date_time": "05 مارس  02:39 مساءً"
+                    },
+                    {
+                        "_id": "67c84478e6935992dd087d29",
+                        "hits": 1045,
+                        "sort": 95722,
+                        "title": "إصابات الزمالك قبل المواجهات القادمة.. قلق داخل الجهاز الفني",
+                        "section": {
+                            "_id": "5e6ea453a243213296109284",
+                            "user_id": "5b97a268421aa9623e66f5b3",
+                            "sort": 15,
+                            "updated_at": "2020-03-15 23:55:31",
+                            "created_at": "2020-03-15 23:55:31",
+                            "cases": "published",
+                            "title": "رياضة",
+                            "slug": "رياضة",
+                            "images": [],
+                            "section": 0,
+                            "hits": 74200,
+                            "id": 2,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "رياضة",
+                            "description": "رياضة",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926148000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 14:32:56",
+                        "images": [
+                            {
+                                "id": "12162",
+                                "url": "2025/02/1739269729-0.jpg",
+                                "type": "cover",
+                                "title": "الزمالك"
+                            }
+                        ],
+                        "id": 34843,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12162",
+                            "url": "2025/02/1739269729-0.jpg",
+                            "type": "cover",
+                            "title": "الزمالك"
+                        },
+                        "url": "/news/34843",
+                        "date_time": "05 مارس  02:32 مساءً"
+                    },
+                    {
+                        "_id": "67c843319023d0d68a031cb7",
+                        "hits": 1287,
+                        "sort": 95759,
+                        "title": "أمطار ورعد ورياح مثيرة للأتربة خلال 48 ساعة في هذه المناطق",
+                        "section": {
+                            "_id": "5e6d3446a243214c8f331294",
+                            "id": 1,
+                            "user_id": "609edeb8421aa97e874ef9e6",
+                            "sort": 16,
+                            "updated_at": "2021-05-15 02:17:24",
+                            "created_at": "2020-03-14 21:45:10",
+                            "cases": "published",
+                            "title": "آخر الأخبار",
+                            "slug": "اخر-الاخبار",
+                            "images": [],
+                            "section": 0,
+                            "hits": 87874,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "آخر الأخبار",
+                            "description": "آخر الأخبار",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926143000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 14:27:29",
+                        "images": [
+                            {
+                                "id": "12424",
+                                "url": "2025/02/1740598792-0.jpg",
+                                "type": "cover",
+                                "title": "الطقس"
+                            }
+                        ],
+                        "id": 34842,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12424",
+                            "url": "2025/02/1740598792-0.jpg",
+                            "type": "cover",
+                            "title": "الطقس"
+                        },
+                        "url": "/news/34842",
+                        "date_time": "05 مارس  02:27 مساءً"
+                    },
+                    {
+                        "_id": "67c840b466e0bf3ece080ed2",
+                        "hits": 1226,
+                        "sort": 95755,
+                        "title": "القصة الكاملة لمسلسل \"معاوية\" أضخم إنتاج درامي مثير للجدل",
+                        "section": {
+                            "_id": "62ced4ed1a4a27450c7fcc53",
+                            "hits": 46640,
+                            "sort": 12,
+                            "slug": "فن",
+                            "title": "فن",
+                            "seo_title": "فن",
+                            "description": "فن",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-07-10 18:10:08.747600",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 5,
+                            "master": true,
+                            "updated_at": "2022-07-10 18:10:08",
+                            "created_at": "2022-07-10 18:10:08",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926137000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 14:16:52",
+                        "images": [
+                            {
+                                "id": "12476",
+                                "url": "2025/03/1741176939-0.jpg",
+                                "type": "cover",
+                                "title": "مسلسل معاوية"
+                            }
+                        ],
+                        "id": 34841,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12476",
+                            "url": "2025/03/1741176939-0.jpg",
+                            "type": "cover",
+                            "title": "مسلسل معاوية"
+                        },
+                        "url": "/news/34841",
+                        "date_time": "05 مارس  02:16 مساءً"
+                    },
+                    {
+                        "_id": "67c83e4714cd7f25dc0fac02",
+                        "hits": 1087,
+                        "sort": 95730,
+                        "title": "قصة المسلسل الرمضاني  المثير للجدل الذي منع عرضه في بعض الدول",
+                        "section": {
+                            "_id": "631df09cdb6c44349c15ad9f",
+                            "hits": 52149,
+                            "sort": 11,
+                            "slug": "منوعات",
+                            "title": "منوعات",
+                            "seo_title": "منوعات",
+                            "description": "منوعات",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-09-11 16:28:44.667762",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 7,
+                            "master": true,
+                            "updated_at": "2022-09-11 16:28:44",
+                            "created_at": "2022-09-11 16:28:44",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926145000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 14:06:31",
+                        "images": [
+                            {
+                                "id": "12475",
+                                "url": "2025/03/1741176385-0.png",
+                                "type": "cover",
+                                "title": "حظر مسلسل في شهر رمضان"
+                            }
+                        ],
+                        "id": 34840,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12475",
+                            "url": "2025/03/1741176385-0.png",
+                            "type": "cover",
+                            "title": "حظر مسلسل في شهر رمضان"
+                        },
+                        "url": "/news/34840",
+                        "date_time": "05 مارس  02:06 مساءً"
+                    },
+                    {
+                        "_id": "67c83caf66e0bf3ece080ec6",
+                        "hits": 1274,
+                        "sort": 95754,
+                        "title": "لمن لم يتابع بعد.. قصص مسلسلات رمضان 2025 والقنوات الناقلة",
+                        "section": {
+                            "_id": "62ced4ed1a4a27450c7fcc53",
+                            "hits": 46640,
+                            "sort": 12,
+                            "slug": "فن",
+                            "title": "فن",
+                            "seo_title": "فن",
+                            "description": "فن",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-07-10 18:10:08.747600",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 5,
+                            "master": true,
+                            "updated_at": "2022-07-10 18:10:08",
+                            "created_at": "2022-07-10 18:10:08",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926137000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 13:59:43",
+                        "images": [
+                            {
+                                "id": "12474",
+                                "url": "2025/03/1741175607-0.jpg",
+                                "type": "cover",
+                                "title": "مسلسلات رمضان 2025"
+                            }
+                        ],
+                        "id": 34839,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12474",
+                            "url": "2025/03/1741175607-0.jpg",
+                            "type": "cover",
+                            "title": "مسلسلات رمضان 2025"
+                        },
+                        "url": "/news/34839",
+                        "date_time": "05 مارس  01:59 مساءً"
+                    },
+                    {
+                        "_id": "67c83909b38162c0b400ac39",
+                        "hits": 1064,
+                        "sort": 95746,
+                        "title": "نشرة أخبار رمضان | أبرز الأحداث في الأيام الثلاثة الأولى من الشهر الكريم",
+                        "section": {
+                            "_id": "5e6d3446a243214c8f331294",
+                            "id": 1,
+                            "user_id": "609edeb8421aa97e874ef9e6",
+                            "sort": 16,
+                            "updated_at": "2021-05-15 02:17:24",
+                            "created_at": "2020-03-14 21:45:10",
+                            "cases": "published",
+                            "title": "آخر الأخبار",
+                            "slug": "اخر-الاخبار",
+                            "images": [],
+                            "section": 0,
+                            "hits": 87874,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "آخر الأخبار",
+                            "description": "آخر الأخبار",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926143000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 13:44:09",
+                        "images": [
+                            {
+                                "id": "12473",
+                                "url": "2025/03/1741175036-0.png",
+                                "type": "cover",
+                                "title": "رمضان 2025"
+                            }
+                        ],
+                        "id": 34838,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12473",
+                            "url": "2025/03/1741175036-0.png",
+                            "type": "cover",
+                            "title": "رمضان 2025"
+                        },
+                        "url": "/news/34838",
+                        "date_time": "05 مارس  01:44 مساءً"
+                    },
+                    {
+                        "_id": "67c2136101f295897a0717a6",
+                        "hits": 1455,
+                        "sort": 95714,
+                        "title": "قبل أن تصوم.. دار الإفتاء توضح النية وأركان صيام رمضان",
+                        "section": {
+                            "_id": "631df09cdb6c44349c15ad9f",
+                            "hits": 52149,
+                            "sort": 11,
+                            "slug": "منوعات",
+                            "title": "منوعات",
+                            "seo_title": "منوعات",
+                            "description": "منوعات",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-09-11 16:28:44.667762",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 7,
+                            "master": true,
+                            "updated_at": "2022-09-11 16:28:44",
+                            "created_at": "2022-09-11 16:28:44",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926145000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-02-28 21:49:53",
+                        "images": [
+                            {
+                                "id": "12472",
+                                "url": "2025/02/1740772105-0.jpg",
+                                "type": "cover",
+                                "title": "أركان صيام رمضان"
+                            }
+                        ],
+                        "id": 34837,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12472",
+                            "url": "2025/02/1740772105-0.jpg",
+                            "type": "cover",
+                            "title": "أركان صيام رمضان"
+                        },
+                        "url": "/news/34837",
+                        "date_time": "28 فبراير  09:49 مساءً"
+                    },
+                    {
+                        "_id": "67c21281f908bbea3e0b0c86",
+                        "hits": 1429,
+                        "sort": 95706,
+                        "title": "الذهب يتراجع في مصر.. أسعار الجمعة 28 فبراير 2025 تشهد انخفاضًا!",
+                        "section": {
+                            "_id": "5e6ea495a243211a8c3aae14",
+                            "user_id": "5b97a268421aa9623e66f5b3",
+                            "sort": 14,
+                            "updated_at": "2020-03-15 23:56:37",
+                            "created_at": "2020-03-15 23:56:37",
+                            "cases": "published",
+                            "title": "اقتصاد",
+                            "slug": "اقتصاد",
+                            "section": 0,
+                            "images": [],
+                            "hits": 58324,
+                            "id": 3,
+                            "seo_title": "اقتصاد",
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "description": "اقتصاد",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926139000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-02-28 21:46:09",
+                        "images": [
+                            {
+                                "id": "12471",
+                                "url": "2025/02/1740771909-0.jpg",
+                                "type": "cover",
+                                "title": "الذهب"
+                            }
+                        ],
+                        "id": 34836,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12471",
+                            "url": "2025/02/1740771909-0.jpg",
+                            "type": "cover",
+                            "title": "الذهب"
+                        },
+                        "url": "/news/34836",
+                        "date_time": "28 فبراير  09:46 مساءً"
+                    },
+                    {
+                        "_id": "67c201bbf908bbea3e0b0c82",
+                        "hits": 1267,
+                        "sort": 95698,
+                        "title": "المسحراتي عبر الزمن.. كيف بدأ في عهد الرسول ومن أول من أحيى هذه العادة في مصر؟",
+                        "section": {
+                            "_id": "631df09cdb6c44349c15ad9f",
+                            "hits": 52149,
+                            "sort": 11,
+                            "slug": "منوعات",
+                            "title": "منوعات",
+                            "seo_title": "منوعات",
+                            "description": "منوعات",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-09-11 16:28:44.667762",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 7,
+                            "master": true,
+                            "updated_at": "2022-09-11 16:28:44",
+                            "created_at": "2022-09-11 16:28:44",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926145000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-02-28 20:34:35",
+                        "images": [
+                            {
+                                "id": "12470",
+                                "url": "2025/02/1740767498-0.jpg",
+                                "type": "cover",
+                                "title": "المسحراتي"
+                            }
+                        ],
+                        "id": 34835,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12470",
+                            "url": "2025/02/1740767498-0.jpg",
+                            "type": "cover",
+                            "title": "المسحراتي"
+                        },
+                        "url": "/news/34835",
+                        "date_time": "28 فبراير  08:34 مساءً"
+                    },
+                    {
+                        "_id": "67c1fd5a70b345c21e063cc6",
+                        "hits": 1272,
+                        "sort": 95690,
+                        "title": "الإفطار عند المدفع أم الأذان؟.. دار الإفتاء تحسم الجدل!",
+                        "section": {
+                            "_id": "631df09cdb6c44349c15ad9f",
+                            "hits": 52149,
+                            "sort": 11,
+                            "slug": "منوعات",
+                            "title": "منوعات",
+                            "seo_title": "منوعات",
+                            "description": "منوعات",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-09-11 16:28:44.667762",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 7,
+                            "master": true,
+                            "updated_at": "2022-09-11 16:28:44",
+                            "created_at": "2022-09-11 16:28:44",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926145000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-02-28 20:15:54",
+                        "images": [
+                            {
+                                "id": "12469",
+                                "url": "2025/02/1740766475-0.jpg",
+                                "type": "cover",
+                                "title": "الإفطار عند المدفع أم الأذان"
+                            }
+                        ],
+                        "id": 34834,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12469",
+                            "url": "2025/02/1740766475-0.jpg",
+                            "type": "cover",
+                            "title": "الإفطار عند المدفع أم الأذان"
+                        },
+                        "url": "/news/34834",
+                        "date_time": "28 فبراير  08:15 مساءً"
+                    },
+                    {
+                        "_id": "67c1f6c8bf5b505d61079dcb",
+                        "hits": 1470,
+                        "sort": 95682,
+                        "title": "الإسكندرية تودع آية عادل.. تشييع الجثمان إلى مثواه الأخير",
+                        "section": {
+                            "_id": "5e6ea4fea2432136306e8863",
+                            "user_id": "5b97a268421aa9623e66f5b3",
+                            "sort": 13,
+                            "updated_at": "2020-03-15 23:58:22",
+                            "created_at": "2020-03-15 23:58:22",
+                            "cases": "published",
+                            "title": "حوادث",
+                            "images": [],
+                            "slug": "حوادث",
+                            "section": 0,
+                            "hits": 50738,
+                            "id": 4,
+                            "seo_title": "حوادث",
+                            "description": "حوادث",
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926141000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-02-28 19:47:52",
+                        "images": [
+                            {
+                                "id": "12468",
+                                "url": "2025/02/1740764753-0.jpg",
+                                "type": "cover",
+                                "title": "آية عادل"
+                            }
+                        ],
+                        "id": 34833,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12468",
+                            "url": "2025/02/1740764753-0.jpg",
+                            "type": "cover",
+                            "title": "آية عادل"
+                        },
+                        "url": "/news/34833",
+                        "date_time": "28 فبراير  07:47 مساءً"
+                    },
+                    {
+                        "_id": "67c1f5f3d5fbb577d90b3e95",
+                        "hits": 1422,
+                        "sort": 95674,
+                        "title": "رسمياً.. مصر و10 دول تؤكد رؤية الهلال وتعلن السبت أول أيام رمضان!",
+                        "section": {
+                            "_id": "5e6d3446a243214c8f331294",
+                            "id": 1,
+                            "user_id": "609edeb8421aa97e874ef9e6",
+                            "sort": 16,
+                            "updated_at": "2021-05-15 02:17:24",
+                            "created_at": "2020-03-14 21:45:10",
+                            "cases": "published",
+                            "title": "آخر الأخبار",
+                            "slug": "اخر-الاخبار",
+                            "images": [],
+                            "section": 0,
+                            "hits": 87874,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "آخر الأخبار",
+                            "description": "آخر الأخبار",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926143000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-02-28 19:44:19",
+                        "images": [
+                            {
+                                "id": "12467",
+                                "url": "2025/02/1740764599-0.jpg",
+                                "type": "cover",
+                                "title": "أول أيام رمضان"
+                            }
+                        ],
+                        "id": 34832,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12467",
+                            "url": "2025/02/1740764599-0.jpg",
+                            "type": "cover",
+                            "title": "أول أيام رمضان"
+                        },
+                        "url": "/news/34832",
+                        "date_time": "28 فبراير  07:44 مساءً"
+                    },
+                    {
+                        "_id": "67c1f1f5211a75f56107f599",
+                        "hits": 1482,
+                        "sort": 95666,
+                        "title": "مع بداية رمضان.. تعرف على موعد أذان الفجر في أول أيام الصيام!",
+                        "section": {
+                            "_id": "5e6d3446a243214c8f331294",
+                            "id": 1,
+                            "user_id": "609edeb8421aa97e874ef9e6",
+                            "sort": 16,
+                            "updated_at": "2021-05-15 02:17:24",
+                            "created_at": "2020-03-14 21:45:10",
+                            "cases": "published",
+                            "title": "آخر الأخبار",
+                            "slug": "اخر-الاخبار",
+                            "images": [],
+                            "section": 0,
+                            "hits": 87874,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "آخر الأخبار",
+                            "description": "آخر الأخبار",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926143000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-02-28 19:27:16",
+                        "images": [
+                            {
+                                "id": "12466",
+                                "url": "2025/02/1740763621-0.jpg",
+                                "type": "cover",
+                                "title": "أذان الفجر"
+                            }
+                        ],
+                        "id": 34831,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12466",
+                            "url": "2025/02/1740763621-0.jpg",
+                            "type": "cover",
+                            "title": "أذان الفجر"
+                        },
+                        "url": "/news/34831",
+                        "date_time": "28 فبراير  07:27 مساءً"
+                    }
+                ],
+                "first_page_url": "http://the24.net/api/app/news?page=1",
+                "from": 1,
+                "last_page": 1737,
+                "last_page_url": "http://the24.net/api/app/news?page=1737",
+                "next_page_url": "http://the24.net/api/app/news?page=2",
+                "path": "http://the24.net/api/app/news",
+                "per_page": 20,
+                "prev_page_url": null,
+                "to": 20,
+                "total": 34731
+            },
+            "home": {
+                "current_page": 1,
+                "data": [
+                    {
+                        "_id": "67c979818d66b6e5430a6f87",
+                        "hits": 1430,
+                        "sort": 95761,
+                        "title": "تحذيرات عاجلة.. أمطار غزيرة تضرب مناطق عديدة اليوم وقد تصل للسيول",
+                        "section": {
+                            "_id": "5e6d3446a243214c8f331294",
+                            "id": 1,
+                            "user_id": "609edeb8421aa97e874ef9e6",
+                            "sort": 16,
+                            "updated_at": "2021-05-15 02:17:24",
+                            "created_at": "2020-03-14 21:45:10",
+                            "cases": "published",
+                            "title": "آخر الأخبار",
+                            "slug": "اخر-الاخبار",
+                            "images": [],
+                            "section": 0,
+                            "hits": 87874,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "آخر الأخبار",
+                            "description": "آخر الأخبار",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926143000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-06 12:31:28",
+                        "images": [
+                            {
+                                "id": "4749",
+                                "url": "2024/01/1704873220-0.jpg",
+                                "type": "cover",
+                                "title": "امطار غزيره"
+                            }
+                        ],
+                        "id": 34849,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "4749",
+                            "url": "2024/01/1704873220-0.jpg",
+                            "type": "cover",
+                            "title": "امطار غزيره"
+                        },
+                        "url": "/news/34849"
+                    },
+                    {
+                        "_id": "67c96c3d4e0d367c060c3ba2",
+                        "hits": 1200,
+                        "sort": 95760,
+                        "title": "حكم سماع الأغاني في رمضان.. هل يؤثر على الصيام؟",
+                        "section": {
+                            "_id": "631df09cdb6c44349c15ad9f",
+                            "hits": 52149,
+                            "sort": 11,
+                            "slug": "منوعات",
+                            "title": "منوعات",
+                            "seo_title": "منوعات",
+                            "description": "منوعات",
+                            "section": 0,
+                            "images": [],
+                            "cases": "published",
+                            "user_id": "60429ba7eb6ae63768b23a64",
+                            "modified_at": {
+                                "date": "2022-09-11 16:28:44.667762",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "id": 7,
+                            "master": true,
+                            "updated_at": "2022-09-11 16:28:44",
+                            "created_at": "2022-09-11 16:28:44",
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926145000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-06 11:34:53",
+                        "images": [
+                            {
+                                "id": "12482",
+                                "url": "2025/03/1741253685-0.jpg",
+                                "type": "cover",
+                                "title": "حكم سماع الاغاني في رمضان"
+                            }
+                        ],
+                        "id": 34847,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12482",
+                            "url": "2025/03/1741253685-0.jpg",
+                            "type": "cover",
+                            "title": "حكم سماع الاغاني في رمضان"
+                        },
+                        "url": "/news/34847"
+                    },
+                    {
+                        "_id": "67c843319023d0d68a031cb7",
+                        "hits": 1287,
+                        "sort": 95759,
+                        "title": "أمطار ورعد ورياح مثيرة للأتربة خلال 48 ساعة في هذه المناطق",
+                        "section": {
+                            "_id": "5e6d3446a243214c8f331294",
+                            "id": 1,
+                            "user_id": "609edeb8421aa97e874ef9e6",
+                            "sort": 16,
+                            "updated_at": "2021-05-15 02:17:24",
+                            "created_at": "2020-03-14 21:45:10",
+                            "cases": "published",
+                            "title": "آخر الأخبار",
+                            "slug": "اخر-الاخبار",
+                            "images": [],
+                            "section": 0,
+                            "hits": 87874,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "آخر الأخبار",
+                            "description": "آخر الأخبار",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926143000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 14:27:29",
+                        "images": [
+                            {
+                                "id": "12424",
+                                "url": "2025/02/1740598792-0.jpg",
+                                "type": "cover",
+                                "title": "الطقس"
+                            }
+                        ],
+                        "id": 34842,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12424",
+                            "url": "2025/02/1740598792-0.jpg",
+                            "type": "cover",
+                            "title": "الطقس"
+                        },
+                        "url": "/news/34842"
+                    },
+                    {
+                        "_id": "67c9789c752893719e0392e5",
+                        "hits": 1210,
+                        "sort": 95758,
+                        "title": "لغز سفاح المعمورة يتكشف.. الـDNA يكشف هوية الضحية الثانية!",
+                        "section": {
+                            "_id": "5e6ea4fea2432136306e8863",
+                            "user_id": "5b97a268421aa9623e66f5b3",
+                            "sort": 13,
+                            "updated_at": "2020-03-15 23:58:22",
+                            "created_at": "2020-03-15 23:58:22",
+                            "cases": "published",
+                            "title": "حوادث",
+                            "images": [],
+                            "slug": "حوادث",
+                            "section": 0,
+                            "hits": 50738,
+                            "id": 4,
+                            "seo_title": "حوادث",
+                            "description": "حوادث",
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926141000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-06 12:27:40",
+                        "images": [
+                            {
+                                "id": "12484",
+                                "url": "2025/03/1741256857-0.jpg",
+                                "type": "cover",
+                                "title": "سفاح المعمورة"
+                            }
+                        ],
+                        "id": 34848,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12484",
+                            "url": "2025/03/1741256857-0.jpg",
+                            "type": "cover",
+                            "title": "سفاح المعمورة"
+                        },
+                        "url": "/news/34848"
+                    },
+                    {
+                        "_id": "67c846149023d0d68a031cbb",
+                        "hits": 1404,
+                        "sort": 95757,
+                        "title": "أول تعليق من المملكة العربية السعودية على نتائج قمة فلسطين",
+                        "section": {
+                            "_id": "5e6d3446a243214c8f331294",
+                            "id": 1,
+                            "user_id": "609edeb8421aa97e874ef9e6",
+                            "sort": 16,
+                            "updated_at": "2021-05-15 02:17:24",
+                            "created_at": "2020-03-14 21:45:10",
+                            "cases": "published",
+                            "title": "آخر الأخبار",
+                            "slug": "اخر-الاخبار",
+                            "images": [],
+                            "section": 0,
+                            "hits": 87874,
+                            "modified_at": {
+                                "date": "2022-07-10 18:07:08.996967",
+                                "timezone_type": 1,
+                                "timezone": "+02:00"
+                            },
+                            "seo_title": "آخر الأخبار",
+                            "description": "آخر الأخبار",
+                            "master": true,
+                            "Section": {
+                                "updated_at": {
+                                    "$date": {
+                                        "$numberLong": "1757926143000"
+                                    }
+                                }
+                            }
+                        },
+                        "published_at": "2025-03-05 14:39:48",
+                        "images": [
+                            {
+                                "id": "12479",
+                                "url": "2025/03/1741178356-0.jpg",
+                                "type": "cover",
+                                "title": "القمة العربية غير العادية"
+                            }
+                        ],
+                        "id": 34844,
+                        "website": null,
+                        "slug": "",
+                        "main_img": {
+                            "id": "12479",
+                            "url": "2025/03/1741178356-0.jpg",
+                            "type": "cover",
+                            "title": "القمة العربية غير العادية"
+                        },
+                        "url": "/news/34844"
+                    }
+                ],
+                "first_page_url": "http://the24.net/api/app/news?page=1",
+                "from": 1,
+                "last_page": 6947,
+                "last_page_url": "http://the24.net/api/app/news?page=6947",
+                "next_page_url": "http://the24.net/api/app/news?page=2",
+                "path": "http://the24.net/api/app/news",
+                "per_page": 5,
+                "prev_page_url": null,
+                "to": 5,
+                "total": 34731
+            },
+            "hits": []
+        }
+    }
+}
