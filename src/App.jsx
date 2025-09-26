@@ -29,18 +29,19 @@ function App() {
       path: '', element: <Layout />, children: [
         { index: true, element: <Home /> },
         { path: '', element: <Home /> },
+        { path: 'home', element: <Home /> },
         { path: 'contact', element: <Contact /> },
         { path: 'about-us', element: <AboutUs /> },
         {
           path: 'services', children: [
             { index: true, element: <Services /> },
-            { path: ':ServiceSlug', element: <Service /> }
+            { path: ':serviceSlug', element: <Service /> }
           ]
         },
         {
           path: 'projects', children: [
             { index: true, element: <Projects /> },
-            { path: ':ServiceSlug', element: <Project /> }
+            { path: ':projectSlug', element: <Project /> }
           ]
         },
         {

@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { FaFacebook, FaLinkedin } from 'react-icons/fa';
 import { DefaultSEO } from '../seo/SEO';
+import '../Content.scss'
 
 export default function Layout({ children }) {
 
