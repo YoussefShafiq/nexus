@@ -19,6 +19,7 @@ import JobApplication from './Pages/JobApplication';
 import Blogs from './Pages/Blogs';
 import Blog from './Pages/Blog';
 import AllBlogs from './Pages/AllBlogs';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   // Global AOS observer to reliably animate elements across the app
@@ -102,6 +103,10 @@ function App() {
     <>
       <QueryClientProvider client={query}>
         <RouterProvider router={router} />
+        <Toaster
+          position='bottom-right'
+          reverseOrder={false}
+        />
       </QueryClientProvider>
     </>
   )

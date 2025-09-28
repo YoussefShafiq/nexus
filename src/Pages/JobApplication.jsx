@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { PageSEO } from '../seo/SEO'
 import ReusableHeroSection from '../reusableComponents/ReusableHeroSection'
 import { useParams } from 'react-router-dom'
@@ -9,6 +9,11 @@ import { BsWhatsapp } from 'react-icons/bs'
 import { MdOutlineWork, MdOutlineWorkOutline } from 'react-icons/md'
 import { HiOutlineBadgeCheck } from 'react-icons/hi'
 import { PiSealCheckFill } from 'react-icons/pi'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+import toast from 'react-hot-toast'
 
 export function HeroSection({ job }) {
     return <>
@@ -16,7 +21,115 @@ export function HeroSection({ job }) {
     </>
 }
 
+// Validation schema
+const applicationSchema = Yup.object().shape({
+    name: Yup.string()
+        .required('Name is required')
+        .min(2, 'Name must be at least 2 characters')
+        .max(100, 'Name must be less than 100 characters'),
+    email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required'),
+    phone: Yup.string()
+        .required('Phone number is required')
+        .matches(/^[+]?[0-9\s\-\(\)]{10,}$/, 'Invalid phone number'),
+    years_of_experience: Yup.number()
+        .required('Years of experience is required')
+        .min(0, 'Experience cannot be negative')
+        .max(50, 'Experience seems too high')
+        .typeError('Please enter a valid number'),
+    message: Yup.string()
+        .max(200, 'Message must be less than 200 characters')
+        .required('Message is required'),
+    cv: Yup.mixed()
+        .required('CV is required')
+        .test('fileSize', 'File size too large (max 5MB)', (value) => {
+            if (!value) return false;
+            return value.size <= 5 * 1024 * 1024;
+        })
+        .test('fileType', 'Unsupported file format', (value) => {
+            if (!value) return false;
+            const supportedFormats = [
+                'application/pdf',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'application/vnd.ms-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            ];
+            return supportedFormats.includes(value.type);
+        }),
+    availability: Yup.string()
+        .required('Availability is required')
+        .oneOf(['immediately', '1-week', '2-weeks', '1-month', '2-months', '3-months_plus'], 'Please select a valid availability option')
+});
+
 export function JobDetails({ job }) {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            phone: '',
+            years_of_experience: '',
+            message: '',
+            cv: null,
+            availability: ''
+        },
+        validationSchema: applicationSchema,
+        onSubmit: async (values, { resetForm }) => {
+            setIsSubmitting(true);
+
+            try {
+                const formData = new FormData();
+
+                // Append all form fields to FormData
+                Object.keys(values).forEach(key => {
+                    if (key === 'cv' && values[key]) {
+                        formData.append('cv', values[key]);
+                    } else {
+                        formData.append(key, values[key]);
+                    }
+                });
+
+                await axios.post(
+                    `https://nexus-consults.com/api/public/jobs/${job.slug}/apply`,
+                    formData,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        }
+                    }
+                );
+
+                toast.success('Application submitted successfully!');
+                resetForm();
+            } catch (error) {
+                console.error('Application error:', error);
+                const errorMessage = error.response?.data?.message || 'Failed to submit application. Please try again.';
+                toast.error(errorMessage);
+            } finally {
+                setIsSubmitting(false);
+            }
+        }
+    });
+
+    // Handle file input change
+    const handleFileChange = (event) => {
+        const file = event.currentTarget.files[0];
+        formik.setFieldValue('cv', file);
+    };
+
+    // Availability options
+    const availabilityOptions = [
+        { value: 'immediately', label: 'Immediately' },
+        { value: '1-week', label: 'Within 1 week' },
+        { value: '2-weeks', label: 'Within 2 weeks' },
+        { value: '1-month', label: 'Within 1 month' },
+        { value: '2-months', label: 'Within 2 months' },
+        { value: '3-months_plus', label: '3 months or more' }
+    ];
+
     return <>
         <div className="container grid lg:grid-cols-2 grid-cols-1 gap-8">
             <motion.div
@@ -26,9 +139,12 @@ export function JobDetails({ job }) {
                 viewport={{ once: true }}
                 className="backdrop-blur-3xl"
             >
-                <form action="" className='bg-primary flex flex-col gap-6 p-8 lg:p-10 rounded-lg'>
+                <form
+                    onSubmit={formik.handleSubmit}
+                    className='bg-primary flex flex-col gap-6 p-8 lg:p-10 rounded-lg'
+                >
                     <div className="w-32 m-auto">
-                        <img src={logo} alt="Nexus logo" content='Nexus logo' title='Nexus logo' className='w-full' />
+                        <img src={logo} alt="Nexus logo" className='w-full' />
                     </div>
 
                     {/* Name */}
@@ -38,9 +154,16 @@ export function JobDetails({ job }) {
                             type="text"
                             id="name"
                             name="name"
-                            className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300'
+                            className={`w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 ${formik.touched.name && formik.errors.name ? 'border-2 border-red-400' : ''
+                                }`}
                             placeholder="Your full name"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.name}
                         />
+                        {formik.touched.name && formik.errors.name && (
+                            <div className="text-red-200 text-sm mt-1">{formik.errors.name}</div>
+                        )}
                     </div>
 
                     {/* Email */}
@@ -50,22 +173,37 @@ export function JobDetails({ job }) {
                             type="email"
                             id="email"
                             name="email"
-                            className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300'
+                            className={`w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 ${formik.touched.email && formik.errors.email ? 'border-2 border-red-400' : ''
+                                }`}
                             placeholder="Email"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.email}
                         />
+                        {formik.touched.email && formik.errors.email && (
+                            <div className="text-red-200 text-sm mt-1">{formik.errors.email}</div>
+                        )}
                     </div>
 
                     {/* Years of Experience */}
                     <div className="flex flex-col gap-1 w-full">
-                        <label htmlFor="experience" className='text-white font-semibold text-lg'>Years of Experience</label>
+                        <label htmlFor="years_of_experience" className='text-white font-semibold text-lg'>Years of Experience</label>
                         <input
                             type="number"
-                            id="experience"
-                            name="experience"
+                            id="years_of_experience"
+                            name="years_of_experience"
                             min="0"
-                            className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300'
+                            max="50"
+                            className={`w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 ${formik.touched.years_of_experience && formik.errors.years_of_experience ? 'border-2 border-red-400' : ''
+                                }`}
                             placeholder="Years of experience"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.years_of_experience}
                         />
+                        {formik.touched.years_of_experience && formik.errors.years_of_experience && (
+                            <div className="text-red-200 text-sm mt-1">{formik.errors.years_of_experience}</div>
+                        )}
                     </div>
 
                     {/* Phone Number */}
@@ -75,20 +213,68 @@ export function JobDetails({ job }) {
                             type="tel"
                             id="phone"
                             name="phone"
-                            className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300'
+                            className={`w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 ${formik.touched.phone && formik.errors.phone ? 'border-2 border-red-400' : ''
+                                }`}
                             placeholder="Phone number"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.phone}
                         />
+                        {formik.touched.phone && formik.errors.phone && (
+                            <div className="text-red-200 text-sm mt-1">{formik.errors.phone}</div>
+                        )}
+                    </div>
+
+                    {/* Availability */}
+                    <div className="flex flex-col gap-1 w-full">
+                        <label htmlFor="availability" className='text-white font-semibold text-lg'>Availability</label>
+                        <select
+                            id="availability"
+                            name="availability"
+                            className={`w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 ${formik.touched.availability && formik.errors.availability ? 'border-2 border-red-400' : ''
+                                }`}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.availability}
+                        >
+                            <option className='bg-primary' value="">Select availability</option>
+                            {availabilityOptions.map(option => (
+                                <option className='bg-primary' key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                        {formik.touched.availability && formik.errors.availability && (
+                            <div className="text-red-200 text-sm mt-1">{formik.errors.availability}</div>
+                        )}
                     </div>
 
                     {/* File Attachment */}
                     <div className="flex flex-col gap-1 w-full">
-                        <label htmlFor="attachment" className='text-white font-semibold text-lg'>Attachment</label>
+                        <label htmlFor="cv" className='text-white font-semibold text-lg'>
+                            CV (PDF, DOC, DOCX, XLS, XLSX)
+                        </label>
                         <input
                             type="file"
-                            id="attachment"
-                            name="attachment"
-                            className='w-full rounded-lg bg-white/15 px-4 py-3 text-white file:text-white file:bg-white/25 file:border-none file:rounded-md file:px-3 file:py-1 cursor-pointer outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300'
+                            id="cv"
+                            name="cv"
+                            accept=".pdf,.doc,.docx,.xls,.xlsx"
+                            className={`w-full rounded-lg bg-white/15 px-4 py-3 text-white file:text-white file:bg-white/25 file:border-none file:rounded-md file:px-3 file:py-1 cursor-pointer outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 ${formik.touched.cv && formik.errors.cv ? 'border-2 border-red-400' : ''
+                                }`}
+                            onChange={handleFileChange}
+                            onBlur={formik.handleBlur}
                         />
+                        {formik.touched.cv && formik.errors.cv && (
+                            <div className="text-red-200 text-sm mt-1">{formik.errors.cv}</div>
+                        )}
+                        {formik.values.cv && (
+                            <div className="text-green-200 text-sm mt-1">
+                                Selected file: {formik.values.cv.name}
+                            </div>
+                        )}
+                        <div className="text-white/70 text-xs mt-1">
+                            Maximum file size: 5MB
+                        </div>
                     </div>
 
                     {/* Message */}
@@ -98,14 +284,32 @@ export function JobDetails({ job }) {
                             maxLength={200}
                             id="message"
                             name="message"
-                            className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 min-h-40'
-                            placeholder="Message"
+                            className={`w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 min-h-40 ${formik.touched.message && formik.errors.message ? 'border-2 border-red-400' : ''
+                                }`}
+                            placeholder="Message (max 200 characters)"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.message}
                         />
+                        <div className="flex justify-between text-sm">
+                            {formik.touched.message && formik.errors.message ? (
+                                <div className="text-red-200">{formik.errors.message}</div>
+                            ) : (
+                                <div></div>
+                            )}
+                            <div className="text-white/70">
+                                {formik.values.message.length}/200
+                            </div>
+                        </div>
                     </div>
 
                     {/* Submit Button */}
-                    <button className='bg-white hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 ease-in-out px-8 py-3 text-xl text-primary font-bold w-full rounded-lg capitalize'>
-                        Submit
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className='bg-white hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 ease-in-out px-8 py-3 text-xl text-primary font-bold w-full rounded-lg capitalize disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none'
+                    >
+                        {isSubmitting ? 'Submitting...' : 'Submit Application'}
                     </button>
                 </form>
 
@@ -119,14 +323,16 @@ export function JobDetails({ job }) {
             >
                 <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-8 rounded-xl h-full border border-primary/20 shadow-lg backdrop-blur-3xl flex flex-col gap-6">
                     <h2 className="text-3xl font-bold text-primary transition-colors">{job?.title}</h2>
-                    <div id='responsibilities'>
+                    {job?.key_responsibilities && <div id='responsibilities'>
                         <h3 className="text-xl font-semibold text-primary transition-colors mb-2 flex items-center gap-3"> <MdOutlineWork /> Key Responsibilities</h3>
-                        <div className="text-primary transition-colors" dangerouslySetInnerHTML={{ __html: job?.responsibilities || '<p>No job selected. Please go back and select a job to see details.</p>' }}></div>
-                    </div>
-                    <div id='qualifications'>
+                        <div className="text-primary transition-colors" dangerouslySetInnerHTML={{ __html: job?.key_responsibilities || '' }}></div>
+                    </div>}
+
+                    {job?.preferred_qualifications && <div id='qualifications'>
                         <h3 className="text-xl font-semibold text-primary transition-colors mb-2 flex items-center gap-3"> <PiSealCheckFill /> Qualifications</h3>
-                        <div className="text-primary transition-colors" dangerouslySetInnerHTML={{ __html: job?.qualifications || '<p>No job selected. Please go back and select a job to see details.</p>' }}></div>
-                    </div>
+                        <div className="text-primary transition-colors" dangerouslySetInnerHTML={{ __html: job?.preferred_qualifications || '' }}></div>
+                    </div>}
+
                 </div>
             </motion.div>
         </div>
@@ -136,162 +342,43 @@ export function JobDetails({ job }) {
 export default function JobApplication() {
     const { jobSlug } = useParams();
 
-    const [job, setjob] = useState(null)
-    function GetJobBySlug(slug) {
-        return setjob(jobs.find(j => j.slug === slug))
+    const { data: job, isLoading, isError, error } = useQuery({
+        queryKey: ['job', jobSlug],
+        queryFn: () => {
+            return axios.get(`https://nexus-consults.com/api/public/jobs/${jobSlug}`)
+        },
+        enabled: !!jobSlug, // Only run if jobSlug exists
+    })
+
+
+
+    if (isError) {
+        return (
+            <>
+                <PageSEO
+                    title="Job Not Found — Careers at NEXUS"
+                    description="The job you are looking for might not exist or has been removed."
+                    image="/Logo.png"
+                />
+                <ReusableHeroSection name="Job Not Found" />
+                <div className="container flex justify-center items-center min-h-64">
+                    <div className="text-red-600 text-lg">
+                        {error.response?.data?.message || 'Job not found or an error occurred.'}
+                    </div>
+                </div>
+            </>
+        )
     }
-
-    useEffect(() => {
-        if (jobSlug) {
-            GetJobBySlug(jobSlug);
-        }
-    }, []);
-
-    const jobs = [
-        {
-            title: "BIM Manager",
-            jobType: "Full Time",
-            location: "Onsite",
-            date: "Posted 2 days ago",
-            slug: "bim-manager",
-            responsibilities: `
-            <ul>
-                <li>Oversee the implementation and management of BIM processes across projects.</li>
-                <li>Coordinate with design teams to ensure accurate and up-to-date models.</li>
-                <li>Maintain and manage project BIM documentation.</li>
-            </ul>
-        `,
-            qualifications: `
-            <ul>
-                <li>Bachelor’s degree in Architecture or Engineering.</li>
-                <li>5+ years of BIM management experience.</li>
-                <li>Proficiency in Revit and Navisworks.</li>
-                <li>Strong leadership and communication skills.</li>
-            </ul>
-        `
-        },
-        {
-            title: "Civil Engineer",
-            jobType: "Full Time",
-            location: "Onsite",
-            date: "Posted 5 days ago",
-            slug: "civil-engineer",
-            responsibilities: `
-            <ul>
-                <li>Design and supervise civil infrastructure projects.</li>
-                <li>Ensure compliance with safety and quality standards.</li>
-                <li>Prepare technical reports, cost estimates, and project documentation.</li>
-            </ul>
-        `,
-            qualifications: `
-            <ul>
-                <li>Bachelor’s degree in Civil Engineering.</li>
-                <li>Proficiency in AutoCAD and structural design software.</li>
-                <li>Strong problem-solving and analytical skills.</li>
-                <li>3+ years of field experience in construction projects.</li>
-            </ul>
-        `
-        },
-        {
-            title: "Mechanical Engineer",
-            jobType: "Full Time",
-            location: "Hybrid",
-            date: "Posted 1 week ago",
-            slug: "mechanical-engineer",
-            responsibilities: `
-            <ul>
-                <li>Develop and test mechanical systems and components.</li>
-                <li>Collaborate with design and cross-functional teams on projects.</li>
-                <li>Ensure compliance with engineering standards and regulations.</li>
-            </ul>
-        `,
-            qualifications: `
-            <ul>
-                <li>Bachelor’s degree in Mechanical Engineering.</li>
-                <li>Proficiency in SolidWorks or AutoCAD.</li>
-                <li>Knowledge of HVAC and manufacturing processes.</li>
-                <li>Excellent analytical and problem-solving abilities.</li>
-            </ul>
-        `
-        },
-        {
-            title: "Electrical Engineer",
-            jobType: "Full Time",
-            location: "Remote",
-            date: "Posted 3 days ago",
-            slug: "electrical-engineer",
-            responsibilities: `
-            <ul>
-                <li>Design and review electrical systems for construction projects.</li>
-                <li>Perform load calculations and prepare technical drawings.</li>
-                <li>Ensure adherence to local codes, safety, and quality standards.</li>
-            </ul>
-        `,
-            qualifications: `
-            <ul>
-                <li>Bachelor’s degree in Electrical Engineering.</li>
-                <li>Experience with power distribution and control systems.</li>
-                <li>Proficiency in AutoCAD Electrical or similar tools.</li>
-                <li>Strong communication and teamwork skills.</li>
-            </ul>
-        `
-        },
-        {
-            title: "Project Coordinator",
-            jobType: "Part Time",
-            location: "Onsite",
-            date: "Posted 4 days ago",
-            slug: "project-coordinator",
-            responsibilities: `
-            <ul>
-                <li>Assist project managers with scheduling and resource allocation.</li>
-                <li>Track project progress and prepare status reports.</li>
-                <li>Communicate effectively with stakeholders and team members.</li>
-            </ul>
-        `,
-            qualifications: `
-            <ul>
-                <li>Bachelor’s degree in Project Management or related field.</li>
-                <li>Strong organizational and communication skills.</li>
-                <li>Proficiency in MS Project and MS Excel.</li>
-                <li>Attention to detail and multitasking abilities.</li>
-            </ul>
-        `
-        },
-        {
-            title: "Structural Engineer",
-            jobType: "Full Time",
-            location: "Onsite",
-            date: "Posted 6 days ago",
-            slug: "structural-engineer",
-            responsibilities: `
-            <ul>
-                <li>Design and analyze structural systems and components.</li>
-                <li>Review technical drawings and perform safety checks.</li>
-                <li>Ensure stability, durability, and compliance with building codes.</li>
-            </ul>
-        `,
-            qualifications: `
-            <ul>
-                <li>Bachelor’s degree in Structural or Civil Engineering.</li>
-                <li>Proficiency in STAAD Pro, ETABS, or similar software.</li>
-                <li>Knowledge of local and international building codes.</li>
-                <li>3+ years of structural design and analysis experience.</li>
-            </ul>
-        `
-        }
-    ];
-
 
     return (
         <>
             <PageSEO
-                title="Apply — Careers at NEXUS"
+                title={`Apply — ${job?.data?.data?.title || 'Careers at NEXUS'}`}
                 description="Submit your application to join NEXUS Engineering Consultancy. Fill out the form and our team will get back to you."
                 image="/Logo.png"
             />
-            <HeroSection job={job} />
-            <JobDetails job={job} />
+            <HeroSection job={job?.data?.data} />
+            <JobDetails job={job?.data?.data} />
         </>
     )
 }
