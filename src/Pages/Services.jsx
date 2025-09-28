@@ -26,7 +26,8 @@ export function ServicesPagination() {
         <div className="bg-bg2 bg-cover bg-center bg-fixed">
             <div className="container">
                 <h1 className='font-bold mb-8 w-fit text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >Our Services</h1>
-                {isLoading ? <div className='grid lg:grid-cols-3 grid-cols-1 gap-8'>
+                {isLoading ? <div className='grid lg:grid-cols-4 grid-cols-1 gap-8'>
+                    <div className="h-96 bg-gray-200 rounded-xl animate-pulse"></div>
                     <div className="h-96 bg-gray-200 rounded-xl animate-pulse"></div>
                     <div className="h-96 bg-gray-200 rounded-xl animate-pulse"></div>
                     <div className="h-96 bg-gray-200 rounded-xl animate-pulse"></div>
