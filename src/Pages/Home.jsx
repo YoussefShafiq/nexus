@@ -307,7 +307,7 @@ export function BestProjects() {
                         </div>
                     ))}
                 </div>
-                <PrimaryButton text={'See More'} key={'Our Projects'} path={'/our-projects'} className={'!m-auto block'} />
+                <PrimaryButton text={'See More'} key={'Our Projects'} path={'/projects'} className={'!m-auto block'} />
             </div>
         </div>
     </>

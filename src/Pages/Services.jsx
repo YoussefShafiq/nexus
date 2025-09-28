@@ -1,5 +1,4 @@
 import React from 'react'
-import serviceimg from '../assets/images/services/marine.png'
 import PaginationCarousel from '../reusableComponents/PaginationCarousel';
 import { useNavigate } from 'react-router-dom';
 import ReusableHeroSection from '../reusableComponents/ReusableHeroSection';
@@ -48,7 +47,7 @@ export function ServicesPagination() {
                                 </div>
                                 <div className="p-3 sm:p-5">
                                     <h2 className="font-bold text-xl sm:text-2xl">{s.title}</h2>
-                                    <p className="text-xs sm:text-sm opacity-90">{s.subtitle}</p>
+                                    <p className="text-xs sm:text-sm opacity-50">{s.description}</p>
                                 </div>
                             </div>
                         )}

@@ -163,7 +163,7 @@ export function LatestAndTopBlogs() {
     </>
 }
 
-export function LatestBlogs() {
+export function RecentBlogs() {
 
     const blogs = [
         {
@@ -216,7 +216,7 @@ export function LatestBlogs() {
     return <>
         <div className="container grid lg:grid-cols-3 grid-cols-1 gap-5">
             <div className="lg:col-span-3 flex justify-between items-center">
-                <h2 className='capitalize text-3xl font-bold'>top posts</h2>
+                <h2 className='capitalize text-3xl font-bold'>Recent Posts</h2>
                 <Link className='hover:text-primary font-bold text-md capitalize flex items-center gap-1 hover:underline transition-all duration-300' to={'/blogs/all'} >view all <BiRightArrowAlt size={20} /></Link>
             </div>
             {blogs.splice(0, 6).map((b, i) => (<>
@@ -231,6 +231,6 @@ export default function Blogs() {
     return <>
         <HeroSection />
         <LatestAndTopBlogs />
-        <LatestBlogs />
+        <RecentBlogs />
     </>
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/images/Logo.png'
 import { motion } from 'framer-motion'
 import { Mail, Phone } from 'lucide-react'
@@ -21,6 +21,28 @@ export function ContactForm() {
         whatsapp: 'https://wa.me/+201284222917'
     }
 
+    const [formData, setFormData] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        message: ''
+    })
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData(prev => ({ ...prev, [name]: value }))
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const { first_name, last_name, email, phone, message } = formData
+        const fullName = `${first_name} ${last_name}`.trim()
+        const subject = `Contact Form Submission from ${fullName}`
+        const body = `Name: ${fullName}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0A%0D%0A${message}`
+        window.location.href = `mailto:${contactData.email}?subject=${encodeURIComponent(subject)}&body=${body}`
+    }
+
     return <>
         <div className="bg-bg2 py-20 bg-cover bg-center bg-fixed">
             <div className="container flex lg:flex-row flex-col gap-8">
@@ -31,33 +53,33 @@ export function ContactForm() {
                     viewport={{ once: true }}
                     className="w-full lg:w-1/2  backdrop-blur-3xl"
                 >
-                    <form action="" className='bg-primary flex flex-col gap-6 p-8 lg:p-10 rounded-lg'>
+                    <form onSubmit={handleSubmit} className='bg-primary flex flex-col gap-6 p-8 lg:p-10 rounded-lg'>
                         <div className="w-32 m-auto">
                             <img src={logo} alt="Nexus logo" content='Nexus logo' title='Nexus logo' className='w-full' />
                         </div>
                         <div className="flex flex-col lg:flex-row lg:gap-7 w-full ">
                             <div className="flex flex-col gap-1 w-1/2">
                                 <label htmlFor="first_name" className='text-white font-semibold text-lg'>First name</label>
-                                <input type="text" id='first_name' name='first_name' className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300' placeholder='First name' />
+                                <input type="text" id='first_name' name='first_name' value={formData.first_name} onChange={handleChange} className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300' placeholder='First name' required />
                             </div>
                             <div className="flex flex-col gap-1 w-1/2">
                                 <label htmlFor="last_name" className='text-white font-semibold text-lg'>Last name</label>
-                                <input type="text" id='last_name' name='last_name' className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300' placeholder='Last name' />
+                                <input type="text" id='last_name' name='last_name' value={formData.last_name} onChange={handleChange} className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300' placeholder='Last name' required />
                             </div>
                         </div>
                         <div className="flex flex-col gap-1 w-full">
                             <label htmlFor="email" className='text-white font-semibold text-lg'>Email</label>
-                            <input type="email" id='email' name='email' className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300' placeholder='Email' />
+                            <input type="email" id='email' name='email' value={formData.email} onChange={handleChange} className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300' placeholder='Email' required />
                         </div>
                         <div className="flex flex-col gap-1 w-full">
                             <label htmlFor="phone" className='text-white font-semibold text-lg'>Phone number</label>
-                            <input type="tel" id='phone' name='phone' className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300' placeholder='phone' />
+                            <input type="tel" id='phone' name='phone' value={formData.phone} onChange={handleChange} className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300' placeholder='phone' required />
                         </div>
                         <div className="flex flex-col gap-1 w-full">
                             <label htmlFor="message" className='text-white font-semibold text-lg'>Message</label>
-                            <textarea maxLength={200} id='message' name='message' className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 min-h-40' placeholder='Message' />
+                            <textarea maxLength={200} id='message' name='message' value={formData.message} onChange={handleChange} className='w-full rounded-lg bg-white/15 px-4 py-3 text-white outline-transparent focus:outline-white focus:shadow-2xl transition-all duration-300 min-h-40' placeholder='Message' required />
                         </div>
-                        <button className={`bg-white hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 ease-in-out px-8 py-3 text-xl text-primary font-bold w-full rounded-lg capitalize`} >Submit</button>
+                        <button type="submit" className={`bg-white hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 ease-in-out px-8 py-3 text-xl text-primary font-bold w-full rounded-lg capitalize`} >Submit</button>
                     </form>
                 </motion.div>
                 <motion.div

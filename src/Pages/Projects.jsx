@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export function HeroSection() {
     return <>
-        <ReusableHeroSection name="Our projects" subtitle={'Precision-driven solutions from concept to construction'} backgroundclass="bg-projectsHeroImage" />
+        <ReusableHeroSection name="Our projects" subtitle={'Precision-driven solutions from concept to construction'} backgroundclass="bg-ServicesHeroImage" />
     </>
 }
 
@@ -47,7 +47,7 @@ export function ProjectsPagination() {
                                 </div>
                                 <div className="p-3 sm:p-5">
                                     <h2 className="font-bold text-xl sm:text-2xl">{s.title}</h2>
-                                    <p className="text-xs sm:text-sm opacity-90">{s.subtitle}</p>
+                                    <p className="text-xs sm:text-sm opacity-50">{s.description}</p>
                                 </div>
                             </div>
                         )}
