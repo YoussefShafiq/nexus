@@ -7,11 +7,14 @@ import { BiCodeAlt } from 'react-icons/bi';
 import { ImLinkedin } from 'react-icons/im';
 import { FaSquareWhatsapp } from 'react-icons/fa6';
 import logo from '../assets/images/Logo.png'
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const leftNavRef = useRef(null);
     const rightNavRef = useRef(null);
+
 
     useEffect(() => {
         const left = leftNavRef.current;
@@ -25,6 +28,14 @@ export default function Navbar() {
             }
         }
     }, []);
+
+    const { data: jobs } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: () => {
+            return axios.get('https://nexus-consults.com/api/public/jobs')
+        }
+    })
+
     const navItems = [
         {
             name: 'Home',
@@ -53,8 +64,11 @@ export default function Navbar() {
         {
             name: 'Jobs',
             path: '/jobs',
+            dot: jobs?.data?.data?.length > 0
         },
     ];
+
+
 
     const socialIcons = [
         { icon: <FaGithub />, path: 'https://github.com/YoussefShafiq' },
@@ -144,9 +158,10 @@ export default function Navbar() {
                             <NavLink
                                 key={index}
                                 to={item.path}
-                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50`}
+                                className={`relative inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50`}
                             >
                                 {item.name}
+                                {item.dot && <div className="absolute w-1.5 h-1.5 bg-red-500 rounded-full top-0 right-0"></div>}
                             </NavLink>
                         ))}
                     </div>

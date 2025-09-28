@@ -25,9 +25,17 @@ export function AvilableJobs() {
         }
     })
 
-
-
-
+    if (isError) {
+        return (
+            <>
+                <div className="container flex justify-center items-center min-h-64">
+                    <div className="text-red-600 bg-red-200 px-10 py-2 rounded-lg text-lg">
+                        {error?.response?.data?.message || 'an error occurred.'}
+                    </div>
+                </div>
+            </>
+        )
+    }
 
     return <>
         <div className="container">
