@@ -333,12 +333,12 @@ export function JobDetails({ job, isLoading }) {
                         <h2 className="text-3xl font-bold text-primary transition-colors">{job?.title}</h2>
                         {job?.key_responsibilities && <div id='responsibilities'>
                             <h3 className="text-xl font-semibold text-primary transition-colors mb-2 flex items-center gap-3"> <MdOutlineWork /> Key Responsibilities</h3>
-                            <div className="text-primary transition-colors" dangerouslySetInnerHTML={{ __html: job?.key_responsibilities || '' }}></div>
+                            <div className="text-primary transition-colors content" dangerouslySetInnerHTML={{ __html: job?.key_responsibilities || '' }}></div>
                         </div>}
 
                         {job?.preferred_qualifications && <div id='qualifications'>
                             <h3 className="text-xl font-semibold text-primary transition-colors mb-2 flex items-center gap-3"> <PiSealCheckFill /> Qualifications</h3>
-                            <div className="text-primary transition-colors" dangerouslySetInnerHTML={{ __html: job?.preferred_qualifications || '' }}></div>
+                            <div className="text-primary transition-colors content" dangerouslySetInnerHTML={{ __html: job?.preferred_qualifications || '' }}></div>
                         </div>}
 
                     </div>}

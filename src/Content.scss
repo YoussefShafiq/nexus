@@ -126,8 +126,9 @@
         color: #334155;
         word-wrap: break-word;
 
-        p {
-            margin: 0.25rem 0;
+        * {
+            margin: 0; // Remove margins for p inside li
+            display: inline; // Or inline-block to keep it aligned
         }
     }
 
