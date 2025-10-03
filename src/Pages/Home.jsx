@@ -108,13 +108,13 @@ export function Aboutus() {
         },
         {
             icon: <RiBox3Line />,
-            title: 'Code-Compliant Engineering',
-            desc: 'Design of oil/gas facilities, storage tanks & pressure vessels'
+            title: 'Precision Digital Modeling',
+            desc: 'BIM Coordination: Clash detection for admin buildings, pedestrian bridges'
         },
         {
             icon: <FaLeaf />,
-            title: 'Code-Compliant Engineering',
-            desc: 'Design of oil/gas facilities, storage tanks & pressure vessels'
+            title: 'Sustainable Design Solutions',
+            desc: 'LEED-certified admin/commercial buildings'
         },
     ]
 

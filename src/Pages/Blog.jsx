@@ -364,7 +364,7 @@ export default function Blog() {
                             ) : (
                                 <div className="flex flex-wrap gap-3 mt-8">
                                     {post?.data?.data?.tags?.map((t, index) => (
-                                        <div key={index} className="border rounded-lg py-1 px-2 text-sm">
+                                        <div key={index} className="border bg-gray-200 rounded-full text-primary uppercase py-1 px-2 text-sm">
                                             {t}
                                         </div>
                                     ))}
