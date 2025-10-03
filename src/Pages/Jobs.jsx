@@ -48,6 +48,13 @@ export function AvilableJobs() {
                         <div className="h-32 w-full bg-gray-200 animate-pulse rounded-xl"></div>
                     </>
                 }
+                {jobs && jobs.data && jobs.data.data && jobs.data.data.length === 0 && !isLoading && <>
+                    <div className="col-span-2 flex flex-col justify-center items-center min-h-52">
+                        <h2 className='text-2xl font-bold mb-4' >No job openings available at the moment.</h2>
+                        <p className='text-black/60 mb-4' >Please check back later for new opportunities.</p>
+                        {/* <PrimaryButton text={'Go to Home'} onClick={() => { navigate('/') }} /> */}
+                    </div>
+                </>}
                 {jobs?.data?.data.map((j, i) => (<>
                     <div key={j.id} className="group flex gap-6 p-4 rounded-lg bg-white hover:shadow-inner hover:shadow-primary shadow-lg  transition-all duration-300 hover:scale-[99.2%] cursor-pointer overflow-hidden" onClick={() => { navigate('/jobs/' + j.slug) }} content={`Apply for the position of ${j.title}`}>
                         <div className=" p-4 bg-primary rounded-lg w-24 overflow-hidden">

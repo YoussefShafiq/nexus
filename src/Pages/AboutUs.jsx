@@ -10,6 +10,8 @@ import { BsFillRocketTakeoffFill, BsShieldFillCheck } from 'react-icons/bs';
 import { FaUsers } from 'react-icons/fa6';
 import { HiBadgeCheck } from 'react-icons/hi';
 import { PageSEO } from '../seo/SEO';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 
 export function HeroSection() {
@@ -28,7 +30,7 @@ export function WhoWeAre() {
     </>
 }
 
-export function VisionAndMission() {
+export function VisionAndMission({ data }) {
     return <>
         <div className="container">
             <SectionHeading title="Vision & Mission" />
@@ -41,7 +43,7 @@ export function VisionAndMission() {
                             </div>
                             <h2 className='text-2xl font-bold'>Our Mission</h2>
                         </div>
-                        <p>To provide high-quality, code-compliant engineering services that exceed client expectations by delivering precise, cost-effective designs and ensuring seamless coordination with multidisciplinary teams.</p>
+                        <p>{data?.our_mission}</p>
                     </div>
                     <div className="bg-white/80 p-8 rounded-lg border-t-4 border-t-primary space-y-3">
                         <div className="flex items-center gap-2 text-primary">
@@ -50,38 +52,38 @@ export function VisionAndMission() {
                             </div>
                             <h2 className='text-2xl font-bold'>Our Vission</h2>
                         </div>
-                        <p>To be a leading engineering consultancy firm recognized for innovation, quality, and the smart integration of technology in design and project delivery.</p>
+                        <p>{data?.our_vision}</p>
                     </div>
                 </div>
                 <div className="lg:w-1/2">
-                    <img src={visionImg} alt="engineer image" loading='lazy' className='lg:p-8' />
+                    {data?.image && <img src={data?.image} alt="Vision And Mission image" loading='lazy' className='lg:p-8' />}
                 </div>
             </div>
         </div>
     </>
 }
 
-export function OurExpertise() {
+export function OurExpertise({ data }) {
 
     const experties = [
         {
             title: 'Years',
-            count: '32+',
+            count: `${data?.years || ''}+`,
             desc: 'Years of Excellence in Engineering Consultancy'
         },
         {
             title: 'Projects',
-            count: '500+',
+            count: `${data?.projects || ''}+`,
             desc: 'Successfully Delivered Projects Across Various Industries'
         },
         {
             title: 'Clients',
-            count: '200+',
+            count: `${data?.clients || ''}+`,
             desc: 'Satisfied Clients Worldwide'
         },
         {
             title: 'Engineers',
-            count: '150+',
+            count: `${data?.engineers || ''}+`,
             desc: 'Skilled Engineers and Technical Experts'
         }
     ]
@@ -161,6 +163,13 @@ export function DownloadPortfolio() {
 
 
 export default function AboutUs() {
+    const { data, isLoading, isError, error } = useQuery({
+        queryKey: ['aboutus'],
+        queryFn: () => {
+            return axios.get('https://nexus-consults.com/api/public/about')
+        }
+    })
+
     return <>
         <PageSEO
             title="About NEXUS — Engineering Excellence Since 1991"
@@ -170,8 +179,8 @@ export default function AboutUs() {
         <HeroSection />
         <div className="bg-bg2 bg-cover bg-fixed bg-center">
             <WhoWeAre />
-            <VisionAndMission />
-            <OurExpertise />
+            <VisionAndMission data={data?.data?.data[0]} />
+            <OurExpertise data={data?.data?.data[0]} />
             <WhyChooseUs />
             <DownloadPortfolio />
         </div>

@@ -5,6 +5,8 @@ import BlogCard from '../reusableComponents/BlogCard';
 import serviceimg from '../assets/images/services/marine.png'
 import PaginationCarousel from '../reusableComponents/PaginationCarousel';
 import SectionHeading from '../reusableComponents/SectionHeading';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 
 export function HeroSection() {
     return <>
@@ -12,62 +14,14 @@ export function HeroSection() {
     </>
 }
 
-export function AllBlogsPagination() {
+export function AllBlogsPagination({ blogs, isLoading }) {
 
-    const blogs = [
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            author: 'youssef lawendy',
-            date: 'September 11,2025',
-            slug: 'Marine-&-Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            author: 'youssef lawendy',
-            date: 'September 11,2025',
-            slug: 'Marine-&-Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            author: 'youssef lawendy',
-            date: 'September 11,2025',
-            slug: 'Marine-&-Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            author: 'youssef lawendy',
-            date: 'September 11,2025',
-            slug: 'Marine-&-Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            author: 'youssef lawendy',
-            date: 'September 11,2025',
-            slug: 'Marine-&-Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-
-    ]
 
     const navigate = useNavigate();
     return (
         <div className="bg-bg2 bg-cover bg-center bg-fixed">
             <div className="container">
-                <SectionHeading title={'All Blogs'}/>
+                <SectionHeading title={'All Blogs'} />
 
                 <PaginationCarousel
                     items={blogs}
@@ -83,8 +37,16 @@ export function AllBlogsPagination() {
 }
 
 export default function AllBlogs() {
+    const { data: blogs, isLoading, isError, error } = useQuery({
+        queryKey: ['blogs'],
+        queryFn: () => {
+            return axios.get('https://nexus-consults.com/api/public/blogs');
+        }
+    })
+
+
     return <>
         <HeroSection />
-        <AllBlogsPagination />
+        <AllBlogsPagination blogs={blogs?.data?.data} isLoading={isLoading} />
     </>
 }

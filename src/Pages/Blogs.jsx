@@ -120,6 +120,6 @@ export default function Blogs() {
     return <>
         <HeroSection />
         {blogs?.data?.data && blogs?.data?.data.length > 0 && <LatestAndTopBlogs blogs={blogs?.data?.data} isLoading={isLoading} />}
-        {blogs?.data?.data && blogs?.data?.data.length > 0 && <RecentBlogs blogs={[...blogs?.data?.data]} isLoading={isLoading} />}
+        {blogs?.data?.data && blogs?.data?.data.length > 0 && <RecentBlogs blogs={blogs?.data?.data} isLoading={isLoading} />}
     </>
 }

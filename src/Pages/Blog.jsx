@@ -109,7 +109,7 @@ export function HeroSection({ data, view }) {
     if (!view) return <HeroSectionSkeleton />;
 
     return (
-        <div className="bg-cover" style={{ backgroundImage: `url(${data?.cover_photo})` }}  >
+        <div className="bg-cover bg-center" style={{ backgroundImage: `url(${data?.cover_photo})` }}  >
             <div className="bg-black/85 pt-20">
                 <div className="flex flex-col lg:flex-row gap-8 container text-white">
                     <div className="lg:w-1/2 font-bold">
@@ -304,7 +304,7 @@ export default function Blog() {
                 <HeroSection data={post?.data?.data} view={!isLoading} />
 
                 <div className="relative container w-full">
-                    <div className="flex flex-col lg:flex-row justify-between gap-4">
+                    <div className="flex flex-col lg:flex-row-reverse justify-between gap-4 lg:gap-16">
                         {/* Mobile Table of Contents */}
                         {isLoading ? (
                             <div className="lg:hidden">
@@ -381,7 +381,7 @@ export default function Blog() {
                             post?.data?.data?.headings?.length > 0 && (
                                 <div className="w-1/4 lg:block hidden">
                                     <div className="sticky top-[100px]">
-                                        <div className="flex flex-col gap-2 max-h-[calc(100vh-150px)] overflow-y-auto bg-white p-4 rounded-lg border border-gray-200 shadow-md">
+                                        <div className="flex flex-col gap-2 max-h-[calc(100vh-150px)] overflow-y-auto overscroll-none bg-white p-4 rounded-s-xl border border-gray-200 shadow-md">
                                             <h4 className="font-semibold text-gray-800 mb-2 sticky top-0 pt-5 pb-2">
                                                 Table of Contents
                                             </h4>
@@ -414,8 +414,8 @@ export default function Blog() {
                     </>
                 ) : (
                     <>
-                        <div className="w-full container h-[1px] bg-gray-300 mt-10"></div>
-                        <div className="flex justify-between items-center">
+                        <div className="w-full container h-[1px] bg-gray-300 !p-0 mt-10"></div>
+                        <div className="flex container !p-0 justify-between items-center">
                             <div className="flex flex-col gap-3">
                                 <div className="flex items-center gap-3">
                                     <div className="w-12 aspect-square rounded-full overflow-hidden">

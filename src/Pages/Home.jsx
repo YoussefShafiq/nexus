@@ -6,10 +6,12 @@ import serviceimg from '../assets/images/services/marine.png'
 import { PiCertificate } from 'react-icons/pi';
 import { RiBox3Line } from 'react-icons/ri';
 import { FaLeaf } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ImageIcon } from 'lucide-react';
 import SectionHeading from '../reusableComponents/SectionHeading';
 import { PageSEO } from '../seo/SEO';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 
 export function HeroSection() {
     return <>
@@ -29,7 +31,7 @@ export function HeroSection() {
     </>
 }
 
-export function OurServices() {
+export function OurServices({ services, isLoading }) {
     const [slidesToShow, setSlidesToShow] = useState(4);
 
     useEffect(() => {
@@ -59,44 +61,15 @@ export function OurServices() {
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 2500,
         cssEase: "linear",
         adaptiveHeight: true,
         variableWidth: false
     };
 
-    const services = [
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-        {
-            img: serviceimg,
-            title: 'Marine & Offshore',
-            subtitle: 'Reliable solutions for harsh marine environments',
-            desc: 'Robust solutions for fixed platforms, jetties, and dredging, engineered to withstand harsh marine environments and optimize offshore operations.'
-        },
-    ]
+    const navigate = useNavigate()
+
+
 
     return <>
         <div className="bg-bg2 bg-no-repeat bg-cover bg-fixed">
@@ -105,15 +78,15 @@ export function OurServices() {
                 <SectionHeading title="Our Services" subtitle="Precision engineering solutions for complex industrial challenges" />
 
                 <Slider {...settings} className='mb-14'>
-                    {services.map((s, index) => (
-                        <div key={index} className='px-2 sm:px-3 py-8'>
+                    {services?.map((s, index) => (
+                        <div onClick={() => navigate('/services/' + s.slug)} key={index} className='px-2 sm:px-3 py-8'>
                             <div className="bg-primary backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
                                 <div className="overflow-hidden rounded-md">
-                                    <img src={s.img} alt={s.title} className='hover:scale-105 transition-all duration-300 w-full' />
+                                    <img src={'https://nexus-consults.com/storage/' + s.cover_photo} alt={s.title} className='hover:scale-105 transition-all duration-300 w-full' />
                                 </div>
                                 <div className="p-3 sm:p-5">
                                     <h2 className='font-bold text-xl sm:text-2xl'>{s.title}</h2>
-                                    <p className='text-xs sm:text-sm opacity-90'>{s.subtitle}</p>
+                                    <p className='text-xs sm:text-sm opacity-90'>{s.description}</p>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +143,7 @@ export function Aboutus() {
     </>
 }
 
-export function Testimonials() {
+export function Testimonials({ testimonials, isLoading }) {
 
     var settings = {
         dots: false,
@@ -186,23 +159,6 @@ export function Testimonials() {
         variableWidth: false
     };
 
-    const testimonials = [
-        {
-            name: 'Amr Shouman',
-            img: serviceimg,
-            sector: 'Oil & Gas Sector',
-            // title: 'Project Manager',
-            desc: 'NEXUS delivered API 650-compliant LPG storage terminals ahead of schedule, with zero non-conformities during ADNOC inspections'
-        },
-        {
-            name: 'Amr Shouman',
-            img: serviceimg,
-            sector: 'Oil & Gas Sector',
-            title: 'Project Manager',
-            desc: 'NEXUS delivered API 650-compliant LPG storage terminals ahead of schedule, with zero non-conformities during ADNOC inspections'
-        },
-
-    ]
 
     return <>
         <div className="bg-bg2 bg-no-repeat bg-cover bg-fixed">
@@ -211,14 +167,14 @@ export function Testimonials() {
                 <SectionHeading title="Testimonials" />
 
                 <Slider {...settings} className=' lg:w-2/3 m-auto rounded-lg overflow-hidden '>
-                    {testimonials.map((s, index) => (
+                    {testimonials?.map((s, index) => (
                         <div key={index} className='px-2 sm:px-3 pb-8 '>
                             <div className="bg-primary min-h-[350px] rounded-lg p-8 flex flex-col items-center justify-between text-center text-white cursor-pointer mx-1 sm:mx-0 gap-3">
                                 <div className="flex flex-col items-center gap-5">
                                     <div className="overflow-hidden rounded-full w-24 aspect-square ">
-                                        <img src={s.img} alt={s.title} className='hover:scale-105 transition-all w-full' />
+                                        <img src={s.image} alt={s.title} className='hover:scale-105 transition-all w-full' />
                                     </div>
-                                    <h2 className='font-base md:text-lg font-semibold italic'>{s.desc}</h2>
+                                    <h2 className='font-base md:text-lg font-semibold italic'>{s.message}</h2>
                                 </div>
                                 <div className="">
                                     <h2 className='font-bold text-xl sm:text-2xl'>{s.name}</h2>
@@ -234,49 +190,11 @@ export function Testimonials() {
     </>
 }
 
-export function BestProjects() {
+export function BestProjects({ projects, isLoading }) {
 
     const navigate = useNavigate()
 
-    const projects = [
-        {
-            id: 1,
-            img: serviceimg,
-            name: 'Code-Compliant Engineering',
-            slug: 'project-1',
-        },
-        {
-            id: 1,
-            img: serviceimg,
-            name: 'Code-Compliant Engineering',
-            slug: 'project-1',
-        },
-        {
-            id: 1,
-            img: serviceimg,
-            name: 'Code-Compliant Engineering',
-            slug: 'project-1',
-        },
-        {
-            id: 1,
-            img: serviceimg,
-            name: 'Code-Compliant Engineering',
-            slug: 'project-1',
-        },
-        {
-            id: 1,
-            img: serviceimg,
-            name: 'Code-Compliant Engineering',
-            slug: 'project-1',
-        },
-        {
-            id: 1,
-            img: serviceimg,
-            name: 'Code-Compliant Engineering',
-            slug: 'project-1',
-        },
 
-    ]
 
     return <>
         <div className="bg-bridgeBg bg-no-repeat bg-cover bg-fixed">
@@ -284,23 +202,23 @@ export function BestProjects() {
                 <SectionHeading title="Best Projects" subtitle="Delivering excellence in engineering across industries" />
 
                 <div className="flex flex-col md:flex-row flex-wrap mb-5">
-                    {projects.map((p, i) => (
+                    {projects?.slice(0, 5).map((p, i) => (
                         <div
                             key={p.id}
                             className="w-full md:w-1/3 p-3"
                             data-aos="fade-up"
                             data-aos-delay={(i % 3) * 150}
                         >
-                            <div className="relative h-56 rounded-lg overflow-hidden group cursor-pointer bg-primary/40 backdrop-blur-sm" onClick={() => { navigate(`/project/${p.slug}`) }} >
+                            <div className="relative h-56 rounded-lg overflow-hidden group cursor-pointer bg-primary/40 backdrop-blur-sm" onClick={() => { navigate(`/projects/${p.slug}`) }} >
                                 <ImageIcon className='absolute -z-10 top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 text-white/50' size={50} />
                                 <img
-                                    src={p.img}
-                                    alt={p.name}
+                                    src={'https://nexus-consults.com/storage/' + p.cover_photo}
+                                    alt={p.title}
                                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <h2 className="text-white font-bold text-lg text-center px-2">
-                                        {p.name}
+                                        {p.title}
                                     </h2>
                                 </div>
                             </div>
@@ -314,6 +232,14 @@ export function BestProjects() {
 }
 
 export default function Home() {
+
+    const { data, isLoading, isError, error } = useQuery({
+        queryKey: ['home'],
+        queryFn: () => {
+            return axios.get('https://nexus-consults.com/api/public/home')
+        }
+    })
+
     return <>
         <PageSEO
             title="Nexus — Engineering Consultancy"
@@ -321,9 +247,9 @@ export default function Home() {
             image="/Logo.png"
         />
         <HeroSection />
-        <OurServices />
+        <OurServices services={data?.data?.data?.services} />
         <Aboutus />
-        <Testimonials />
-        <BestProjects />
+        <Testimonials testimonials={data?.data?.data?.testimonials} />
+        <BestProjects projects={data?.data?.data?.projects} />
     </>
 }
