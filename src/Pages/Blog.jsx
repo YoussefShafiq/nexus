@@ -16,7 +16,7 @@ const formatDate = (dateString) => {
 
 // Loading Skeleton Components
 const HeroSectionSkeleton = () => (
-    <div className="flex flex-col lg:flex-row gap-8 animate-pulse">
+    <div className="flex flex-col lg:flex-row gap-8 animate-pulse container mt-40">
         <div className="lg:w-1/2 space-y-4">
             <div className="h-6 w-32 bg-gray-200 rounded"></div>
             <div className="h-12 w-full bg-gray-200 rounded"></div>
@@ -313,7 +313,7 @@ export default function Blog() {
                         ) : (
                             <div className="lg:hidden">
                                 <button
-                                    className="font-semibold text-gray-800 bg-white flex justify-between w-full items-center hover:text-lightBlue"
+                                    className="font-semibold text-gray-800 bg-white/50 backdrop-blur-lg p-3 rounded-xl flex justify-between w-full items-center hover:text-lightBlue"
                                     onClick={() => { setTableOfContent(!tableOfContent) }}
                                 >
                                     Table of Contents
