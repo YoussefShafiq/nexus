@@ -66,6 +66,7 @@ export function LatestAndTopBlogs({ blogs, isLoading }) {
             <div className="lg:w-2/5 space-y-8">
                 <h2 className='capitalize text-3xl font-bold'>top posts</h2>
                 <div ref={topBlogsRef} className="flex flex-col gap-5">
+                    {blogs.filter((b, i) => i !== 0).length === 0 && !isLoading && <p className='text-black/60' >No top posts available at the moment.</p>}
                     {blogs.filter((b) => b.category == 'trending').map((b, i) => (<>
                         <div className="bg-white rounded-xl flex gap-4 p-3 cursor-pointer shadow-lg transition-all duration-300 group" key={i} content={`Read blog about ${b.title}`}>
                             <div className="w-1/3">

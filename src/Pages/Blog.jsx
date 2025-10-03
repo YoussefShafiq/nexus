@@ -381,24 +381,26 @@ export default function Blog() {
                             post?.data?.data?.headings?.length > 0 && (
                                 <div className="w-1/4 lg:block hidden">
                                     <div className="sticky top-[100px]">
-                                        <div className="flex flex-col gap-2 max-h-[calc(100vh-150px)] overflow-y-auto overscroll-none bg-white p-4 rounded-s-xl border border-gray-200 shadow-md">
-                                            <h4 className="font-semibold text-gray-800 mb-2 sticky top-0 pt-5 pb-2">
+                                        <div className="flex flex-col gap-2 max-h-[calc(100vh-150px)] overflow-hidden bg-white/40 backdrop-blur-lg p-4 rounded-xl border border-gray-200 shadow-md">
+                                            <h4 className="font-semibold text-gray-800  sticky top-0 py-2">
                                                 Table of Contents
                                             </h4>
-                                            {post?.data?.data?.headings?.map((h, i) => (
-                                                <button
-                                                    key={i}
-                                                    onClick={(e) => scrollToHeading(h.id, e)}
-                                                    className={`${h.level == 1
-                                                        ? 'ps-0 text-base font-bold text-gray-900 hover:text-hoverText'
-                                                        : h.level == 2
-                                                            ? 'ps-3 text-sm font-semibold text-gray-700 hover:text-hoverText'
-                                                            : 'ps-6 text-sm lg:font-normal font-medium text-gray-500 hover:text-gray-700'
-                                                        } transition-colors duration-200 py-1 block border-l-2 border-transparent hover:border-hoverText pl-2 text-left cursor-pointer bg-transparent border-none`}
-                                                >
-                                                    {h.text}
-                                                </button>
-                                            ))}
+                                            <div className="overflow-y-auto overscroll-none flex flex-col gap-2">
+                                                {post?.data?.data?.headings?.map((h, i) => (
+                                                    <button
+                                                        key={i}
+                                                        onClick={(e) => scrollToHeading(h.id, e)}
+                                                        className={`${h.level == 1
+                                                            ? 'ps-0 text-base font-bold text-gray-900 hover:text-hoverText'
+                                                            : h.level == 2
+                                                                ? 'ps-3 text-sm font-semibold text-gray-700 hover:text-hoverText'
+                                                                : 'ps-6 text-sm lg:font-normal font-medium text-gray-500 hover:text-gray-700'
+                                                            } transition-colors duration-200 py-1 block border-l-2 border-transparent hover:border-hoverText pl-2 text-left cursor-pointer bg-transparent border-none`}
+                                                    >
+                                                        {h.text}
+                                                    </button>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
