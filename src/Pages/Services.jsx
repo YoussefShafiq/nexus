@@ -43,12 +43,12 @@ export function ServicesPagination() {
                                         src={s.cover_photo}
                                         alt={s.title}
                                         title={s.title}
-                                        className="hover:scale-105 transition-all duration-300 w-full h-52 object-cover"
+                                        className="hover:scale-105 transition-all duration-300 w-full h-44 object-cover"
                                     />
                                 </div>
                                 <div className="p-3 sm:p-5">
                                     <h2 className="font-bold text-xl sm:text-2xl">{s.title}</h2>
-                                    <p className="text-xs sm:text-sm opacity-50">{s.description}</p>
+                                    <p className='text-xs sm:text-sm opacity-90'>{s.description.slice(0, 60)} {s.description.length > 59 && '...'}</p>
                                 </div>
                             </div>
                         )}

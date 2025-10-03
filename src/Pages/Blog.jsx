@@ -131,7 +131,7 @@ export function HeroSection({ data, view }) {
                             <img
                                 src={data?.cover_photo}
                                 alt='cover photo'
-                                className='w-full max-h-[500px] object-contain'
+                                className='w-full max-h-[500px] object-contain rounded-xl'
                             />
                         </div>
                     </div>

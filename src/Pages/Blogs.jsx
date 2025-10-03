@@ -69,15 +69,15 @@ export function LatestAndTopBlogs({ blogs, isLoading }) {
                     {blogs.filter((b, i) => i !== 0).length === 0 && !isLoading && <p className='text-black/60' >No top posts available at the moment.</p>}
                     {blogs.filter((b) => b.category == 'trending').map((b, i) => (<>
                         <div className="bg-white rounded-xl flex gap-4 p-3 cursor-pointer shadow-lg transition-all duration-300 group" key={i} content={`Read blog about ${b.title}`}>
-                            <div className="w-1/3">
-                                <div className="rounded-lg overflow-hidden lg:aspect-video">
-                                    <img src={b.img} alt={b.title} title={b.title} content={b.title} className='w-full h-auto group-hover:scale-105 transition-all duration-300' />
+                            <div className="w-1/3 flex items-center">
+                                <div className="rounded-lg overflow-hidden aspect-video">
+                                    <img src={b.cover_photo} alt={b.title} title={b.title} content={b.title} className='w-full h-full object-cover group-hover:scale-105 transition-all duration-300' />
                                 </div>
                             </div>
                             <div className="w-2/3 flex flex-col justify-start ">
                                 <h3 className='text-md lg:text-xl font-bold'>{b.title}</h3>
                                 <div className="flex items-center ">
-                                    <p className='text-black/50 text-xs' >{b.created_at}</p>
+                                    <p className='text-black/50 text-xs' >{b.created_at.slice(0, 10)}</p>
                                     <span className='text-black/50' ><Dot /></span>
                                     <p className='text-primary text-xs font-bold capitalize' >{b.author?.name}</p>
                                 </div>
