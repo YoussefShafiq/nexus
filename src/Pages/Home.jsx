@@ -199,7 +199,7 @@ export function BestProjects({ projects, isLoading }) {
     return <>
         <div className="bg-bridgeBg bg-no-repeat bg-cover bg-fixed">
             <div className="container">
-                <SectionHeading title="Best Projects" subtitle="Delivering excellence in engineering across industries" />
+                <SectionHeading title="Latest Projects" subtitle="Delivering excellence in engineering across industries" />
 
                 <div className="flex flex-col md:flex-row flex-wrap mb-5">
                     {projects?.slice(0, 5).map((p, i) => (
