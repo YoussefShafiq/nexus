@@ -42,12 +42,16 @@ export default function Navbar() {
             path: '/home',
         },
         {
-            name: 'Services',
-            path: '/services',
-        },
-        {
             name: 'About us',
             path: '/about-us',
+        },
+        {
+            name: 'Contact',
+            path: '/contact',
+        },
+        {
+            name: 'Services',
+            path: '/services',
         },
         {
             name: 'Projects',
@@ -56,10 +60,6 @@ export default function Navbar() {
         {
             name: 'Blogs',
             path: '/blogs',
-        },
-        {
-            name: 'Contact',
-            path: '/contact',
         },
         {
             name: 'Jobs',

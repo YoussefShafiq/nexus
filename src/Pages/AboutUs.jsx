@@ -150,50 +150,17 @@ export function WhyChooseUs() {
     </>
 }
 
-export function CanvaEmbed() {
-    const handleDownloadClick = () => {
-        // This would open the Canva page in a new tab where users might find download options
-        window.open(
-            'https://export-download.canva.com/3auf4/DAGRmX3auf4/38/0-2274798042399091228.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20251002%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251002T221056Z&X-Amz-Expires=85392&X-Amz-Signature=5427b57ee4f743cb0cefe93c7a8381d316d12dfc52c47ace295a380745553066&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27Youssef%2520Shafek.pdf&response-expires=Fri%2C%2003%20Oct%202025%2021%3A54%3A08%20GMT',
-            '_blank'
-        );
-    };
-    return (
-        <div className="mt-6 mb-2.5">
-            <div className="flex justify-center mb-8">
-                <button onClick={handleDownloadClick} className={`bg-primary hover:bg-white hover:text-primary transition-all duration-300 ease-in-out px-8 py-3 text-xl text-white font-bold w-full lg:w-fit rounded-lg capitalize`} >download now</button>
-            </div>
-            {/* Container with aspect ratio */}
-
-            <div className="relative w-full h-0 pt-[25%] pb-0 shadow-lg rounded-lg overflow-hidden will-change-transform"
-                style={{
-                    boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)'
-                }}
-            >
-                <iframe
-                    loading="lazy"
-                    className="absolute w-full h-full top-0 left-0 border-none p-0 m-0"
-                    src="https://www.canva.com/design/DAGRmX3auf4/n2BNPn9TulhAwe0ad-acbw/view?embed"
-                    allowFullScreen
-                    title="Youssef Shafek's Canva Design"
-                />
-            </div>
 
 
-        </div>
-    );
-};
+export function DownloadPortfolio({ data }) {
 
-
-export function DownloadPortfolio() {
     return <>
         <div className="container">
             <SectionHeading title="Download Our Portfolio" pbFlag={false} />
             <p className='text-lg lg:w-4/5 text-center m-auto' >Get a closer look at our engineering expertise, featured projects, and capabilities. Download our company portfolio to explore how we deliver reliable, innovative solutions.</p>
-            {/* <div className="flex justify-center mt-8">
+            <a href={data?.portfolio} className="flex justify-center mt-8">
                 <button className={`bg-primary hover:bg-white hover:text-primary transition-all duration-300 ease-in-out px-8 py-3 text-xl text-white font-bold w-full lg:w-fit rounded-lg capitalize`} >download now</button>
-            </div> */}
-            <CanvaEmbed />
+            </a>
         </div>
     </>
 }
@@ -216,10 +183,10 @@ export default function AboutUs() {
         <HeroSection />
         <div className="bg-bg2 bg-cover bg-fixed bg-center">
             <WhoWeAre />
-            <VisionAndMission data={data?.data?.data[0]} />
-            <OurExpertise data={data?.data?.data[0]} />
+            <VisionAndMission data={data?.data?.data} />
+            <OurExpertise data={data?.data?.data} />
             <WhyChooseUs />
-            <DownloadPortfolio />
+            <DownloadPortfolio data={data?.data?.data} />
         </div>
     </>
 }
