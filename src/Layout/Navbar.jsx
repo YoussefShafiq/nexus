@@ -46,8 +46,9 @@ export default function Navbar() {
             path: '/about-us',
         },
         {
-            name: 'Contact',
-            path: '/contact',
+            name: 'Jobs',
+            path: '/jobs',
+            dot: jobs?.data?.data?.length > 0
         },
         {
             name: 'Services',
@@ -62,9 +63,8 @@ export default function Navbar() {
             path: '/blogs',
         },
         {
-            name: 'Jobs',
-            path: '/jobs',
-            dot: jobs?.data?.data?.length > 0
+            name: 'Contact',
+            path: '/contact',
         },
     ];
 
@@ -136,9 +136,10 @@ export default function Navbar() {
                             <NavLink
                                 key={index}
                                 to={item.path}
-                                className={`inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50`}
+                                className={`relative inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 border-transparent hover:text-customBlue opacity-50`}
                             >
                                 {item.name}
+                                {item.dot && <div className="absolute w-1.5 h-1.5 bg-red-500 rounded-full top-0 right-0"></div>}
                             </NavLink>
                         ))}
                     </div>
@@ -158,7 +159,7 @@ export default function Navbar() {
                             <NavLink
                                 key={index}
                                 to={item.path}
-                                className={`relative inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 ext-gray-700 border-transparent hover:text-customBlue opacity-50`}
+                                className={`relative inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 border-transparent hover:text-customBlue opacity-50`}
                             >
                                 {item.name}
                                 {item.dot && <div className="absolute w-1.5 h-1.5 bg-red-500 rounded-full top-0 right-0"></div>}
