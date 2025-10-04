@@ -155,10 +155,10 @@ export function DownloadPortfolio({ data }) {
 
     return <>
         <div className="container">
-            <SectionHeading title="Download Our Portfolio" pbFlag={false} />
-            <p className='text-lg lg:w-4/5 text-center m-auto' >Get a closer look at our engineering expertise, featured projects, and capabilities. Download our company portfolio to explore how we deliver reliable, innovative solutions.</p>
+            <SectionHeading title="View Our Portfolio" pbFlag={false} />
+            <p className='text-lg lg:w-4/5 text-center m-auto' >Get a closer look at our engineering expertise, featured projects, and capabilities. View our company portfolio to explore how we deliver reliable, innovative solutions.</p>
             <a href={data?.portfolio} className="flex justify-center mt-8">
-                <button className={`bg-primary hover:bg-white hover:text-primary transition-all duration-300 ease-in-out px-8 py-3 text-xl text-white font-bold w-full lg:w-fit rounded-lg capitalize`} >download now</button>
+                <button className={`bg-primary hover:bg-white hover:text-primary transition-all duration-300 ease-in-out px-8 py-3 text-xl text-white font-bold w-full lg:w-fit rounded-lg capitalize`} >view now</button>
             </a>
         </div>
     </>
