@@ -24,7 +24,7 @@ export default function Footer() {
                     </div>
                     <p className='text-black/40 text-xs hidden lg:block'>&copy; 2024 NEXUS. All rights reserved.</p>
                     <div className="flex items-center gap-2 text-primary text-2xl w-[50px]">
-                        <a href="https://wa.me/+201284222917" target='_blank' rel='noreferrer'>
+                        <a href="https://wa.me/+201143323484" target='_blank' rel='noreferrer'>
                             <FaWhatsapp className='hover:text-green-100 transition-colors duration-300 cursor-pointer hover:bg-green-500 rounded-full hover:shadow-lg hover:scale-105' />
                         </a>
                         <a href="https://www.linkedin.com/company/nexus-for-engineering-consultancy-bim-solutions">

@@ -18,7 +18,7 @@ export function ContactForm() {
     const contactData = {
         email: 'support@nexus-consults.com',
         phone: '+20 1284222917',
-        whatsapp: 'https://wa.me/+201284222917'
+        whatsapp: 'https://wa.me/+201143323484'
     }
 
     const [formData, setFormData] = useState({
