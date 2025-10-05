@@ -1,0 +1,8 @@
+# robots.txt for Nexus
+User-agent: *
+Allow: /
+
+# Disallow internal build artifacts
+Disallow: /dist/
+
+Sitemap: https://www.example.com/sitemap.xml
