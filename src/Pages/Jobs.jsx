@@ -21,7 +21,7 @@ export function AvilableJobs() {
     const { data: jobs, isLoading, isError, error } = useQuery({
         queryKey: ['jobs'],
         queryFn: () => {
-            return axios.get('https://nexus-consults.com/api/public/jobs')
+            return axios.get('https://nexus-consults.com/api/public/api/public/jobs')
         }
     })
 

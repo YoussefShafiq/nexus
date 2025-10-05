@@ -17,7 +17,7 @@ export function ServicesPagination() {
     const { data: services, isLoading, isError } = useQuery({
         queryKey: 'services',
         queryFn: () => {
-            return axios.get('https://nexus-consults.com/api/public/services')
+            return axios.get('https://nexus-consults.com/api/public/api/public/services')
         }
     })
 

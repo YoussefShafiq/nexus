@@ -32,7 +32,7 @@ export default function Navbar() {
     const { data: jobs } = useQuery({
         queryKey: ['jobs'],
         queryFn: () => {
-            return axios.get('https://nexus-consults.com/api/public/jobs')
+            return axios.get('https://nexus-consults.com/api/public/api/public/jobs')
         }
     })
 

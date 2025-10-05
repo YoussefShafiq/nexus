@@ -93,7 +93,7 @@ export function JobDetails({ job, isLoading }) {
                 });
 
                 await axios.post(
-                    `https://nexus-consults.com/api/public/jobs/${job.slug}/apply`,
+                    `https://nexus-consults.com/api/public/api/public/jobs/${job.slug}/apply`,
                     formData,
                     {
                         headers: {
@@ -353,7 +353,7 @@ export default function JobApplication() {
     const { data: job, isLoading, isError, error } = useQuery({
         queryKey: ['job', jobSlug],
         queryFn: () => {
-            return axios.get(`https://nexus-consults.com/api/public/jobs/${jobSlug}`)
+            return axios.get(`https://nexus-consults.com/api/public/api/public/jobs/${jobSlug}`)
         },
         enabled: !!jobSlug, // Only run if jobSlug exists
     })

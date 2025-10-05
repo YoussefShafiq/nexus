@@ -43,7 +43,7 @@ export default function project() {
     const { data: project, isLoading, isError, error } = useQuery({
         queryKey: ['project', projectSlug],
         queryFn: () => {
-            return axios.get(`https://nexus-consults.com/api/public/projects/${projectSlug}`)
+            return axios.get(`https://nexus-consults.com/api/public/api/public/projects/${projectSlug}`)
         }
     })
     return <>

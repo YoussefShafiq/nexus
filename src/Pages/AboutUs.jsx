@@ -169,7 +169,7 @@ export default function AboutUs() {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['aboutus'],
         queryFn: () => {
-            return axios.get('https://nexus-consults.com/api/public/about')
+            return axios.get('https://nexus-consults.com/api/public/api/public/about')
         }
     })
 

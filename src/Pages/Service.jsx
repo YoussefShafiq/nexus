@@ -43,7 +43,7 @@ export default function Service() {
     const { data: service, isLoading, isError, error } = useQuery({
         queryKey: ['service', serviceSlug],
         queryFn: () => {
-            return axios.get(`https://nexus-consults.com/api/public/services/${serviceSlug}`)
+            return axios.get(`https://nexus-consults.com/api/public/api/public/services/${serviceSlug}`)
         }
     })
     return <>

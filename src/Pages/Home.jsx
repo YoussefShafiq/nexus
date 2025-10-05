@@ -236,7 +236,7 @@ export default function Home() {
     const { data, isLoading, isError, error } = useQuery({
         queryKey: ['home'],
         queryFn: () => {
-            return axios.get('https://nexus-consults.com/api/public/home')
+            return axios.get('https://nexus-consults.com/api/public/api/public/home')
         }
     })
 

@@ -252,7 +252,7 @@ export default function Blog() {
     const { data: post, isLoading, isError, error } = useQuery({
         queryKey: [`post-${blogSlug}`],
         queryFn: () => {
-            return axios.get(`https://nexus-consults.com/api/public/blogs/${blogSlug}`);
+            return axios.get(`https://nexus-consults.com/api/public/api/public/blogs/${blogSlug}`);
         },
         retry: false
     });
