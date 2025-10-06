@@ -82,7 +82,7 @@ export function OurServices({ services, isLoading }) {
                         <div onClick={() => navigate('/services/' + s.slug)} key={index} className='px-2 sm:px-3 py-8'>
                             <div className="bg-primary backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
                                 <div className="overflow-hidden rounded-md h-44 ">
-                                    <img src={'https://nexus-consults.com/storage/' + s.cover_photo} alt={s.title} className='hover:scale-105 transition-all duration-300 w-full h-full object-cover object-center' />
+                                    <img src={s.cover_photo} alt={s.title} className='hover:scale-105 transition-all duration-300 w-full h-full object-cover object-center' />
                                 </div>
                                 <div className="p-3 sm:p-5">
                                     <h2 className='font-bold text-xl sm:text-2xl'>{s.title}</h2>
@@ -212,7 +212,7 @@ export function BestProjects({ projects, isLoading }) {
                             <div className="relative h-56 rounded-lg overflow-hidden group cursor-pointer bg-primary/40 backdrop-blur-sm" onClick={() => { navigate(`/projects/${p.slug}`) }} >
                                 <ImageIcon className='absolute -z-10 top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 text-white/50' size={50} />
                                 <img
-                                    src={'https://nexus-consults.com/storage/' + p.cover_photo}
+                                    src={p.cover_photo}
                                     alt={p.title}
                                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
