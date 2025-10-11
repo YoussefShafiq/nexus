@@ -76,22 +76,85 @@ export function OurServices({ services, isLoading }) {
 
             <div className="container">
                 <SectionHeading title="Our Services" subtitle="Precision engineering solutions for complex industrial challenges" />
-
-                <Slider {...settings} className='mb-14'>
-                    {services?.map((s, index) => (
-                        <div onClick={() => navigate('/services/' + s.slug)} key={index} className='px-2 sm:px-3 py-8'>
-                            <div className="bg-primary backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
-                                <div className="overflow-hidden rounded-md h-44 ">
-                                    <img src={s.cover_photo} alt={s.title} className='hover:scale-105 transition-all duration-300 w-full h-full object-cover object-center' />
-                                </div>
-                                <div className="p-3 sm:p-5">
-                                    <h2 className='font-bold text-xl sm:text-2xl'>{s.title}</h2>
-                                    <p className='text-xs sm:text-sm opacity-90'>{s.description.slice(0, 60)} {s.description.length > 59 && '...'}</p>
-                                </div>
+                {isLoading ? <div className='grid lg:grid-cols-4 grid-cols-1 gap-5 mb-14'>
+                    {/* Skeleton Card 1 */}
+                    <div className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
+                        <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
+                        </div>
+                        <div className="p-3 sm:p-5 space-y-3">
+                            <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+                            <div className="space-y-2">
+                                <div className="h-3 bg-gray-200 rounded w-full"></div>
+                                <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+                                <div className="h-3 bg-gray-200 rounded w-4/6"></div>
                             </div>
                         </div>
-                    ))}
-                </Slider>
+                    </div>
+
+                    {/* Skeleton Card 2 */}
+                    <div className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
+                        <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
+                        </div>
+                        <div className="p-3 sm:p-5 space-y-3">
+                            <div className="h-6 bg-gray-200 rounded w-4/5"></div>
+                            <div className="space-y-2">
+                                <div className="h-3 bg-gray-200 rounded w-full"></div>
+                                <div className="h-3 bg-gray-200 rounded w-3/4"></div>
+                                <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Skeleton Card 3 */}
+                    <div className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
+                        <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
+                        </div>
+                        <div className="p-3 sm:p-5 space-y-3">
+                            <div className="h-6 bg-gray-200 rounded w-2/3"></div>
+                            <div className="space-y-2">
+                                <div className="h-3 bg-gray-200 rounded w-full"></div>
+                                <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+                                <div className="h-3 bg-gray-200 rounded w-1/2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Skeleton Card 4 */}
+                    <div className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
+                        <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
+                        </div>
+                        <div className="p-3 sm:p-5 space-y-3">
+                            <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+                            <div className="space-y-2">
+                                <div className="h-3 bg-gray-200 rounded w-full"></div>
+                                <div className="h-3 bg-gray-200 rounded w-4/5"></div>
+                                <div className="h-3 bg-gray-200 rounded w-3/5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> :
+
+
+                    <Slider {...settings} className='mb-14'>
+                        {services?.map((s, index) => (
+                            <div onClick={() => navigate('/services/' + s.slug)} key={index} className='px-2 sm:px-3 py-8'>
+                                <div className="bg-primary backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
+                                    <div className="overflow-hidden rounded-md h-44 ">
+                                        <img src={s.cover_photo} alt={s.title} className='hover:scale-105 transition-all duration-300 w-full h-full object-cover object-center' />
+                                    </div>
+                                    <div className="p-3 sm:p-5">
+                                        <h2 className='font-bold text-xl sm:text-2xl'>{s.title}</h2>
+                                        <p className='text-xs sm:text-sm opacity-90'>{s.description.slice(0, 60)} {s.description.length > 59 && '...'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </Slider>
+                }
                 <PrimaryButton text={'See More'} key={'Services See more button'} path={'/services'} className={'!m-auto block'} />
             </div>
         </div>
@@ -247,9 +310,9 @@ export default function Home() {
             image="/Logo.png"
         />
         <HeroSection />
-        <OurServices services={data?.data?.data?.services} />
+        <OurServices services={data?.data?.data?.services} isLoading={isLoading} />
         <Aboutus />
-        <Testimonials testimonials={data?.data?.data?.testimonials} />
+        {data?.data?.data?.testimonials?.length > 0 && <Testimonials testimonials={data?.data?.data?.testimonials} />}
         <BestProjects projects={data?.data?.data?.projects} />
     </>
 }

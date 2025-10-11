@@ -29,10 +29,10 @@ export default function Layout({ children }) {
             <Footer />
         </div>
         <div className="fixed flex flex-col gap-2 top-2/3 right-0 bg-white/5 backdrop-blur-sm p-2 rounded-lg rounded-r-none text-white/40 text-xl">
-            <a href="https://wa.me/+201143323484" target='_blank' rel='noreferrer'>
+            <a name='whatsapp contact' href="https://wa.me/+201143323484" target='_blank' rel='noreferrer'>
                 <FaWhatsapp className='hover:text-green-100 transition-colors duration-300 cursor-pointer hover:bg-green-500 rounded-full hover:shadow-lg hover:scale-105' />
             </a>
-            <a href="https://www.linkedin.com/company/nexus-for-engineering-consultancy-bim-solutions">
+            <a name='linkedin account' href="https://www.linkedin.com/company/nexus-for-engineering-consultancy-bim-solutions">
                 <FaLinkedin className='hover:text-blue-800 transition-colors duration-300 cursor-pointer hover:bg-white rounded-sm hover:shadow-lg hover:scale-105' />
             </a>
         </div>

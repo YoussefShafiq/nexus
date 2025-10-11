@@ -21,16 +21,17 @@ export function ServiceContent({ service }) {
                 {service?.sections.map((s, i) => (
                     <>
                         <div className="flex flex-col w-full lg:flex-row gap-8">
-                            <div className={`content ${s.image ? 'w-2/3' : 'w-full'} `}
+                            <div className={`content ${s.image ? 'w-[60%]' : 'w-full'} `}
                                 dangerouslySetInnerHTML={{ __html: s.content || '' }}
                             >
                             </div>
-                            {s.image && <div className="w-1/3">
+                            {s.image && <div className="lg:w-[40%] w-full">
                                 <img src={s.image} alt={s.title} className='rounded-xl' />
                             </div>}
                         </div>
                     </>
                 ))}
+
             </div>
         </div>
 

@@ -31,6 +31,7 @@ export function ProjectContent({ project }) {
                         </div>
                     </>
                 ))}
+
             </div>
         </div>
 

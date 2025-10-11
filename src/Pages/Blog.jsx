@@ -422,7 +422,7 @@ export default function Blog() {
                                 <div className="flex items-center gap-3">
                                     <div className="w-12 aspect-square rounded-full overflow-hidden">
                                         <img
-                                            src={post?.data?.data?.author?.profile_photo}
+                                            src={post?.data?.data?.author?.profile_image}
                                             alt={post?.data?.data?.author?.name}
                                             className="w-full h-full object-cover"
                                         />

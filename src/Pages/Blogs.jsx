@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
 
+
 export function HeroSection() {
     return <>
         <ReusableHeroSection name={'Blogs'} backgroundclass='bg-BlogsHeroImage' />
@@ -45,12 +46,6 @@ export function LatestAndTopBlogs({ blogs, isLoading }) {
         };
     }, []);
 
-
-    console.log('blogs in latest and top', blogs[0]);
-
-
-
-
     return <>
 
         <div className="container flex flex-col lg:flex-row gap-8">
@@ -58,7 +53,6 @@ export function LatestAndTopBlogs({ blogs, isLoading }) {
             <div className="lg:w-3/5 space-y-8">
                 <h2 className='capitalize text-3xl font-bold'>latest post</h2>
                 <div ref={latestBlogRef}>
-                    {console.log('latest blog before card', blogs[0])}
                     <BlogCard blog={blogs[0]} />
                 </div>
             </div>
@@ -107,6 +101,47 @@ export function RecentBlogs({ blogs, isLoading }) {
     </>
 }
 
+export function BlogCardSkeleton() {
+    return (
+        <div className="bg-white rounded-xl p-3 pb-8 flex flex-col gap-3 animate-pulse">
+            <div className="rounded-xl aspect-[16/9] overflow-hidden bg-gray-200 flex items-center justify-center">
+                <div className="w-full h-full bg-gray-300"></div>
+            </div>
+            <div className="flex flex-col gap-3">
+                <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+                <div className="flex items-center gap-2">
+                    <div className="h-4 bg-gray-200 rounded w-20"></div>
+                    <div className="h-4 bg-gray-200 rounded w-4"></div>
+                    <div className="h-4 bg-gray-200 rounded w-16"></div>
+                </div>
+                <div className="h-5 bg-gray-200 rounded w-24"></div>
+            </div>
+        </div>
+    );
+}
+
+// Skeleton for Top Blog Item
+export function TopBlogItemSkeleton() {
+    return (
+        <div className="bg-white rounded-xl flex gap-4 p-3 shadow-lg animate-pulse">
+            <div className="w-1/3 flex items-center">
+                <div className="rounded-lg overflow-hidden aspect-video bg-gray-200 w-full">
+                    <div className="w-full h-full bg-gray-300"></div>
+                </div>
+            </div>
+            <div className="w-2/3 flex flex-col justify-start gap-2">
+                <div className="h-5 bg-gray-200 rounded w-full"></div>
+                <div className="flex items-center gap-1">
+                    <div className="h-3 bg-gray-200 rounded w-16"></div>
+                    <div className="h-3 bg-gray-200 rounded w-3"></div>
+                    <div className="h-3 bg-gray-200 rounded w-12"></div>
+                </div>
+                <div className="h-4 bg-gray-200 rounded w-20"></div>
+            </div>
+        </div>
+    );
+}
+
 
 export default function Blogs() {
     const { data: blogs, isLoading, isError, error } = useQuery({
@@ -120,6 +155,24 @@ export default function Blogs() {
 
     return <>
         <HeroSection />
+        {isLoading && <>
+            <div className="container flex gap-8">
+                <div className="lg:w-3/5 space-y-8">
+                    <h2 className='capitalize text-3xl font-bold'>latest post</h2>
+                    <BlogCardSkeleton />
+                </div>
+                <div className="lg:w-2/5 space-y-8">
+                    <h2 className='capitalize text-3xl font-bold'>Top posts</h2>
+                    <TopBlogItemSkeleton />
+                    <TopBlogItemSkeleton />
+                </div>
+            </div>
+            <div className="container grid lg:grid-cols-3 grid-cols-1 gap-5">
+                <BlogCardSkeleton />
+                <BlogCardSkeleton />
+                <BlogCardSkeleton />
+            </div>
+        </>}
         {blogs?.data?.data && blogs?.data?.data.length > 0 && <LatestAndTopBlogs blogs={blogs?.data?.data} isLoading={isLoading} />}
         {blogs?.data?.data && blogs?.data?.data.length > 0 && <RecentBlogs blogs={blogs?.data?.data} isLoading={isLoading} />}
     </>

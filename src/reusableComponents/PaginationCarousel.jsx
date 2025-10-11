@@ -102,6 +102,7 @@ export default function PaginationCarousel({ items, itemsPerPage = 6, ItemsPerLi
                 className="flex transition-transform duration-300 ease-in-out py-5"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
+                {items?.length === 0 && <div className="text-black/60 text-center w-full">No items to display.</div>}
                 {groupedItems.map((page, pageIndex) => (
                     <div key={pageIndex} className="w-full flex-shrink-0" style={{ ['--per-line']: perLine }}>
                         <div className="flex flex-wrap gap-y-5">
