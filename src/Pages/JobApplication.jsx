@@ -273,7 +273,7 @@ export function JobDetails({ job, isLoading }) {
                                 <div className="text-red-200 text-sm mt-1">{formik.errors.cv}</div>
                             )}
                             {formik.values.cv && (
-                                <div className="text-green-200 text-sm mt-1">
+                                <div className="text-green-200 text-sm mt-1 break-words">
                                     Selected file: {formik.values.cv.name}
                                 </div>
                             )}
