@@ -21,7 +21,7 @@ export function ProjectContent({ project }) {
                 {project?.sections.map((s, i) => (
                     <>
                         <div className="flex flex-col w-full lg:flex-row gap-8">
-                            <div className={`content ${s.image ? 'w-2/3' : 'w-full'} `}
+                            <div className={`content w-full ${s.image ? 'lg:w-2/3' : 'lg:w-full'} `}
                                 dangerouslySetInnerHTML={{ __html: s.content || '' }}
                             >
                             </div>
