@@ -27,6 +27,7 @@ export function ServiceContent({ service }) {
                             </div>
                             {s.image && <div className="lg:w-[40%] w-full">
                                 <img src={s.image} alt={s.title} className='rounded-xl' />
+                                <div className="p-3 text-center font-bold italic text-sm">{s.caption}</div>
                             </div>}
                         </div>
                     </>

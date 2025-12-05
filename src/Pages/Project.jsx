@@ -27,6 +27,7 @@ export function ProjectContent({ project }) {
                             </div>
                             {s.image && <div className="w-1/3">
                                 <img src={s.image} alt={s.title} className='rounded-xl' />
+                                <div className="p-3 text-center font-bold italic text-sm">{s.caption}</div>
                             </div>}
                         </div>
                     </>
