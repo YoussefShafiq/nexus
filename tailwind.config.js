@@ -54,7 +54,7 @@ export default {
         "primary": '#1d4058'
       },
       backgroundImage: {
-        'homeHero': "url('/heroBackground.png')",
+        'homeHero': "url('/01.jpg')",
         'ServicesHeroImage': "url('/ourservicesBackground.png')",
         'BlogsHeroImage': "url('/BlogsHeroSection.png')",
         'bridgeBg': "url('/bridgeBg.png')",

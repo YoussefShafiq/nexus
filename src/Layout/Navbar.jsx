@@ -16,6 +16,16 @@ export default function Navbar() {
     const rightNavRef = useRef(null);
 
 
+    const { data: disciplinesData, isLoading: isDisciplinesLoading } = useQuery({
+        queryKey: ['disciplines'],
+        queryFn: () => {
+            return axios.get('https://nexus-consults.com/api/public/api/public/disciplines');
+        }
+    })
+
+
+
+
     useEffect(() => {
         const left = leftNavRef.current;
         const right = rightNavRef.current;
@@ -53,10 +63,12 @@ export default function Navbar() {
         {
             name: 'Services',
             path: '/services',
+            disciplines: true
         },
         {
             name: 'Projects',
             path: '/projects',
+            disciplines: true
         },
         {
             name: 'Blogs',
@@ -132,7 +144,7 @@ export default function Navbar() {
 
                     {/* Desktop Navigation */}
                     <div ref={leftNavRef} className="hidden md:ml-10 md:flex md:space-x-5  transition-colors text-white">
-                        {navItems.slice(0, 3).map((item, index) => (
+                        {navItems?.slice(0, 3).map((item, index) => (
                             <NavLink
                                 key={index}
                                 to={item.path}
@@ -155,15 +167,29 @@ export default function Navbar() {
 
                     {/* Desktop Navigation */}
                     <div ref={rightNavRef} className="hidden md:ml-10 md:flex md:space-x-5  transition-colors text-white">
-                        {navItems.slice(3, 7).map((item, index) => (
-                            <NavLink
-                                key={index}
-                                to={item.path}
-                                className={`relative inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 border-transparent hover:text-customBlue opacity-50`}
-                            >
-                                {item.name}
-                                {item.dot && <div className="absolute w-1.5 h-1.5 bg-red-500 rounded-full top-0 right-0"></div>}
-                            </NavLink>
+                        {navItems?.slice(3, 7).map((item, index) => (
+                            <div key={index} className="relative group">
+                                <NavLink
+                                    to={item.path}
+                                    className={`relative inline-flex items-center px-1 pt-1 border-b-2 text-base font-normal transition-all duration-300 border-transparent hover:text-customBlue opacity-50`}
+                                >
+                                    {item.name}
+                                    {item.dot && <div className="absolute w-1.5 h-1.5 bg-red-500 rounded-full top-0 right-0"></div>}
+                                </NavLink>
+                                {item.disciplines && disciplinesData?.data?.data && <>
+                                    <div
+                                        initial="hidden"
+                                        animate="visible"
+                                        exit="hidden"
+                                        className="absolute flex flex-col top-full right-0 h-60 max-h-0 w-80 overflow-hidden group-hover:overflow-auto bg-primary group-hover:max-h-52 duration-300 rounded-lg">
+                                        {disciplinesData?.data?.data?.map((d, i) => (<>
+                                            <Link key={i} to={item.path + '?discipline=' + d.title.replace('&', 'AND')} className='hover:bg-white/10 py-1 px-3'>
+                                                {d.title}
+                                            </Link>
+                                        </>))}
+                                    </div>
+                                </>}
+                            </div>
                         ))}
                     </div>
 
@@ -198,7 +224,7 @@ export default function Navbar() {
                         className="md:hidden overflow-hidden "
                     >
                         <motion.div className="px-2 pt-2 pb-3 space-y-1 text-gray-700 transition-colors dark:text-gray-50">
-                            {navItems.map((item, index) => (
+                            {navItems?.map((item, index) => (
                                 <motion.div
                                     key={index}
                                     variants={menuItemVariants}
@@ -221,7 +247,7 @@ export default function Navbar() {
                                 variants={menuItemVariants}
                             >
                                 <motion.div className="flex justify-center space-x-6 py-3">
-                                    {socialIcons.map((social, index) => (
+                                    {socialIcons?.map((social, index) => (
                                         <motion.a
                                             key={index}
                                             href={social.path}

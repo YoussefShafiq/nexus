@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PaginationCarousel from '../reusableComponents/PaginationCarousel';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import ReusableHeroSection from '../reusableComponents/ReusableHeroSection';
 import { PageSEO } from '../seo/SEO';
 import { useQuery } from '@tanstack/react-query';
@@ -98,6 +98,8 @@ export function ProjectsPagination() {
     const [filteredProjects, setFilteredProjects] = useState([])
     const [selectedDiscipline, setSelectedDiscipline] = useState('all')
     const [isMobile, setIsMobile] = useState(false)
+    const [searchParams] = useSearchParams();
+    const discipline = searchParams.get('discipline');
 
     // Detect mobile screen
     useEffect(() => {
@@ -111,9 +113,8 @@ export function ProjectsPagination() {
 
     const { data: disciplinesData, isLoading: isDisciplinesLoading } = useQuery({
         queryKey: ['disciplines'],
-        queryFn: async () => {
-            const response = await axios.get('https://nexus-consults.com/api/public/api/public/disciplines');
-            return response.data;
+        queryFn: () => {
+            return axios.get('https://nexus-consults.com/api/public/api/public/disciplines');
         }
     })
 
@@ -138,6 +139,17 @@ export function ProjectsPagination() {
         }
     }, [projects?.data, selectedDiscipline])
 
+    useEffect(() => {
+        if (discipline) {
+            setSelectedDiscipline(discipline);
+        }
+        setTimeout(() => {
+            if (discipline) {
+                setSelectedDiscipline(discipline);
+            }
+        }, 1);
+    }, [discipline])
+
     const navigate = useNavigate();
 
     return (
@@ -150,7 +162,7 @@ export function ProjectsPagination() {
                 {/* Mobile Dropdown */}
                 <div className="lg:hidden">
                     <AnimatedSelectDropdown
-                        options={disciplinesData?.data || []}
+                        options={disciplinesData?.data?.data || []}
                         selectedValue={selectedDiscipline}
                         onSelect={setSelectedDiscipline}
                         isLoading={isDisciplinesLoading}
@@ -169,7 +181,7 @@ export function ProjectsPagination() {
                     >
                         All
                     </button>
-                    {disciplinesData?.data?.map((d, i) => {
+                    {disciplinesData?.data?.data?.map((d, i) => {
                         const disciplineValue = d.title.toLowerCase() === 'all' ? 'all' : d.title;
                         return (
                             <button
@@ -184,6 +196,16 @@ export function ProjectsPagination() {
                             </button>
                         );
                     })}
+                </div>
+
+                <div className="text-center lg:w-2/3 m-auto text-primary font-semibold text-lg">
+                    {disciplinesData?.data?.data && selectedDiscipline ? (
+                        <>
+                            {disciplinesData.data.data.find((d) =>
+                                d.title?.toLowerCase() === selectedDiscipline.toLowerCase()
+                            )?.description}
+                        </>
+                    ) : null}
                 </div>
 
                 {isLoading ? (

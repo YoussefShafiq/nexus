@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import heroImg from '../assets/images/HeroImage.png'
+import img1 from '../assets/images/cab_home-1080x675.jpg'
+import img2 from '../assets/images/Piping-Design.png'
 import PrimaryButton from '../buttons/PrimaryButton'
 import Slider from 'react-slick';
 import serviceimg from '../assets/images/services/marine.png'
@@ -15,16 +16,22 @@ import { useQuery } from '@tanstack/react-query';
 
 export function HeroSection() {
     return <>
-        <div className="bg-homeHero bg-no-repeat bg-cover min-h-[700px] lg:pt-40 pt-32 pb-32 text-white">
-            <div className="container flex items-center flex-col lg:flex-row gap-16 ">
+        <div className="bg-homeHero bg-no-repeat bg-cover min-h-[700px] lg:pt-40 pt-32 pb-32 text-white relative">
+            <div className="absolute h-full inset-0 bg-black/60"></div>
+            <div className="container flex items-center flex-col lg:flex-row gap-16 relative z-10">
                 <div className="lg:w-1/2 flex flex-col gap-5">
                     <h1 className='font-extrabold text-4xl'>NEXUS:  Where Expertise Meets Innovation</h1>
                     <p className='text-xl'>Delivering advanced, reliable engineering solutions for oil & gas, industrial, and residential projects.</p>
                     <p className='text-xl'>32+ years of experience</p>
                     <PrimaryButton text={'Explore Our Projects'} path={'/projects'} />
                 </div>
-                <div className="lg:w-1/2 flex justify-center items-center">
-                    <img src={heroImg} alt="" />
+                <div className="lg:w-1/2 flex justify-center items-center relative">
+                    <div className="pb-16 ps-12">
+                        <img src={img1} className='w-full h-full object-cover rounded-xl' />
+                    </div>
+                    <div className="absolute w-1/2 bottom-0 left-0">
+                        <img src={img2} className='w-full h-full object-cover rounded-xl' />
+                    </div>
                 </div>
             </div>
         </div>

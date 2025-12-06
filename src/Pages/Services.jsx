@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PaginationCarousel from '../reusableComponents/PaginationCarousel';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import ReusableHeroSection from '../reusableComponents/ReusableHeroSection';
 import { PageSEO } from '../seo/SEO';
 import { useQuery } from '@tanstack/react-query';
@@ -20,6 +20,7 @@ const AnimatedSelectDropdown = ({
         const optionValue = opt.title.toLowerCase() === 'all' ? 'all' : opt.title;
         return optionValue === selectedValue;
     })?.title || 'Select Discipline';
+
 
     return (
         <div className="relative w-full mx-auto mb-6">
@@ -60,8 +61,8 @@ const AnimatedSelectDropdown = ({
                                     setIsOpen(false);
                                 }}
                                 className={`w-full text-left px-4 py-3 hover:bg-primary/10 transition-colors duration-200 ${selectedValue === optionValue
-                                        ? 'bg-primary/20 text-primary font-semibold'
-                                        : 'text-gray-700'
+                                    ? 'bg-primary/20 text-primary font-semibold'
+                                    : 'text-gray-700'
                                     } ${index !== options.length - 1 ? 'border-b border-gray-100' : ''}`}
                             >
                                 {option.title}
@@ -86,6 +87,8 @@ export function ServicesPagination() {
     const [filteredServices, setfilteredServices] = useState([])
     const [selectedDiscipline, setSelectedDiscipline] = useState(null)
     const [isMobile, setIsMobile] = useState(false)
+    const [searchParams] = useSearchParams();
+    const discipline = searchParams.get('discipline');
 
     // Detect mobile screen
     useEffect(() => {
@@ -99,9 +102,8 @@ export function ServicesPagination() {
 
     const { data: disciplinesData, isLoading: isDisciplinesLoading } = useQuery({
         queryKey: ['disciplines'],
-        queryFn: async () => {
-            const response = await axios.get('https://nexus-consults.com/api/public/api/public/disciplines');
-            return response.data;
+        queryFn: () => {
+            return axios.get('https://nexus-consults.com/api/public/api/public/disciplines');
         }
     })
 
@@ -126,16 +128,29 @@ export function ServicesPagination() {
         }
     }, [services?.data, selectedDiscipline])
 
+    useEffect(() => {
+        if (discipline) {
+            setSelectedDiscipline(discipline);
+        }
+        setTimeout(() => {
+            if (discipline) {
+                setSelectedDiscipline(discipline);
+            }
+        }, 1);
+    }, [discipline])
+
     // Initialize with first discipline
     useEffect(() => {
-        if (disciplinesData?.data && !selectedDiscipline) {
-            const firstDiscipline = disciplinesData.data[0];
+        if (disciplinesData?.data?.data && !selectedDiscipline) {
+            const firstDiscipline = disciplinesData?.data?.data[0];
             if (firstDiscipline) {
                 const disciplineValue = firstDiscipline.title.toLowerCase() === 'all' ? 'all' : firstDiscipline.title;
                 setSelectedDiscipline(disciplineValue);
             }
         }
-    }, [disciplinesData?.data, selectedDiscipline])
+    }, [disciplinesData?.data?.data, selectedDiscipline])
+
+
 
     const navigate = useNavigate();
 
@@ -149,24 +164,25 @@ export function ServicesPagination() {
                 {/* Mobile Dropdown */}
                 <div className="lg:hidden">
                     <AnimatedSelectDropdown
-                        options={disciplinesData?.data || []}
+                        options={disciplinesData?.data?.data || []}
                         selectedValue={selectedDiscipline}
                         onSelect={setSelectedDiscipline}
                         isLoading={isDisciplinesLoading}
                     />
                 </div>
 
+
                 {/* Desktop Buttons */}
                 <div className="hidden lg:flex container !px-3 !py-2 flex-wrap justify-center gap-4 mb-5">
-                    {disciplinesData?.data?.map((d, i) => {
+                    {disciplinesData?.data?.data?.map((d, i) => {
                         const disciplineValue = d.title.toLowerCase() === 'all' ? 'all' : d.title;
                         return (
                             <button
                                 key={i}
                                 onClick={() => setSelectedDiscipline(disciplineValue)}
                                 className={`px-4 py-2 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${selectedDiscipline === disciplineValue
-                                        ? 'bg-primary text-white shadow-lg'
-                                        : 'bg-white/50 text-black hover:bg-primary/50 hover:text-white hover:shadow-md'
+                                    ? 'bg-primary text-white shadow-lg'
+                                    : 'bg-white/50 text-black hover:bg-primary/50 hover:text-white hover:shadow-md'
                                     }`}
                             >
                                 {d.title}
@@ -174,6 +190,17 @@ export function ServicesPagination() {
                         );
                     })}
                 </div>
+
+                <div className="text-center lg:w-2/3 m-auto text-primary font-semibold text-lg">
+                    {disciplinesData?.data?.data && selectedDiscipline ? (
+                        <>
+                            {disciplinesData.data.data.find((d) =>
+                                d.title?.toLowerCase() === selectedDiscipline.toLowerCase()
+                            )?.description}
+                        </>
+                    ) : null}
+                </div>
+
 
                 {/* Loading State */}
                 {isLoading ? (
