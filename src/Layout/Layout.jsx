@@ -32,7 +32,7 @@ export default function Layout({ children }) {
             <a name='whatsapp contact' href="https://wa.me/+201143323484" target='_blank' rel='noreferrer'>
                 <FaWhatsapp className='hover:text-green-100 transition-colors duration-300 cursor-pointer hover:bg-green-500 rounded-full hover:shadow-lg hover:scale-105' />
             </a>
-            <a name='linkedin account' href="https://www.linkedin.com/company/nexus-for-engineering-consultancy-bim-solutions">
+            <a name='linkedin account' href="https://www.linkedin.com/company/nexus-for-engineering-consultancy-bim-solutions" target='_blank'>
                 <FaLinkedin className='hover:text-blue-800 transition-colors duration-300 cursor-pointer hover:bg-white rounded-sm hover:shadow-lg hover:scale-105' />
             </a>
         </div>

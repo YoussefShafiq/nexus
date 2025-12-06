@@ -32,20 +32,23 @@ export function HeroSection() {
 }
 
 export function OurServices({ services, isLoading }) {
-    const [slidesToShow, setSlidesToShow] = useState(4);
+    const [slidesToShow, setSlidesToShow] = useState(1);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
             const width = window.innerWidth;
+
+            // Set isMobile to true only for screens smaller than 1024px
+            setIsMobile(width < 1024);
+
+            // Adjust slidesToShow based on mobile screen sizes
             if (width < 768) {
                 setSlidesToShow(1);
             } else if (width < 1024) {
-                setSlidesToShow(2);
-            } else if (width < 1280) {
-                setSlidesToShow(3);
-            } else {
-                setSlidesToShow(4);
+                setSlidesToShow(2); // For tablets
             }
+            // We don't need else cases since slider is only for mobile/tablet
         };
 
         handleResize();
@@ -53,7 +56,7 @@ export function OurServices({ services, isLoading }) {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    var settings = {
+    const sliderSettings = {
         dots: true,
         infinite: true,
         speed: 500,
@@ -67,98 +70,109 @@ export function OurServices({ services, isLoading }) {
         variableWidth: false
     };
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-
-
-    return <>
+    return (
         <div className="bg-bg2 bg-no-repeat bg-cover bg-fixed">
-
             <div className="container">
-                <SectionHeading title="Our Services" subtitle="Precision engineering solutions for complex industrial challenges" />
-                {isLoading ? <div className='grid lg:grid-cols-4 grid-cols-1 gap-5 mb-14'>
-                    {/* Skeleton Card 1 */}
-                    <div className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
-                        <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
-                        </div>
-                        <div className="p-3 sm:p-5 space-y-3">
-                            <div className="h-6 bg-gray-200 rounded w-3/4"></div>
-                            <div className="space-y-2">
-                                <div className="h-3 bg-gray-200 rounded w-full"></div>
-                                <div className="h-3 bg-gray-200 rounded w-5/6"></div>
-                                <div className="h-3 bg-gray-200 rounded w-4/6"></div>
-                            </div>
-                        </div>
-                    </div>
+                <SectionHeading
+                    title="Our Services"
+                    subtitle="Precision engineering solutions for complex industrial challenges"
+                />
 
-                    {/* Skeleton Card 2 */}
-                    <div className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
-                        <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
-                        </div>
-                        <div className="p-3 sm:p-5 space-y-3">
-                            <div className="h-6 bg-gray-200 rounded w-4/5"></div>
-                            <div className="space-y-2">
-                                <div className="h-3 bg-gray-200 rounded w-full"></div>
-                                <div className="h-3 bg-gray-200 rounded w-3/4"></div>
-                                <div className="h-3 bg-gray-200 rounded w-2/3"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Skeleton Card 3 */}
-                    <div className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
-                        <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
-                        </div>
-                        <div className="p-3 sm:p-5 space-y-3">
-                            <div className="h-6 bg-gray-200 rounded w-2/3"></div>
-                            <div className="space-y-2">
-                                <div className="h-3 bg-gray-200 rounded w-full"></div>
-                                <div className="h-3 bg-gray-200 rounded w-5/6"></div>
-                                <div className="h-3 bg-gray-200 rounded w-1/2"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Skeleton Card 4 */}
-                    <div className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
-                        <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
-                        </div>
-                        <div className="p-3 sm:p-5 space-y-3">
-                            <div className="h-6 bg-gray-200 rounded w-3/4"></div>
-                            <div className="space-y-2">
-                                <div className="h-3 bg-gray-200 rounded w-full"></div>
-                                <div className="h-3 bg-gray-200 rounded w-4/5"></div>
-                                <div className="h-3 bg-gray-200 rounded w-3/5"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> :
-
-
-                    <Slider {...settings} className='mb-14'>
-                        {services?.map((s, index) => (
-                            <div onClick={() => navigate('/services/' + s.slug)} key={index} className='px-2 sm:px-3 py-8'>
-                                <div className="bg-primary backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
-                                    <div className="overflow-hidden rounded-md h-44 ">
-                                        <img src={s.cover_photo} alt={s.title} className='hover:scale-105 transition-all duration-300 w-full h-full object-cover object-center' />
-                                    </div>
-                                    <div className="p-3 sm:p-5">
-                                        <h2 className='font-bold text-xl sm:text-2xl'>{s.title}</h2>
-                                        <p className='text-xs sm:text-sm opacity-90'>{s.description.slice(0, 60)} {s.description.length > 59 && '...'}</p>
+                {isLoading ? (
+                    // Loading skeletons remain the same
+                    <div className='grid lg:grid-cols-3 grid-cols-1 gap-5 mb-14'>
+                        {/* Skeleton Cards - same as before */}
+                        {[...Array(4)].map((_, index) => (
+                            <div key={index} className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
+                                <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
+                                </div>
+                                <div className="p-3 sm:p-5 space-y-3">
+                                    <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+                                    <div className="space-y-2">
+                                        <div className="h-3 bg-gray-200 rounded w-full"></div>
+                                        <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+                                        <div className="h-3 bg-gray-200 rounded w-4/6"></div>
                                     </div>
                                 </div>
                             </div>
                         ))}
-                    </Slider>
-                }
-                <PrimaryButton text={'See More'} key={'Services See more button'} path={'/services'} className={'!m-auto block'} />
+                    </div>
+                ) : (
+                    <>
+                        {/* Grid layout for desktop (1024px and above) */}
+                        <div className="hidden lg:grid grid-cols-3 max-w-[920px] m-auto mb-14 gap-y-5">
+                            {services?.slice(0, 6).map((service, index) => (
+                                <div
+                                    key={service.id || index}
+                                    onClick={() => navigate('/services/' + service.slug)}
+                                    className='px-2 sm:px-3'
+                                >
+                                    <div className="bg-primary h-full backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
+                                        <div className="overflow-hidden rounded-md h-44">
+                                            <img
+                                                src={service.cover_photo}
+                                                alt={service.title}
+                                                className='hover:scale-105 transition-all duration-300 w-full h-full object-cover object-center'
+                                            />
+                                        </div>
+                                        <div className="p-3 sm:p-5">
+                                            <h2 className='font-bold text-xl sm:text-2xl'>{service.title}</h2>
+                                            <p className='text-xs sm:text-sm opacity-90'>
+                                                {service.description.slice(0, 60)}
+                                                {service.description.length > 59 && '...'}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Slider layout only for mobile/tablet (below 1024px) */}
+                        {isMobile && (
+                            <div className="lg:hidden mb-14">
+                                <Slider {...sliderSettings}>
+                                    {services?.map((service, index) => (
+                                        <div
+                                            key={service.id || index}
+                                            onClick={() => navigate('/services/' + service.slug)}
+                                            className='px-2 sm:px-3 py-8 focus:outline-none'
+                                        >
+                                            <div className="bg-primary backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300 h-full">
+                                                <div className="overflow-hidden rounded-md h-44">
+                                                    <img
+                                                        src={service.cover_photo}
+                                                        alt={service.title}
+                                                        className='hover:scale-105 transition-all duration-300 w-full h-full object-cover object-center'
+                                                    />
+                                                </div>
+                                                <div className="p-3 sm:p-5">
+                                                    <h2 className='font-bold text-xl sm:text-2xl'>{service.title}</h2>
+                                                    <p className='text-xs sm:text-sm opacity-90'>
+                                                        {service.description.slice(0, 60)}
+                                                        {service.description.length > 59 && '...'}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </Slider>
+                            </div>
+                        )}
+                    </>
+                )}
+
+                <PrimaryButton
+                    text={'See More'}
+                    key={'Services See more button'}
+                    path={'/services'}
+                    className={'!m-auto block'}
+                />
             </div>
         </div>
-    </>
+    );
 }
 
 export function Aboutus() {
@@ -265,7 +279,7 @@ export function BestProjects({ projects, isLoading }) {
                 <SectionHeading title="Latest Projects" subtitle="Delivering excellence in engineering across industries" />
 
                 <div className="flex flex-col md:flex-row flex-wrap mb-5">
-                    {projects?.slice(0, 5).map((p, i) => (
+                    {projects?.slice(0, 6).map((p, i) => (
                         <div
                             key={p.id}
                             className="w-full md:w-1/3 p-3"
