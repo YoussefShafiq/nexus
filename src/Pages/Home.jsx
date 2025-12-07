@@ -128,8 +128,8 @@ export function OurServices({ services, isLoading }) {
                                         <div className="p-3 sm:p-5">
                                             <h2 className='font-bold text-xl sm:text-2xl'>{service.title}</h2>
                                             <p className='text-xs sm:text-sm opacity-90'>
-                                                {service.description.slice(0, 60)}
-                                                {service.description.length > 59 && '...'}
+                                                {service?.description?.slice(0, 60)}
+                                                {service.description?.length > 59 && '...'}
                                             </p>
                                         </div>
                                     </div>
