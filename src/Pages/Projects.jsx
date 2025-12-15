@@ -198,7 +198,7 @@ export function ProjectsPagination() {
                     })}
                 </div>
 
-                <div className="text-center lg:w-2/3 m-auto text-primary font-semibold text-lg">
+                <div className="text-center text-primary font-semibold text-lg">
                     {disciplinesData?.data?.data && selectedDiscipline ? (
                         <>
                             {disciplinesData.data.data.find((d) =>

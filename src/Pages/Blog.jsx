@@ -303,7 +303,7 @@ export default function Blog() {
             <div ref={containerRef} className=" flex flex-col gap-5 ">
                 <HeroSection data={post?.data?.data} view={!isLoading} />
 
-                <div className="relative container w-full">
+                <div className="relative container w-full !pt-0">
                     <div className="flex flex-col lg:flex-row-reverse justify-between gap-4 lg:gap-16">
                         {/* Mobile Table of Contents */}
                         {isLoading ? (
@@ -347,8 +347,8 @@ export default function Blog() {
                         )}
 
                         {/* Main Content */}
-                        <div className="lg:w-3/4 w-full">
-                            <div className="content-container !mx-0 !ps-0" id='blog-content-container'>
+                        <div className="w-full flex flex-col items-center">
+                            <div className="content-container !mx-0 !ps-0 !pt-0" id='blog-content-container'>
                                 {isLoading ? (
                                     <ContentSkeleton />
                                 ) : (
@@ -374,7 +374,7 @@ export default function Blog() {
 
                         {/* Desktop Table of Contents */}
                         {isLoading ? (
-                            <div className="w-1/4 lg:block hidden">
+                            <div className="w-1/4 lg:hidden hidden">
                                 <TableOfContentsSkeleton />
                             </div>
                         ) : (
@@ -429,7 +429,7 @@ export default function Blog() {
                                     </div>
                                     <h3 className='font-extrabold'>{post?.data?.data?.author?.name}</h3>
                                 </div>
-                                <p className='text-xs'>{post?.data?.data?.author?.bio}</p>
+                                <p className='text-xs mb-5'>{post?.data?.data?.author?.bio}</p>
                             </div>
                         </div>
                     </>

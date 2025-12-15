@@ -79,6 +79,21 @@ export function OurServices({ services, isLoading }) {
 
     const navigate = useNavigate();
 
+
+    const { data: disciplinesData, isLoading: isDisciplinesLoading } = useQuery({
+        queryKey: ['disciplines'],
+        queryFn: () => {
+            return axios.get('https://nexus-consults.com/api/public/api/public/disciplines');
+        }
+    })
+
+    useEffect(() => {
+        console.log(disciplinesData?.data?.data?.filter(d => d.show_on_home == true));
+
+    }, [disciplinesData])
+
+
+
     return (
         <div className="bg-bg2 bg-no-repeat bg-cover bg-fixed">
             <div className="container">
@@ -89,7 +104,7 @@ export function OurServices({ services, isLoading }) {
 
                 {isLoading ? (
                     // Loading skeletons remain the same
-                    <div className='grid lg:grid-cols-3 grid-cols-1 gap-5 mb-14'>
+                    <div className='grid lg:grid-cols-4 grid-cols-1 gap-5 mb-14'>
                         {/* Skeleton Cards - same as before */}
                         {[...Array(4)].map((_, index) => (
                             <div key={index} className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
@@ -111,10 +126,10 @@ export function OurServices({ services, isLoading }) {
                     <>
                         {/* Grid layout for desktop (1024px and above) */}
                         <div className="hidden lg:grid grid-cols-3 max-w-[920px] m-auto mb-14 gap-y-5">
-                            {services?.slice(0, 6).map((service, index) => (
+                            {disciplinesData?.data?.data?.filter(d => d.show_on_home == true).slice(0, 6).map((service, index) => (
                                 <div
                                     key={service.id || index}
-                                    onClick={() => navigate('/services/' + service.slug)}
+                                    onClick={() => navigate('/services/' + '?discipline=' + service.title.replace('&', 'AND'))}
                                     className='px-2 sm:px-3'
                                 >
                                     <div className="bg-primary h-full backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
@@ -129,7 +144,7 @@ export function OurServices({ services, isLoading }) {
                                             <h2 className='font-bold text-xl sm:text-2xl'>{service.title}</h2>
                                             <p className='text-xs sm:text-sm opacity-90'>
                                                 {service?.description?.slice(0, 60)}
-                                                {service.description?.length > 59 && '...'}
+                                                {service?.description?.length > 59 && '...'}
                                             </p>
                                         </div>
                                     </div>
@@ -158,8 +173,8 @@ export function OurServices({ services, isLoading }) {
                                                 <div className="p-3 sm:p-5">
                                                     <h2 className='font-bold text-xl sm:text-2xl'>{service.title}</h2>
                                                     <p className='text-xs sm:text-sm opacity-90'>
-                                                        {service.description.slice(0, 60)}
-                                                        {service.description.length > 59 && '...'}
+                                                        {service?.description?.slice(0, 60)}
+                                                        {service?.description?.length > 59 && '...'}
                                                     </p>
                                                 </div>
                                             </div>

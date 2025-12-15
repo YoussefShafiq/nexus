@@ -154,6 +154,15 @@ export function ServicesPagination() {
 
     const navigate = useNavigate();
 
+    const processContent = (content) => {
+        if (!content) return ''
+
+        return content.replace(
+            /<img([^>]+)>/g,
+            '<img$1 class="cursor-zoom-in hover:opacity-90 transition-all duration-200 hover:shadow-lg" />'
+        )
+    }
+
     return (
         <div className="bg-bg2 bg-cover bg-center bg-fixed">
             <div className="container">
@@ -179,7 +188,7 @@ export function ServicesPagination() {
                         return (
                             <button
                                 key={i}
-                                onClick={() => setSelectedDiscipline(disciplineValue)}
+                                onClick={() => { setSelectedDiscipline(disciplineValue); navigate('/services?discipline=' + d.title.replace('&', 'AND')) }}
                                 className={`px-4 py-2 rounded-full text-sm sm:text-base font-medium transition-all duration-300 ${selectedDiscipline === disciplineValue
                                     ? 'bg-primary text-white shadow-lg'
                                     : 'bg-white/50 text-black hover:bg-primary/50 hover:text-white hover:shadow-md'
@@ -191,12 +200,39 @@ export function ServicesPagination() {
                     })}
                 </div>
 
-                <div className="text-center lg:w-2/3 m-auto text-primary font-semibold text-lg">
+                {/* disciplie sections */}
+                <div className="space-y-5">
                     {disciplinesData?.data?.data && selectedDiscipline ? (
                         <>
                             {disciplinesData.data.data.find((d) =>
                                 d.title?.toLowerCase() === selectedDiscipline.toLowerCase()
-                            )?.description}
+                            )?.sections.map((s, i) => (
+                                <div key={i} className="flex flex-col w-full lg:flex-row gap-8">
+                                    <div
+                                        className={`content w-full ${s.image ? 'lg:w-[60%]' : 'lg:w-full'}`}
+                                        dangerouslySetInnerHTML={{
+                                            __html: processContent(s.content)
+                                        }}
+                                    />
+                                    {s.image && (
+                                        <div className="lg:w-[40%] w-full">
+                                            <div className="relative group">
+                                                <img
+                                                    src={s.image}
+                                                    alt={s.title}
+                                                    className='w-full rounded-[12px] border-[2px] border-[#1d1e1f] transition-all duration-200 hover:shadow-lg'
+
+                                                />
+                                            </div>
+                                            {s.caption && (
+                                                <div className="p-3 text-center font-bold text-base text-[#334155]">
+                                                    {s.caption}
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
                         </>
                     ) : null}
                 </div>
