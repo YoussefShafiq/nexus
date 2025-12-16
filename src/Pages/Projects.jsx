@@ -198,7 +198,7 @@ export function ProjectsPagination() {
                     })}
                 </div>
 
-                <div className="text-center text-primary font-semibold text-lg">
+                {/* <div className="text-center text-primary font-semibold text-lg">
                     {disciplinesData?.data?.data && selectedDiscipline ? (
                         <>
                             {disciplinesData.data.data.find((d) =>
@@ -206,7 +206,7 @@ export function ProjectsPagination() {
                             )?.description}
                         </>
                     ) : null}
-                </div>
+                </div> */}
 
                 {isLoading ? (
                     <div className='grid lg:grid-cols-4 grid-cols-1 gap-5'>

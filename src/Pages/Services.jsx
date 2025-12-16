@@ -85,7 +85,7 @@ const AnimatedSelectDropdown = ({
 
 export function ServicesPagination() {
     const [filteredServices, setfilteredServices] = useState([])
-    const [selectedDiscipline, setSelectedDiscipline] = useState(null)
+    const [selectedDiscipline, setSelectedDiscipline] = useState('all')
     const [isMobile, setIsMobile] = useState(false)
     const [searchParams] = useSearchParams();
     const discipline = searchParams.get('discipline');
@@ -139,16 +139,16 @@ export function ServicesPagination() {
         }, 1);
     }, [discipline])
 
-    // Initialize with first discipline
-    useEffect(() => {
-        if (disciplinesData?.data?.data && !selectedDiscipline) {
-            const firstDiscipline = disciplinesData?.data?.data[0];
-            if (firstDiscipline) {
-                const disciplineValue = firstDiscipline.title.toLowerCase() === 'all' ? 'all' : firstDiscipline.title;
-                setSelectedDiscipline(disciplineValue);
-            }
-        }
-    }, [disciplinesData?.data?.data, selectedDiscipline])
+    // // Initialize with first discipline
+    // useEffect(() => {
+    //     // if (disciplinesData?.data?.data && !selectedDiscipline) {
+    //         // const firstDiscipline = disciplinesData?.data?.data[0];
+    //         // if (firstDiscipline) {
+    //             // const disciplineValue = firstDiscipline.title.toLowerCase() === 'all' ? 'all' : firstDiscipline.title;
+    //             setSelectedDiscipline('all');
+    //         // }
+    //     // }
+    // }, [disciplinesData?.data?.data, selectedDiscipline])
 
 
 

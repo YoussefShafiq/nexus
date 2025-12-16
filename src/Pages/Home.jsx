@@ -156,7 +156,7 @@ export function OurServices({ services, isLoading }) {
                         {isMobile && (
                             <div className="lg:hidden mb-14">
                                 <Slider {...sliderSettings}>
-                                    {services?.map((service, index) => (
+                                    {disciplinesData?.data?.data?.filter(d => d.show_on_home == true).slice(0, 6).map((service, index) => (
                                         <div
                                             key={service.id || index}
                                             onClick={() => navigate('/services/' + service.slug)}
