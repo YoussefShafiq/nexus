@@ -316,44 +316,116 @@ export function Testimonials({ testimonials, isLoading }) {
 }
 
 export function BestProjects({ projects, isLoading }) {
+    const navigate = useNavigate();
+    const [slidesToShow, setSlidesToShow] = useState(1);
+    const sliderRef = useRef(null);
 
-    const navigate = useNavigate()
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
 
+            // Adjust slidesToShow based on screen sizes
+            if (width < 768) {
+                setSlidesToShow(1);
+            } else if (width < 1024) {
+                setSlidesToShow(2);
+            } else {
+                setSlidesToShow(3);
+            }
+        };
 
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
-    return <>
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: slidesToShow,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2500,
+        pauseOnHover: true,
+        adaptiveHeight: false,
+        variableWidth: false
+    };
+
+    return (
         <div className="bg-bridgeBg bg-no-repeat bg-cover bg-fixed">
             <div className="container">
-                <SectionHeading title="Latest Projects" subtitle="Delivering excellence in engineering across industries" />
+                <SectionHeading 
+                    title="Latest Projects" 
+                    subtitle="Delivering excellence in engineering across industries" 
+                />
 
-                <div className="flex flex-col md:flex-row flex-wrap mb-5">
-                    {projects?.slice(0, 6).map((p, i) => (
-                        <div
-                            key={p.id}
-                            className="w-full md:w-1/3 p-3"
-                            data-aos="fade-up"
-                            data-aos-delay={(i % 3) * 150}
-                        >
-                            <div className="relative h-56 rounded-lg overflow-hidden group cursor-pointer bg-primary/40 backdrop-blur-sm" onClick={() => { navigate(`/projects/${p.slug}`) }} >
-                                <ImageIcon className='absolute -z-10 top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 text-white/50' size={50} />
-                                <img
-                                    src={p.cover_photo}
-                                    alt={p.title}
-                                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <h2 className="text-white font-bold text-lg text-center px-2">
-                                        {p.title}
-                                    </h2>
+                {isLoading ? (
+                    // Loading skeletons
+                    <div className='grid lg:grid-cols-3 grid-cols-1 gap-5 mb-14'>
+                        {[...Array(3)].map((_, index) => (
+                            <div key={index} className="bg-white rounded-lg overflow-hidden animate-pulse">
+                                <div className="bg-gray-200 h-64 relative">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-                <PrimaryButton text={'See More'} key={'Our Projects'} path={'/projects'} className={'!m-auto block'} />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="mb-14 max-w-[1200px] mx-auto">
+                        <Slider ref={sliderRef} {...sliderSettings} className="projects-slider-equal-height">
+                            {projects?.slice(0, 6).map((p, i) => (
+                                <div
+                                    key={p.id}
+                                    className='px-2 sm:px-3 py-8 focus:outline-none h-full'
+                                >
+                                    <div 
+                                        className="project-card relative rounded-lg overflow-hidden group cursor-pointer bg-primary/40 backdrop-blur-sm hover:scale-[1.02] transition-all duration-300 h-full" 
+                                        onClick={() => { navigate(`/projects/${p.slug}`) }}
+                                    >
+                                        <ImageIcon 
+                                            className='absolute -z-10 top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 text-white/50' 
+                                            size={50} 
+                                        />
+                                        <img
+                                            src={p.cover_photo}
+                                            alt={p.title}
+                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 min-h-[250px]"
+                                        />
+                                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <h2 className="text-white font-bold text-lg text-center px-4">
+                                                {p.title}
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </Slider>
+                        <style jsx>{`
+                            .projects-slider-equal-height .slick-track {
+                                display: flex !important;
+                            }
+                            .projects-slider-equal-height .slick-slide {
+                                height: inherit !important;
+                                display: flex !important;
+                            }
+                            .projects-slider-equal-height .slick-slide > div {
+                                height: 100%;
+                                display: flex;
+                            }
+                        `}</style>
+                    </div>
+                )}
+                
+                <PrimaryButton 
+                    text={'See More'} 
+                    key={'Our Projects'} 
+                    path={'/projects'} 
+                    className={'!m-auto block'} 
+                />
             </div>
         </div>
-    </>
+    );
 }
 
 export default function Home() {
