@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import img1 from '../assets/images/cab_home-1080x675.jpg'
 import img2 from '../assets/images/Piping-Design.png'
 import PrimaryButton from '../buttons/PrimaryButton'
@@ -40,25 +40,72 @@ export function HeroSection() {
 
 export function OurServices({ services, isLoading }) {
     const [slidesToShow, setSlidesToShow] = useState(1);
-    const [isMobile, setIsMobile] = useState(false);
+    const sliderRef = useRef(null);
+    const slidesContainerRef = useRef(null);
+
+    // Function to equalize slide heights
+    const equalizeSlideHeights = () => {
+        if (!slidesContainerRef.current) return;
+
+        const slides = slidesContainerRef.current.querySelectorAll('.slick-slide');
+        
+        // Reset heights first
+        slides.forEach(slide => {
+            const innerDiv = slide.querySelector('.slide-content');
+            if (innerDiv) {
+                innerDiv.style.height = 'auto';
+            }
+        });
+
+        // Find the tallest slide
+        let maxHeight = 0;
+        slides.forEach(slide => {
+            const innerDiv = slide.querySelector('.slide-content');
+            if (innerDiv) {
+                const height = innerDiv.offsetHeight;
+                if (height > maxHeight) {
+                    maxHeight = height;
+                }
+            }
+        });
+
+        // Set all slides to the max height
+        if (maxHeight > 0) {
+            slides.forEach(slide => {
+                const innerDiv = slide.querySelector('.slide-content');
+                if (innerDiv) {
+                    innerDiv.style.height = `${maxHeight}px`;
+                }
+            });
+        }
+    };
 
     useEffect(() => {
         const handleResize = () => {
             const width = window.innerWidth;
 
-            // Set isMobile to true only for screens smaller than 1024px
-            setIsMobile(width < 1024);
-
-            // Adjust slidesToShow based on mobile screen sizes
+            // Adjust slidesToShow based on screen sizes
             if (width < 768) {
                 setSlidesToShow(1);
             } else if (width < 1024) {
-                setSlidesToShow(2); // For tablets
+                setSlidesToShow(2);
+            } else {
+                setSlidesToShow(4); // Show 4 slides on desktop
             }
-            // We don't need else cases since slider is only for mobile/tablet
         };
 
         handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+
+
+    useEffect(() => {
+        const handleResize = () => {
+            equalizeSlideHeights();
+        };
+
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -69,16 +116,20 @@ export function OurServices({ services, isLoading }) {
         speed: 500,
         slidesToShow: slidesToShow,
         slidesToScroll: 1,
-        arrows: false,
         autoplay: true,
         autoplaySpeed: 2500,
-        cssEase: "linear",
-        adaptiveHeight: true,
-        variableWidth: false
+        pauseOnHover: true,
+        adaptiveHeight: false,
+        variableWidth: false,
+        onInit: () => {
+            setTimeout(() => equalizeSlideHeights(), 200);
+        },
+        onReInit: () => {
+            setTimeout(() => equalizeSlideHeights(), 200);
+        }
     };
 
     const navigate = useNavigate();
-
 
     const { data: disciplinesData, isLoading: isDisciplinesLoading } = useQuery({
         queryKey: ['disciplines'],
@@ -87,12 +138,19 @@ export function OurServices({ services, isLoading }) {
         }
     })
 
+        // Equalize heights after slides load or window resize
+    useEffect(() => {
+        if (!isLoading && disciplinesData?.data?.data) {
+            // Wait for images to load and slider to render
+            setTimeout(() => {
+                equalizeSlideHeights();
+            }, 100);
+        }
+    }, [isLoading, disciplinesData, slidesToShow]);
+
     useEffect(() => {
         console.log(disciplinesData?.data?.data?.filter(d => d.show_on_home == true));
-
     }, [disciplinesData])
-
-
 
     return (
         <div className="bg-bg2 bg-no-repeat bg-cover bg-fixed">
@@ -103,9 +161,8 @@ export function OurServices({ services, isLoading }) {
                 />
 
                 {isLoading ? (
-                    // Loading skeletons remain the same
+                    // Loading skeletons
                     <div className='grid lg:grid-cols-4 grid-cols-1 gap-5 mb-14'>
-                        {/* Skeleton Cards - same as before */}
                         {[...Array(4)].map((_, index) => (
                             <div key={index} className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
                                 <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
@@ -123,16 +180,17 @@ export function OurServices({ services, isLoading }) {
                         ))}
                     </div>
                 ) : (
-                    <>
-                        {/* Grid layout for desktop (1024px and above) */}
-                        <div className="hidden lg:grid grid-cols-3 max-w-[920px] m-auto mb-14 gap-y-5">
-                            {disciplinesData?.data?.data?.filter(d => d.show_on_home == true).slice(0, 6).map((service, index) => (
+                    <div ref={slidesContainerRef} className="mb-14 max-w-[1200px] mx-auto">
+                        <Slider ref={sliderRef} {...sliderSettings}>
+                            {disciplinesData?.data?.data?.map((service, index) => (
                                 <div
                                     key={service.id || index}
-                                    onClick={() => navigate('/services/' + '?discipline=' + service.title.replace('&', 'AND'))}
-                                    className='px-2 sm:px-3'
+                                    className='px-2 sm:px-3 py-8 focus:outline-none'
                                 >
-                                    <div className="bg-primary h-full backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300">
+                                    <div 
+                                        onClick={() => navigate('/services/' + service.title.replace('&', 'AND'))}
+                                        className="slide-content bg-primary backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300"
+                                    >
                                         <div className="overflow-hidden rounded-md h-44">
                                             <img
                                                 src={service.cover_photo}
@@ -150,40 +208,8 @@ export function OurServices({ services, isLoading }) {
                                     </div>
                                 </div>
                             ))}
-                        </div>
-
-                        {/* Slider layout only for mobile/tablet (below 1024px) */}
-                        {isMobile && (
-                            <div className="lg:hidden mb-14">
-                                <Slider {...sliderSettings}>
-                                    {disciplinesData?.data?.data?.filter(d => d.show_on_home == true).slice(0, 6).map((service, index) => (
-                                        <div
-                                            key={service.id || index}
-                                            onClick={() => navigate('/services/' + service.slug)}
-                                            className='px-2 sm:px-3 py-8 focus:outline-none'
-                                        >
-                                            <div className="bg-primary backdrop-blur-lg rounded-lg p-2 flex flex-col text-white cursor-pointer mx-1 sm:mx-0 hover:scale-[1.02] transition-all duration-300 h-full">
-                                                <div className="overflow-hidden rounded-md h-44">
-                                                    <img
-                                                        src={service.cover_photo}
-                                                        alt={service.title}
-                                                        className='hover:scale-105 transition-all duration-300 w-full h-full object-cover object-center'
-                                                    />
-                                                </div>
-                                                <div className="p-3 sm:p-5">
-                                                    <h2 className='font-bold text-xl sm:text-2xl'>{service.title}</h2>
-                                                    <p className='text-xs sm:text-sm opacity-90'>
-                                                        {service?.description?.slice(0, 60)}
-                                                        {service?.description?.length > 59 && '...'}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </Slider>
-                            </div>
-                        )}
-                    </>
+                        </Slider>
+                    </div>
                 )}
 
                 <PrimaryButton

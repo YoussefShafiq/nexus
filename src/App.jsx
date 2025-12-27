@@ -20,6 +20,7 @@ import Blogs from './Pages/Blogs';
 import Blog from './Pages/Blog';
 import AllBlogs from './Pages/AllBlogs';
 import { Toaster } from 'react-hot-toast';
+import Disciplines from './Pages/Disciplines.jsx';
 
 function App() {
   // Global AOS observer to reliably animate elements across the app
@@ -35,7 +36,8 @@ function App() {
         { path: 'about-us', element: <AboutUs /> },
         {
           path: 'services', children: [
-            { index: true, element: <Services /> },
+            { index: true, element: <Disciplines /> },
+            { path:':discipline', element: <Services /> },
             { path: ':serviceSlug', element: <Service /> }
           ]
         },
