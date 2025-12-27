@@ -11,7 +11,7 @@ import axios from 'axios'
 
 export function HeroSection() {
     return <>
-        <ReusableHeroSection name={'Blogs'} backgroundclass='bg-BlogsHeroImage' />
+        <ReusableHeroSection name={'Blogs'} backgroundclass='bg-BlogsHeroImage' overloay={true} />
     </>
 }
 

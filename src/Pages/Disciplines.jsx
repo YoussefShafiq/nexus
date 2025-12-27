@@ -80,8 +80,8 @@ export function ServicesPagination() {
                     <></>
                 ) : (
                     <div className="flex flex-row justify-center flex-wrap gap-6">
-                        {disciplinesData?.data?.data?.map((s,index)=>(
-                             <div
+                        {disciplinesData?.data?.data?.map((s, index) => (
+                            <div
                                 key={s.id || index}
                                 className="lg:w-[calc(100%/4-24px)] md:w-[calc(100%/2-24px)] w-[calc(100%)] bg-primary rounded-lg p-2 flex flex-col text-white hover:scale-[1.02] transition-all duration-300 cursor-pointer"
                                 onClick={() => { setSelectedDiscipline(s.title.toLowerCase() === 'all' ? 'all' : s.title); navigate('/services/' + s.title.replace('&', 'AND')) }}
@@ -119,6 +119,7 @@ export function HeroSection() {
             name="Our Disciplines"
             subtitle={'Precision-driven solutions from concept to construction'}
             backgroundclass="bg-ServicesHeroImage"
+            overloay={true}
         />
     </>
 }

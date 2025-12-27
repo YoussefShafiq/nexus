@@ -89,7 +89,8 @@ export function HeroSection() {
         <ReusableHeroSection
             name="Our Projects"
             subtitle={'Precision-driven solutions from concept to construction'}
-            backgroundclass="bg-ServicesHeroImage"
+            backgroundclass="bg-ProjectsHeroImage"
+            overloay={true}
         />
     </>
 }

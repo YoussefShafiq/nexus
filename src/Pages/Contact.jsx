@@ -4,12 +4,13 @@ import { motion } from 'framer-motion'
 import { Mail, Phone } from 'lucide-react'
 import { BsWhatsapp } from 'react-icons/bs'
 import { PageSEO } from '../seo/SEO'
+import ReusableHeroSection from '../reusableComponents/ReusableHeroSection'
 
 export function HeroSection() {
     return <>
-        <div className="bg-ServicesHeroImage py-[200px] bg-cover bg-center flex flex-col justify-center items-center text-white text-center gap-3">
-            <h1 className='text-3xl lg:text-5xl font-extrabold '>Contact Us</h1>
-        </div>
+        <ReusableHeroSection name="Contact Us" overloay={true} />
+
+
     </>
 }
 

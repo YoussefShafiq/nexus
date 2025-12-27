@@ -17,15 +17,91 @@ import { Download } from 'lucide-react';
 
 export function HeroSection() {
     return <>
-        <ReusableHeroSection name="About Us" backgroundclass="bg-ServicesHeroImage" />
+        <ReusableHeroSection name="About Us" backgroundclass="bg-ServicesHeroImage" overloay={true} />
     </>
 }
 
 export function WhoWeAre() {
+    const content = `
+        <h2>Overview</h2>
+        <p>
+            <strong>Nexus for Engineering Consultancy</strong> is a multidisciplinary engineering firm delivering
+            high-quality, code-compliant solutions for the <strong>Oil &amp; Gas</strong>, 
+            <strong>Industrial</strong>, and <strong>Infrastructure</strong> sectors across 
+            <strong>North Africa</strong> and the <strong>Arabian Gulf</strong>.
+        </p>
+        <p>
+            Our experienced team supports projects from <strong>FEED</strong> to 
+            <strong>detailed design</strong> and <strong>shop drawings</strong>.
+        </p>
+
+        <h3>Core Capabilities</h3>
+        <ul>
+            <li>
+                <strong>Process Engineering:</strong>
+                Process design for oil, gas &amp; petrochemicals, simulations, hydraulic studies,
+                PFDs, P&amp;IDs, UFDs, HMB, control narratives, and Cause &amp; Effect.
+            </li>
+            <li>
+                <strong>Piping &amp; Pipeline:</strong>
+                3D modeling, routing, isometrics, MTO, stress analysis, GRE/HDPE/CS systems,
+                crossings, and buried pipeline simulations.
+            </li>
+            <li>
+                <strong>Storage Tanks:</strong>
+                Design of fixed, floating &amp; dome roof tanks per AWWA/API/ASME,
+                with FEA and CFD evaluations.
+            </li>
+            <li>
+                <strong>Static Equipment:</strong>
+                Design of pressure vessels, columns, bullets, and heat exchangers (ASME/TEMA),
+                with lifting and transport studies.
+            </li>
+            <li>
+                <strong>Instrumentation &amp; Controls:</strong>
+                Complete I&amp;C design, loop and wiring diagrams, cable routing,
+                and DCS/ESD integration.
+            </li>
+            <li>
+                <strong>Steel Structures:</strong>
+                Design of pipe racks, industrial buildings, bridges, and process structures,
+                including seismic and wind analysis.
+            </li>
+            <li>
+                <strong>Steel Detailing:</strong>
+                Tekla modeling, shop drawings, CNC outputs, bolt lists, BIM coordination,
+                and clash detection.
+            </li>
+            <li>
+                <strong>Marine &amp; Offshore:</strong>
+                Analysis of fixed platforms, jetties, quay walls, breakwaters,
+                and metocean/hydrodynamic studies.
+            </li>
+            <li>
+                <strong>Concrete &amp; Architecture:</strong>
+                Structural design for foundations, frames, mixed structures,
+                and architectural/BIM integration.
+            </li>
+        </ul>
+
+        <h3>Why Nexus?</h3>
+        <ul>
+            <li>Strong multidisciplinary team with solid Oil &amp; Gas expertise.</li>
+            <li>Proven delivery of FEED, detailed design, and shop drawings.</li>
+            <li>Advanced engineering software capabilities.</li>
+            <li>Fast response, accurate deliverables, and strict timelines.</li>
+            <li>Flexible pricing and scalable engineering support.</li>
+        </ul>
+    `
     return <>
         <div className="container flex flex-col justify-center items-center gap-4">
-            <SectionHeading title="Who We Are" pbFlag={false} />
-            <p className='text-lg lg:w-4/5 text-center' ><strong >NEXUS Engineering Consultancy</strong> delivers advanced, reliable, and high-quality engineering solutions that meet the growing demands of modern industries. Based on a foundation of technical excellence and innovation, we serve a diverse range of sectors with a focus on oil & gas, industrial, and residential projects.</p>
+            <SectionHeading title="Who We Are?" pbFlag={false} />
+            <div
+                className={`content w-full`}
+                dangerouslySetInnerHTML={{
+                    __html: content
+                }}
+            />
         </div>
 
     </>

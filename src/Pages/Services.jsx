@@ -88,8 +88,8 @@ export function ServicesPagination() {
     const [selectedDiscipline, setSelectedDiscipline] = useState('all')
     const [isMobile, setIsMobile] = useState(false)
     const [searchParams] = useSearchParams();
-    const {discipline} = useParams();
-    
+    const { discipline } = useParams();
+
 
     // Detect mobile screen
     useEffect(() => {
@@ -269,6 +269,7 @@ export function HeroSection() {
             name="Our Services"
             subtitle={'Precision-driven solutions from concept to construction'}
             backgroundclass="bg-ServicesHeroImage"
+            overloay={true}
         />
     </>
 }

@@ -6,7 +6,7 @@ export default function BlogCard({ blog }) {
 
 
     return <>
-        <Link to={'/blogs/' + blog.slug} className="bg-white rounded-xl p-3 pb-8 flex flex-col gap-3 group">
+        <Link to={'/blogs/' + blog.slug} className="bg-white rounded-xl p-3 pb-8 flex flex-col gap-3 group h-full">
             <div className="rounded-xl aspect-[16/9] overflow-hidden flex items-center justify-center">
                 <img src={blog.cover_photo} alt="Blog 1" title='Blog 1' content='Blog 1' className='w-full h-auto group-hover:scale-105 transition-all ease-in-out duration-300 cursor-pointer' />
             </div>
