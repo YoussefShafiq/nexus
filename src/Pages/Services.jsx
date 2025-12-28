@@ -196,7 +196,7 @@ export function ServicesPagination() {
                                     <div
                                         key={s.id || index}
                                         className="bg-primary rounded-lg p-2 flex flex-col text-white hover:scale-[1.02] transition-all duration-300 cursor-pointer h-full"
-                                        onClick={() => navigate('/services/' + s.slug)}
+                                        onClick={() => navigate('/services/service/' + s.slug)}
                                     >
                                         <div className="overflow-hidden rounded-md">
                                             <img

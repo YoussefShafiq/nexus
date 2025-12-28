@@ -28,7 +28,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: '', element: <Layout />, children: [
+      path: '', element: <Layout />,errorElement: <Notfound/> , children: [
         { index: true, element: <Home /> },
         { path: '', element: <Home /> },
         { path: 'home', element: <Home /> },
@@ -38,7 +38,7 @@ function App() {
           path: 'services', children: [
             { index: true, element: <Disciplines /> },
             { path:':discipline', element: <Services /> },
-            { path: ':serviceSlug', element: <Service /> }
+            { path: 'service/:serviceSlug', element: <Service /> }
           ]
         },
         {
