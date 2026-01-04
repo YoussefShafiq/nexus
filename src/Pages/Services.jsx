@@ -156,69 +156,71 @@ export function ServicesPagination() {
     return (
         <div className="bg-bg2 bg-cover bg-center bg-fixed">
             <div className="container">
-                <h1 className='font-bold mb-8 w-fit text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >
-                    Our Services
-                </h1>
+                {filteredServices.length !== 0 && <>
+                    <h1 className='font-bold mb-8 w-fit text-4xl relative after:absolute after:w-20 after:h-1 after:-bottom-3 after:left-1/2 m-auto after:bg-primary after:-translate-x-1/2 after:text-center' >
+                        Our Services
+                    </h1>
 
 
 
-                {/* Loading State */}
-                {isLoading ? (
-                    <div className='grid lg:grid-cols-4 grid-cols-1 gap-5'>
-                        {[...Array(4)].map((_, index) => (
-                            <div key={index} className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
-                                <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
-                                </div>
-                                <div className="p-3 sm:p-5 space-y-3">
-                                    <div className="h-6 bg-gray-200 rounded w-3/4"></div>
-                                    <div className="space-y-2">
-                                        <div className="h-3 bg-gray-200 rounded w-full"></div>
-                                        <div className="h-3 bg-gray-200 rounded w-5/6"></div>
-                                        <div className="h-3 bg-gray-200 rounded w-4/6"></div>
+                    {/* Loading State */}
+                    {isLoading ? (
+                        <div className='grid lg:grid-cols-4 grid-cols-1 gap-5'>
+                            {[...Array(4)].map((_, index) => (
+                                <div key={index} className="bg-white rounded-lg p-2 flex flex-col animate-pulse">
+                                    <div className="overflow-hidden rounded-md bg-gray-200 h-44 relative">
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer"></div>
                                     </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="mb-8">
-                        {filteredServices.length === 0 ? (
-                            <div className="text-center py-10">
-                                <p className="text-gray-600">No services found for the selected discipline.</p>
-                            </div>
-                        ) : (
-                            <PaginationCarousel
-                                items={filteredServices}
-                                itemsPerPage={isMobile ? 1 : 4}
-                                ItemsPerLine={isMobile ? 1 : 4}
-                                renderItem={(s, index) => (
-                                    <div
-                                        key={s.id || index}
-                                        className="bg-primary rounded-lg p-2 flex flex-col text-white hover:scale-[1.02] transition-all duration-300 cursor-pointer h-full"
-                                        onClick={() => navigate('/services/service/' + s.slug)}
-                                    >
-                                        <div className="overflow-hidden rounded-md">
-                                            <img
-                                                src={s.cover_photo}
-                                                alt={s.title}
-                                                title={s.title}
-                                                className="hover:scale-105 transition-all duration-300 w-full h-44 object-cover"
-                                            />
-                                        </div>
-                                        <div className="p-3 sm:p-5 flex-grow">
-                                            <h2 className="font-bold text-xl sm:text-2xl mb-2">{s.title}</h2>
-                                            <p className='text-xs sm:text-sm opacity-90'>
-                                                {s.description?.slice(0, 60) || ''}
-                                                {(s.description?.length || 0) > 59 && '...'}
-                                            </p>
+                                    <div className="p-3 sm:p-5 space-y-3">
+                                        <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-3 bg-gray-200 rounded w-full"></div>
+                                            <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+                                            <div className="h-3 bg-gray-200 rounded w-4/6"></div>
                                         </div>
                                     </div>
-                                )}
-                            />
-                        )}
-                    </div>
-                )}
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="mb-8">
+                            {filteredServices.length === 0 ? (
+                                <div className="text-center py-10">
+                                    <p className="text-gray-600">No services found for the selected discipline.</p>
+                                </div>
+                            ) : (
+                                <PaginationCarousel
+                                    items={filteredServices}
+                                    itemsPerPage={isMobile ? 1 : 4}
+                                    ItemsPerLine={isMobile ? 1 : 4}
+                                    renderItem={(s, index) => (
+                                        <div
+                                            key={s.id || index}
+                                            className="bg-primary rounded-lg p-2 flex flex-col text-white hover:scale-[1.02] transition-all duration-300 cursor-pointer h-full"
+                                            onClick={() => navigate('/services/service/' + s.slug)}
+                                        >
+                                            <div className="overflow-hidden rounded-md">
+                                                <img
+                                                    src={s.cover_photo}
+                                                    alt={s.title}
+                                                    title={s.title}
+                                                    className="hover:scale-105 transition-all duration-300 w-full h-44 object-cover"
+                                                />
+                                            </div>
+                                            <div className="p-3 sm:p-5 flex-grow">
+                                                <h2 className="font-bold text-xl sm:text-2xl mb-2">{s.title}</h2>
+                                                <p className='text-xs sm:text-sm opacity-90'>
+                                                    {s.description?.slice(0, 60) || ''}
+                                                    {(s.description?.length || 0) > 59 && '...'}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )}
+                                />
+                            )}
+                        </div>
+                    )}
+                </>}
 
                 {/* disciplie sections */}
                 <div className="space-y-5">
@@ -264,10 +266,11 @@ export function ServicesPagination() {
 }
 
 export function HeroSection() {
+    const { discipline } = useParams();
+
     return <>
         <ReusableHeroSection
-            name="Our Services"
-            subtitle={'Precision-driven solutions from concept to construction'}
+            name={discipline}
             backgroundclass="bg-ServicesHeroImage"
             overloay={true}
         />

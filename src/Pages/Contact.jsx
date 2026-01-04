@@ -17,7 +17,7 @@ export function HeroSection() {
 export function ContactForm() {
 
     const contactData = {
-        email: 'support@nexus-consults.com',
+        email: 'info@nexus-consults.com',
         phone: '+20 1143323484',
         whatsapp: 'https://wa.me/+201143323484'
     }

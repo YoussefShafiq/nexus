@@ -181,7 +181,7 @@ export default function Navbar() {
                                         initial="hidden"
                                         animate="visible"
                                         exit="hidden"
-                                        className="absolute flex flex-col top-full right-0 h-60 max-h-0 w-80 overflow-hidden group-hover:overflow-auto bg-primary group-hover:max-h-52 duration-300 rounded-lg">
+                                        className="absolute flex flex-col top-full right-0 h-60 max-h-0 w-80 overflow-hidden group-hover:overflow-auto bg-primary group-hover:max-h-52 duration-300 rounded-lg dropdown-scrollbar">
                                         {disciplinesData?.data?.data?.map((d, i) => (<>
                                             <Link key={i} to={item.path + '/' + d.title.replace('&', 'AND')} className='hover:bg-white/10 py-1 px-3'>
                                                 {d.title}

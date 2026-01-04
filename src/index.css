@@ -31,6 +31,10 @@
     @apply bg-primary rounded-full
 }
 
+
+
+
+
 .service-content {
     td {
         img {
@@ -100,4 +104,16 @@
         display: flex !important;
         width: auto !important;
     }
+}
+
+.dropdown-scrollbar::-webkit-scrollbar {
+    @apply w-[2px]
+}
+
+.dropdown-scrollbar::-webkit-scrollbar-track {
+    @apply bg-primary transition-colors
+}
+
+.dropdown-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white rounded-full
 }
